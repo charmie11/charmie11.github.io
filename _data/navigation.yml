@@ -1,0 +1,21 @@
+# Site navigation links
+- title: Home
+  url: /
+
+- title: Research
+  url: research.md
+
+- title: Publications
+  url: publications.md
+
+- title: Codes
+  url: codes.md
+
+- title: Lectures
+  url: lectures.md
+
+- title: Services
+  url: services.md
+
+- title: Personal
+  url: personal.md

@@ -63,7 +63,7 @@ title: Publications
 6. 前波 晴彦, **小山田 雄仁**, 森 幹彦, *ワークショップ映像にもとづいた議論分析システム構築の試み*, 第24回社会システム部会研究会, Mar. 2021.
 7. 森 幹彦, **小山田 雄仁**, 前波 晴彦, *付箋紙の移動に着目したワークショップ映像分析システムの検討*, 情報教育シンポジウム論文集, pp. 39-46, Dec., 2020.
 8. **Yuji Oyamada**, Yasuhiko Nikaido, Satoshi Miyahara, Mitsumasa Saito, Sharon Villanueva, Toshiyuki Masuzawa, Ryo Ozuru, *サポートベクターマシンを用いた顕微鏡下凝集試験 (MAT) の自動化*, 日本バイオインフォマティクス学会年会, Sep., 2020.
-9. 湊翔希, 小山田雄仁, 西山正志, 岩井儀雄, *ステレオカメラ校正における移動カメラの効果検証*, 動的画像処理実利用化ワークショップ (DIA), Mar., 2020.
+9. 湊 翔希, **小山田 雄仁**, 西山 正志, 岩井 儀雄, *ステレオカメラ校正における移動カメラの効果検証*, 動的画像処理実利用化ワークショップ (DIA), Mar., 2020.
 10. 中島 定男，吉岡 裕樹，黒崎 雅道，上原 一剛，**小山田 雄仁**，*MixedRealityを利用した次世代脳神経外科手術支援システムについての基礎技術*，日本脳神経外科学会 第78回学術総会， Oct. 2019．
 11. **小山田 雄仁**, 勝俣 槙太郎, *劣モジュラ関数最大化によるカメラ校正に適した画像選択*, 第25回画像センシングシンポジウム, IS2-17, pp. 1-4, Jun., 2019．
 12. **Yuji Oyamada**, Mikihiko Mori, Haruhiko Maenami, *Vision Based Analysis on Trajectories of Notes Representing Ideas Toward Workshop Summarization*, The 33rd Annual Conference of Japan Society for Artificial Intelligence (人工知能学会), Jun., 2019.

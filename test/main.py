@@ -151,7 +151,7 @@ def main():
                 data_v['v_c'].push(Math.min(V, V * (Math.exp(-t_i/tau))));
             }
             if(mode_n == 1){
-                data_v['v_c'][data_v['v_c'].length - 1] += 0.02 * Math.random();
+                data_v['v_c'][data_v['v_c'].length - 1] += 0.02 * (Math.random()-0.5);
             }
             
             // update I_c

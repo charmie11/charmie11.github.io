@@ -20,6 +20,7 @@ title: Services
   - 2015: Program Secretary, Program Chair for DES-WS, Facilitator for ARVR
   - DES-WS (IDW): Program Chair (2015-Current)
 - 電子情報通信学会 医用画像研究会: 専門委員 (2015年4月-現在)
+- 情報処理学会 [コンピュータビジョンとイメージメディア研究会](http://cvim.ipsj.or.jp/): 運営委員 (2022年4月-現在)
 - VCAS (ACCV Invited Workshop on Vision, Communication, and System) 2009: Workshop secretary
 
 ## Reviews/査読

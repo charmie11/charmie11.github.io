@@ -116,9 +116,9 @@ def main():
         const tau = R * C;
         const tau_max = 25.0;
 //        const t_max = 6*tau_max;
-        const t_max = 6*tau;
-//        const t_step = 7 * tau_max / 2000;
-        const t_step = tau/100;
+        const t_max = 6*tau_max;
+        const t_step = 6 * tau_max / 2000;
+//        const t_step = tau/100;
         var t_i = -0.2*tau_max;
 
         // main loop

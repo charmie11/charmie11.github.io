@@ -10,28 +10,26 @@ from bokeh.models import NumeralTickFormatter
 
 
 def main():
+    """ main function """
+
     # parameters
     Vs = [1.0, 10.0]
-    # Rs = [1e3, 1e5]
-    Rs = [1e4, 1e5]
-    Cs = [1e-8, 1e-7]
+    Rs = [1.0, 5.0]
+    Cs = [1.0, 5.0]
     Taus = [Rs[0]*Cs[0], Rs[1]*Cs[1]]
 
     V_0 = np.mean(Vs)
-    R_0 = 5e4
-    C_0 = 5e-8
-    # R_0 = Rs[0]
-    # C_0 = Cs[0]
-    Tau_0 = C_0 * R_0
-    Tau_max = Cs[1] * Rs[1]
-    t = np.linspace(-Tau_max, 6*Tau_max, 2000)
-    v_c = V_0 * (1.0 - np.exp(-t/Tau_0))
+    R_0 = 2.0
+    C_0 = 3.0
+    tau_0 = C_0 * R_0
+    tau_max = Cs[1] * Rs[1]
+    t = np.linspace(-tau_max, 6*tau_max, 2000)
+    v_c = V_0 * (1.0 - np.exp(-t/tau_0))
     v_c[np.where(t < 0.0)] = 0.0
     v = V_0 * np.ones(t.shape)
     v[np.where(t < 0)] = 0.0
     i_c = (V_0 - v_c) / R_0
     i_c[np.where(t < 0.0)] = 0.0
-    # observation_v = ColumnDataSource(data=dict(t=t, v_c=v_c, v=v))
     observation_v = ColumnDataSource(data=dict(t=t, v_c=v_c))
     observation_i = ColumnDataSource(data=dict(t=t, i_c=i_c))
 
@@ -39,17 +37,15 @@ def main():
     plot_options = dict(plot_width=512, plot_height=300, x_axis_label="Time [s]")
 
     # plot V
-    plot_v = figure(x_range=(-5e-3, 6*Tau_max),
+    plot_v = figure(x_range=(-0.1*tau_max, 6*tau_max),
                     y_axis_label="Volt [V]",
                     y_range=(-0.3*Vs[0], 1.1*Vs[1]),
                     **plot_options)
-    # plot_v.title.text = "電源電圧とコンデンサの電圧"
-    plot_v.title.text = "コンデンサの電圧"
+    plot_v.title.text = "電源電圧とコンデンサの電圧"
     plot_v.title.align = "center"
     plot_v.title_location = "below"
     plot_v.yaxis[0].formatter = NumeralTickFormatter(format="0.0")
 
-    # line_v = plot_v.circle('t', 'v', source=observation_v, size=1.0, color='blue', legend_label='V')
     line_v_c = plot_v.circle('t', 'v_c', source=observation_v, size=1.0, color='red', legend_label='V_c')
     plot_v.legend.location = 'bottom_right'
     plot_v.legend.click_policy = "hide"
@@ -88,8 +84,8 @@ def main():
     """ widgets """
     # sliders
     amplitude = Slider(value=V_0, start=Vs[0], end=Vs[1], step=0.01, title=u"電源電圧 [V]", format="0.00")
-    resistance = Slider(value=R_0, start=Rs[0], end=Rs[1], step=100.0, title=u'抵抗値 (内部抵抗含む) [Ω]')
-    capacitance = Slider(value=C_0, start=Cs[0], end=Cs[1], step=1e-8, title=u"静電容量 [F]", format="0.00000000")
+    resistance = Slider(value=R_0, start=Rs[0], end=Rs[1], step=0.01, title=u'抵抗値 (内部抵抗含む) [Ω]', format="0.00")
+    capacitance = Slider(value=C_0, start=Cs[0], end=Cs[1], step=0.01, title=u"静電容量 [F]", format="0.00")
 
     # buttons
     mode_charge = RadioButtonGroup(labels=[u"充電", u"放電"], active=0)
@@ -110,7 +106,6 @@ def main():
         var data_v = observation_v.data;
         data_v['t'] = [];
         data_v['v_c'] = [];
-//        data_v['v'] = [];
         
         // data of current
         var data_i = observation_i.data;
@@ -119,29 +114,18 @@ def main():
         
         // data of time
         const tau = R * C;
-//        const t_step = 0.01 * tau;
-//        const t_max = 7.0*tau;
-//        const t_step = 0.000001;
-//        var t_i = -0.0001;
-//        const t_max = 6.0 * 0.01 + t_step;
-        const tau_max = 0.01;
-        const t_max = 6*tau_max;
-        const t_step = 7 * tau_max / 2000;
-        var t_i = -tau_max;
+        const tau_max = 25.0;
+//        const t_max = 6*tau_max;
+        const t_max = 6*tau;
+//        const t_step = 7 * tau_max / 2000;
+        const t_step = tau/100;
+        var t_i = -0.2*tau_max;
 
         // main loop
         while(t_i < t_max){
             // update t
             data_v['t'].push(t_i);
             data_i['t'].push(t_i);
-            
-//            // update V
-//            if(mode_c == 0){  // Charge
-//                data_v['v'].push(t_i < 0.0 ? 0.0 : V);
-//            }
-//            else{  // Discharge
-//                data_v['v'].push(t_i < 0.0 ? V : 0.0);
-//            }
 
             // update V_c
             if(mode_c == 0){  // Charge
@@ -151,7 +135,7 @@ def main():
                 data_v['v_c'].push(Math.min(V, V * (Math.exp(-t_i/tau))));
             }
             if(mode_n == 1){
-                data_v['v_c'][data_v['v_c'].length - 1] += 0.02 * (Math.random()-0.5);
+                data_v['v_c'][data_v['v_c'].length - 1] += 0.02 * Math.random();
             }
             
             // update I_c
@@ -181,42 +165,34 @@ def main():
 
     # download button
     button_download = Button(label="ダウンロード", button_type="success")
-    callback_download = CustomJS(args=dict(source=observation_v),
-                                 code=open(os.path.join(os.path.dirname(__file__), "download.js")).read())
+    callback_download = CustomJS(
+        args=dict(source=observation_v),
+        code=open(os.path.join(os.path.dirname(__file__), "download.js")).read()
+    )
     button_download.js_on_click(callback_download)
 
     """ layout """
     empty_space = Spacer(height=20)
     title_parameters = Paragraph(text=u"CR回路の各種パラメータ設定用スライダー", align='center')
     par_parameters = Paragraph(text=u"以下のスライダーでパラメータの数値を変更でき，ページ右側のグラフが動的に変化します．")
-    parameters = column(title_parameters, par_parameters,
-                        amplitude, resistance, capacitance)
+    parameters = column(title_parameters, par_parameters, amplitude, resistance, capacitance)
 
     title_modes = Paragraph(text=u"動作変更ボタン", align='center')
     par_modes = Paragraph(text=u"以下のボタンで動作モードを変更でき，ページ右側のグラフが動的に変化します．")
-    modes = column(title_modes, par_modes,
-                   mode_charge, mode_noise)
+    modes = column(title_modes, par_modes, mode_charge, mode_noise)
 
     title_download = Paragraph(text=u"波形データダウンロードボタン", align='center')
     par_download = Paragraph(text=u"以下のボタンを押すと，右上のグラフのデータ(時刻，電源電圧，コンデンサの電圧)がcsvファイルとして保存できます．")
     download = column(title_download, par_download, button_download)
 
     plots = column(plot_v, empty_space, plot_i)
-
     layout = row(
-        column(
-            parameters,
-            empty_space,
-            modes,
-            empty_space,
-            download
-        ),
+        column(parameters, empty_space, modes, empty_space, download),
         plots
     )
-
     output_file("CR_simulator.html", title="Parameter set with sliders")
     show(layout)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

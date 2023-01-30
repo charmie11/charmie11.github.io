@@ -58,6 +58,7 @@ Please let me know if I can contribute to your journals, conferences, workshops,
   - ICPR (2012, 2014, 2016, 2018, 2020, 2022)
   - IDW (2015, 2016, 2017, 2018, 2019, 2020, 2021)
   - ISMAR (2019, 2020, 2022)
+  - ID-FCV (2023)
   - SITIS (2016)
   - VCAS (2009)
 - 国内学会

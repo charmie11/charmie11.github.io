@@ -18,6 +18,7 @@ title: Publications
 
 ## International Conferences, Workshops, Symposiums
 
+1. Madoka Chosokabe, **Yuji Oyamada**, and Shohei Koie, *Examination of the Use of ChatGPT in Group Discussion*, 23rd International Conference on Group Decision and Negotiation (GDN), Jun., 2023.
 1. **Yuji Oyamada**, *Gaussian Process based Illumination Planning for Photometric Stereo*, International Workshop on Frontiers of Computer Vision (IWFCV), Feb., 2023.
 1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, *DEEP LEARNING-BASED
 AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th International Leptospirosis Society Conference, Nov., 2022.

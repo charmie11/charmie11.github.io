@@ -6,15 +6,15 @@ title: Publications
 ## Journal Papers
 
 1. **Yuji Oyamada**, Ryo Ozuru, Toshiyuki Masuzawa, Satoshi Miyahara, Yasuhiko Nikaido, Fumiko Obata, Mitsumasa Saito, Sharon Yvette Angelina M. Villanueva, and Jun Fujii, [*A machine learning model of microscopic agglutination test for diagnosis of leptospirosis*](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0259907), PLOS ONE, Vol. 16, No. 11, pp. 1-16, Nov., 2021.
-2. Takayuki Tomioka, Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Depth Map Estimation Using Census Transform for Light Field Cameras*, IEICE Transactions on information and Systems, Vol. E100-D, No. 11, pp. 2711-2720, Nov., 2017.
-3. Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Content-Aware Image Retargeting Incorporated with Letterboxing*, IEICE Transactions on Information and Systems, Vol. E100.D, No. 4, pp. 865-873, Apr., 2017.
-4. **Yuji Oyamada**, Haruka Asai, and Hideo Saito, *Blind Deconvolution for A Curved Motion Based on Cepstral Analysis*, IPSJ Transactions on Computer Vision and Applications (CVA), Vol. 3, pp. 32-43, Jun., 2011.
+1. Takayuki Tomioka, Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Depth Map Estimation Using Census Transform for Light Field Cameras*, IEICE Transactions on information and Systems, Vol. E100-D, No. 11, pp. 2711-2720, Nov., 2017.
+1. Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Content-Aware Image Retargeting Incorporated with Letterboxing*, IEICE Transactions on Information and Systems, Vol. E100.D, No. 4, pp. 865-873, Apr., 2017.
+1. **Yuji Oyamada**, Haruka Asai, and Hideo Saito, *Blind Deconvolution for A Curved Motion Based on Cepstral Analysis*, IPSJ Transactions on Computer Vision and Applications (CVA), Vol. 3, pp. 32-43, Jun., 2011.
 
 ## 和文論文誌
 
 1. 池田 拓也, **小山田 雄仁**, 杉本 麻樹, 斎藤 英雄, *RGB-Dカメラから得られる部分物体形状と影に基づく光源推定*, 映像情報メディア学会誌, Vol. 67, No. 4, pp. J124-J133, Mar., 2013.
-2. 中島 悠, 野崎 貴裕, **小山田 雄仁**, 大西 公平, *視覚情報を用いた物体座標系におけるバイラテラル制御*, 電気学会論文誌産業応用部門誌, Vol. 132-D, No.3, pp. 374-380, Mar., 2012.
-3. **小山田 雄仁**, 斎藤 英雄, *プロジェクタスクリーン上に生じる焦点ボケ解消のための投影画像の事前補正法*, バーチャルリアリティ学会論文誌, Vol. 12, No. 4, pp. 479-486, Dec., 2007.
+1. 中島 悠, 野崎 貴裕, **小山田 雄仁**, 大西 公平, *視覚情報を用いた物体座標系におけるバイラテラル制御*, 電気学会論文誌産業応用部門誌, Vol. 132-D, No.3, pp. 374-380, Mar., 2012.
+1. **小山田 雄仁**, 斎藤 英雄, *プロジェクタスクリーン上に生じる焦点ボケ解消のための投影画像の事前補正法*, バーチャルリアリティ学会論文誌, Vol. 12, No. 4, pp. 479-486, Dec., 2007.
 
 ## International Conferences, Workshops, Symposiums
 

@@ -18,6 +18,7 @@ title: Publications
 
 ## International Conferences, Workshops, Symposiums
 
+1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori, Haruhiko Maenami, *Idea Grouping Support System*, International Conference on Software Technology and Engineering (ICSTE), Oct., 2023.
 1. Madoka Chosokabe, **Yuji Oyamada**, and Shohei Koie, *Examination of the Use of ChatGPT in Group Discussion*, 23rd International Conference on Group Decision and Negotiation (GDN), Jun., 2023.
 1. **Yuji Oyamada**, *Gaussian Process based Illumination Planning for Photometric Stereo*, International Workshop on Frontiers of Computer Vision (IWFCV), Feb., 2023.
 1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, *DEEP LEARNING-BASED
@@ -59,6 +60,10 @@ AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th Internat
 
 ## **国内学会・研究会**
 
+1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori and Haruhiko Maenami
+[*アイデア出しの振り返り用グルーピング再検討支援システム*](https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246699), 第34回社会システム部会研究会, Mar., 2024.
+1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori and Haruhiko Maenami
+[*AIチャットサービスによる議論の振り返り支援の検討*](https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246720), 第34回社会システム部会研究会, Mar., 2024.
 1. Ryo Ozuru, Risa Nakano, **Yuji Oyamada**, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, *Seeing is believing. Making Agglutination Tests from Qualitative to Quantitative with Deep Learning*, The 96th Annual Meeting of Japanese Society for Bacteriology Symposium 13: Bacteriology by the numbers, Mar., 2023.
 1. 梶谷 尚生, **小山田 雄仁**, 森 幹彦, 晴彦 前波, *対話型ワークショップ支援のための可視化技術に関する検討*, [第119回GN研究発表会](https://www.ipsj.or.jp/kenkyukai/event/gn119.html), Mar., 2023.
 1. 中野 里咲, **小山田 雄仁**, 尾鶴 亮, 宮原 敏, 吉村 芳修, 齋藤 光正, 廣松 賢治, *深層学習モデルによる顕微鏡下凝集試験の凝集率推定とその応用*, 第58回レプトスピラシンポジウム, Jun., 2022.

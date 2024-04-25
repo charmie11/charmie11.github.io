@@ -6,8 +6,8 @@ title: Lectures
 **現在担当している講義に関してはmanabaを参照してください．**
 
 1. 物理学実験演習 (電気情報系学科1年生, 担当: 2015-現在)
-   1. 講義: レポートの書き方: 講義資料: [レポートの書き方 (実践編)](http://bit.ly/oyamada_exp_phy_slide)，講義資料: [レポートの書き方 (ルール)](https://drive.google.com/file/d/1vy4GNon8GfPP2hFxRgTJoLM-nugZJPJr/view?usp=sharing)
-   1. コンデンサの充放電: [テキスト](https://drive.google.com/file/d/1d1Uxgg7DG_NlRXexl3O4ZU5Rs7579nbk/view?usp=sharing)
+   1. 講義: レポートの書き方 (~現在): [講義資料 レポートの書き方 (実践編)](http://bit.ly/oyamada_exp_phy_slide)，[講義資料 レポートの書き方 (ルール)](https://drive.google.com/file/d/1vy4GNon8GfPP2hFxRgTJoLM-nugZJPJr/view?usp=sharing)
+   1. コンデンサの充放電 (2018-現在): [テキスト](https://drive.google.com/file/d/1d1Uxgg7DG_NlRXexl3O4ZU5Rs7579nbk/view?usp=sharing)
    1. 過渡応答 (2015-2017年度): [テキスト](https://drive.google.com/open?id=1_MFeDWT2-hsYYaqvItV5EhkYDR5oL0dG) 
 1. 電気情報系実験II (電気情報系学科3年生, 担当: 2023~現在)
    1. 論理回路

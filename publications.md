@@ -102,8 +102,10 @@ AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th Internat
 
 ## Misc
 
+1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Michinobu Yoshimura, Kenji Hiromatsu, [*Objectification of Evaluation Criteria in Microscopic Agglutination Test Using Deep Learning*](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4791197), SSRN, 2024.
+1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, Kenji Hiromatsu, [*A Deep Learning-Based Evaluation for Microscopic Agglutination Test*](https://www.biorxiv.org/content/10.1101/2024.04.09.588741v1), bioRxiv, 2024.
 1. **Yuji Oyamada**, Ryo Ozuru, Toshiyuki Masuzawa, Satoshi Miyahara, Yasuhiko Nikaido, Fumiko Obata, Mitsumasa Saito, Sharon Yvette Angelina M. Villanueva, and Jun Fujii, [*A Machine Learning Approach Towards Standardizing Microscopic Agglutination Test for Diagnosis of Leptospirosis*](https://www.biorxiv.org/content/10.1101/2020.12.08.410712v1), bioRxiv, 2020.
-2. 山崎 俊彦, 井原 雅行, 大澤 博隆, **小山田 雄仁**, 服部 宏充, 森勢 将雅, 山田 智広, *[情報社会の夢の未来予測と技術課題](https://app.journal.ieice.org/trial/100_10/k100_10_1030/index.html)*, 電子情報通信学会創立100周年記念特集 暮らしを豊かにする情報処理技術, 1-2座談会, 2017.
+1. 山崎 俊彦, 井原 雅行, 大澤 博隆, **小山田 雄仁**, 服部 宏充, 森勢 将雅, 山田 智広, *[情報社会の夢の未来予測と技術課題](https://app.journal.ieice.org/trial/100_10/k100_10_1030/index.html)*, 電子情報通信学会創立100周年記念特集 暮らしを豊かにする情報処理技術, 1-2座談会, 2017.
 
 ## Awards
 

@@ -4,13 +4,10 @@ title: Services
 ---
 
 ## Committee members/委員など
-- SSII
-  - 2022: ISSO部会 顧問
-  - 2021: ISSO部会 部会長
-  - 2020: ISSO部会 副部会長
-  - 2019: ISSO部会 部会員
 - IDW (International Display Workshops)
-  - 2022: Program Chair for DES-WS
+  - 2024: Program Chair for DES-WS
+  - 2023: Publication, Metaverse Arrangement Member, Program Chair for DES-WS
+  - 2022: Executive Vice-Chair, Local Arrangement Vice-Chair, Program Chair for DES-WS
   - 2021: Local Arrangement Vice-Chair, Program Chair for DES-WS
   - 2020: Local Arrangement Vice-Chair, Program Secretary, Program Chair for DES-WS
   - 2019: Local Arrangement Vice-Chair, Program Secretary, Program Chair for DES-WS, Facilitator for ARVR
@@ -21,6 +18,11 @@ title: Services
   - DES-WS (IDW): Program Chair (2015-Current)
 - 電子情報通信学会 医用画像研究会: 専門委員 (2015年4月-現在)
 - 情報処理学会 [コンピュータビジョンとイメージメディア研究会](http://cvim.ipsj.or.jp/): 運営委員 (2022年4月-現在)
+- SSII
+  - 2022: ISSO部会 顧問
+  - 2021: ISSO部会 部会長
+  - 2020: ISSO部会 副部会長
+  - 2019: ISSO部会 部会員
 - VCAS (ACCV Invited Workshop on Vision, Communication, and System) 2009: Workshop secretary
 
 ## Reviews/査読
@@ -56,9 +58,9 @@ Please let me know if I can contribute to your journals, conferences, workshops,
   - GCCE (2012)
   - ICAT (2013, 2015)
   - ICPR (2012, 2014, 2016, 2018, 2020, 2022)
-  - IDW (2015, 2016, 2017, 2018, 2019, 2020, 2021)
+  - IDW (2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023)
   - ISMAR (2019, 2020, 2022)
-  - ID-FCV (2023)
+  - IW-FCV (2023, 2024)
   - SITIS (2016)
   - VCAS (2009)
 - 国内学会

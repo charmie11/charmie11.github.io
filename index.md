@@ -13,12 +13,10 @@ My research interests range from basic Computer Vision problems to their practic
 
 ## Contacts
 
-Considering the situation regarding COVID-19, I appreciate you accept online meeting using video-conference systems such as Google Meet and Skype for discussion/conversation with me.
-
 - Email: oyamada[at]tottori-u.ac.jp (Please convert [at] to @)
 - Skype: [charmie1111](skype:<charmie1111>?call)
-- Address: Room 7407, 4th floor, J-th wing, Faculty of Engineering Building, Tottori University, 4-101 Koyama-cho Minami, Tottori, Tottori, 680-8552, Japan
-- 住所: 680-8552 鳥取県鳥取市湖山町南4-101 鳥取大学 工学部 J棟 4階 7407
+- Address: Room 7509, 5th floor, J-th wing, Faculty of Engineering Building, Tottori University, 4-101 Koyama-cho Minami, Tottori, Tottori, 680-8552, Japan
+- 住所: 680-8552 鳥取県鳥取市湖山町南4-101 鳥取大学 工学部 J棟 5階 7509
 
 ## Our Recent Activities
 

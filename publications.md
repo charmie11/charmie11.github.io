@@ -62,6 +62,7 @@ AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th Internat
 
 ## **国内学会・研究会**
 
+1. **小山田 雄仁**, 尾鶴 亮, *菌検出技術に基づく顕微鏡下凝集試験(MAT)の判断基準の客観化と応用*, 第60回レプトスピラシンポジウム, Aug., 2024.
 1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori and Haruhiko Maenami
 [*アイデア出しの振り返り用グルーピング再検討支援システム*](https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246699), 第34回社会システム部会研究会, Mar., 2024.
 1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori and Haruhiko Maenami

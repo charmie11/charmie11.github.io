@@ -1,7 +1,7 @@
 import os
 from bokeh.io import output_file
 from bokeh.layouts import column, row
-from bokeh.models import ColumnDataSource, CustomJS, Slider, Button
+from bokeh.models import ColumnDataSource, PrintfTickFormatter, CustomJS, Slider, Button
 from bokeh.plotting import figure, show
 
 from cr_circuit import Circuit, settings
@@ -52,6 +52,8 @@ plot = figure(
     x_axis_label="時間 [秒]", y_axis_label="電圧 [V]",
     tools="pan,wheel_zoom,box_zoom,reset")
 plot.scatter('x', 'y', source=source)
+plot.xaxis.formatter = PrintfTickFormatter(format="%.1f")
+plot.yaxis.formatter = PrintfTickFormatter(format="%.1f")
 
 # JavaScriptコールバック
 callback = CustomJS(args=dict(source=source,

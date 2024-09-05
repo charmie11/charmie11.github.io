@@ -58,7 +58,7 @@ Please let me know if I can contribute to your journals, conferences, workshops,
   - GCCE (2012)
   - ICAT (2013, 2015)
   - ICPR (2012, 2014, 2016, 2018, 2020, 2022)
-  - IDW (2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023)
+  - IDW (2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024)
   - ISMAR (2019, 2020, 2022)
   - IW-FCV (2023, 2024)
   - SITIS (2016)

@@ -46,7 +46,11 @@ source = ColumnDataSource(data={
     'C': [C]*num_data,
 })
 # プロットの設定
-plot = figure(width=600, height=400)
+plot = figure(
+    width=600, height=400,
+    title="コンデンサの端子電圧の遷移",
+    x_axis_label="時間 [秒]", y_axis_label="電圧 [V]",
+    tools="pan,wheel_zoom,box_zoom,reset")
 plot.scatter('x', 'y', source=source)
 
 # JavaScriptコールバック

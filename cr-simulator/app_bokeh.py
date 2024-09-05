@@ -1,7 +1,7 @@
 import os
 from bokeh.io import output_file
 from bokeh.layouts import column, row
-from bokeh.models import ColumnDataSource, PrintfTickFormatter, CustomJS, Slider, Button
+from bokeh.models import ColumnDataSource, PrintfTickFormatter, CustomJS, Slider, Button, RadioButtonGroup
 from bokeh.plotting import figure, show
 from cr_circuit import Circuit, settings
 
@@ -45,12 +45,11 @@ def initialize_sliders():
 
 
 def create_initial_source(sliders):
-    """ 初期データの設定 """
+    """ 初期の ColumnDataSource を作成 """
     V, T, R, C = sliders['V'].value, sliders['T'].value, sliders['R'].value, sliders['C'].value
     circuit = Circuit(V, T, R, C)
     df = circuit.measure(num_samples=sliders['N'].value)
-
-    # ColumnDataSource の作成
+    df = df.head(len(df)//2)
     return ColumnDataSource(data={
         'x': df['時間 [秒]'].tolist(),
         'y': df['コンデンサの端子電圧 [V]'].tolist(),
@@ -74,7 +73,7 @@ def create_plot(source):
     return plot
 
 
-def create_callback(source, sliders):
+def create_callback(source, sliders, radio_button_group):
     """ プロット更新の JavaScript コールバック """
     return CustomJS(args=dict(
         source=source,
@@ -82,7 +81,8 @@ def create_callback(source, sliders):
         period=sliders['T'],
         resistance=sliders['R'],
         capacitance=sliders['C'],
-        samples=sliders['N']
+        samples=sliders['N'],
+        radio_group=radio_button_group
     ), code="""
         // 値の取得
         const V = voltage.value;
@@ -91,21 +91,23 @@ def create_callback(source, sliders):
         const C = capacitance.value;
         const num_samples = samples.value;
         const tau = R * C;
-        const times = Array.from(Array(2 * num_samples).keys()).map(i => i * T / (2 * num_samples));
+        const times = Array.from(Array(num_samples).keys()).map(i => i * T / num_samples);
 
-        // 充電と放電の計算
-        const v_charge = times.slice(0, num_samples).map(t => V * (1.0 - Math.exp(-t / tau)));
-        const v_charge_clamped = v_charge.map(v => Math.min(v, V));
-        const v_offset = V - v_charge_clamped[v_charge_clamped.length - 1];
-        const time_offset = times[num_samples - 1];
-        const v_discharge = times.slice(num_samples).map(t => V * Math.exp(-(t - time_offset) / tau) - v_offset);
-        const v_discharge_clamped = v_discharge.map(v => Math.max(v, 0));
+        let x = [];
+        let y = [];
+
+        // モードの選択に基づいた計算
+        if (radio_group.active === 0) {  // 充電モード
+            x = times;
+            y = times.map(t => V * (1.0 - Math.exp(-t / tau)));
+            y = y.map(v => Math.min(v, V));  // 最大値でクリップ
+        } else {  // 放電モード
+            x = times;
+            y = times.map(t => V * Math.exp(-t / tau));
+            y = y.map(v => Math.max(v, 0));  // 最小値でクリップ
+        }
 
         // データの更新
-        const x = times.slice(0, -1);
-        const v_all = v_charge_clamped.concat(v_discharge_clamped);
-        const y = v_all.slice(0, -1);
-
         source.data = {
             x: x,
             y: y,
@@ -117,10 +119,10 @@ def create_callback(source, sliders):
     """)
 
 
-def create_download_callback(source):
+def create_download_callback(source, radio_button_group):
     """ ダウンロードボタンのコールバック """
     return CustomJS(
-        args=dict(source=source),
+        args=dict(source=source, radio_group=radio_button_group),
         code="""
         // 最新のデータを取得
         const data = source.data;
@@ -129,8 +131,11 @@ def create_download_callback(source):
         const C = data['C'][0].toFixed(15);
         const x = data['x'];
         const y = data['y'];
-    
-        // CSVデータの生成
+
+        // ラジオボタンの選択状態を確認
+        const selected_mode = radio_group.active === 0 ? 'charge' : 'discharge';
+
+        // CSV データの生成
         const csv = ['電源電圧 [V],抵抗 [Ω],静電容量(真値) [F],時間 [秒],コンデンサの端子電圧 [V]'];
         // 1行目
         csv.push([V, R, C, x[0].toFixed(15), y[0].toFixed(15)].join(','));
@@ -139,11 +144,14 @@ def create_download_callback(source):
         }
         const csvContent = csv.join('\\n');
 
+        // ファイル名の設定
+        const fileName = selected_mode === 'charge' ? 'charge_data.csv' : 'discharge_data.csv';
+
         // CSV ファイルをダウンロード
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = 'circuit_data.csv';
+        link.download = fileName;
         link.click();
         """
     )
@@ -158,14 +166,18 @@ def main():
     # プロットの作成
     plot = create_plot(source)
 
+    # ラジオボタンの設定
+    radio_button_group = RadioButtonGroup(labels=["充電", "放電"], active=0)
+
     # コールバックの設定
-    callback = create_callback(source, sliders)
+    callback = create_callback(source, sliders, radio_button_group)
     for slider in sliders.values():
         slider.js_on_change('value', callback)
+    radio_button_group.js_on_change('active', callback)
 
     # ダウンロードボタンの設定
     button_download = Button(label="ダウンロード", button_type="success")
-    button_download.js_on_click(create_download_callback(source))
+    button_download.js_on_click(create_download_callback(source, radio_button_group))
 
     # レイアウトの設定と表示
     layout = column(
@@ -173,6 +185,7 @@ def main():
             column(sliders['V'], sliders['R'], sliders['C']),
             column(sliders['T'], sliders['N'])
         ),
+        radio_button_group,
         button_download,
         plot
     )

@@ -102,21 +102,36 @@ callback = CustomJS(args=dict(source=source,
 for slider in sliders.values():
     slider.js_on_change('value', callback)
 
-num_padding = len(source.data['x']) - 1
-padding = [''] * num_padding
+# データのダウンロード
 button_download = Button(label="ダウンロード", button_type="success")
 callback_download = CustomJS(
-    args=dict(source=
-    ColumnDataSource(data={
-        '電源電圧 [V]': [source.data['V'][0]] + padding,
-        '抵抗 [Ω]': [source.data['R'][0]] + padding,
-        '静電容量(真値) [F]': [source.data['C'][0]] + padding,
-        '時間 [秒]': source.data['x'],
-        'コンデンサの端子電圧 [V]': source.data['y'],
-    })),
-    code=open(os.path.join(os.path.dirname(__file__), "download.js")).read()
-)
+    args=dict(source=source),
+    code="""
+    // 最新のデータを取得
+    const data = source.data;
+    const V = data['V'][0].toFixed(15);
+    const R = data['R'][0].toFixed(15);
+    const C = data['C'][0].toFixed(15);
+    const x = data['x'];
+    const y = data['y'];
 
+    // CSVデータの生成
+    const csv = ['電源電圧 [V],抵抗 [Ω],静電容量(真値) [F],時間 [秒],コンデンサの端子電圧 [V]'];
+    // 1行目
+    csv.push([V, R, C, x[0].toFixed(15), y[0].toFixed(15)].join(','));
+    for (let i = 1; i < x.length; i++) {
+        csv.push(['', '', '', x[i].toFixed(15), y[i].toFixed(15)].join(','));
+    }
+    const csvContent = csv.join('\\n');
+
+    // CSVファイルをダウンロード
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'cr-simulator.csv';
+    link.click();
+"""
+)
 button_download.js_on_click(callback_download)
 
 # レイアウトの設定

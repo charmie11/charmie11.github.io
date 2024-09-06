@@ -4,6 +4,7 @@ from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource, PrintfTickFormatter, CustomJS, Slider, Button, RadioButtonGroup
 from bokeh.plotting import figure, show
 from cr_circuit import Circuit, settings
+import numpy as np  # ノイズ追加のためにnumpyを使用
 
 
 def create_slider(key, setting):
@@ -41,6 +42,11 @@ def initialize_sliders():
     # R, C の値に応じて周期のスライダーを更新
     sliders['R'].js_on_change('value', update_slider_period)
     sliders['C'].js_on_change('value', update_slider_period)
+
+    # ノイズ強度スライダーの追加
+    noise_slider = Slider(start=0.0, end=1.0, value=0.0, step=0.1, title="ノイズ強度")
+    sliders['noise'] = noise_slider
+
     return sliders
 
 
@@ -49,13 +55,16 @@ def create_initial_source(sliders):
     V, T, R, C = sliders['V'].value, sliders['T'].value, sliders['R'].value, sliders['C'].value
     circuit = Circuit(V, T, R, C)
     df = circuit.measure(num_samples=sliders['N'].value)
-    df = df.head(len(df)//2)
+    df = df.head(len(df) // 2)
+    S = 0.0
     return ColumnDataSource(data={
         'x': df['時間 [秒]'].tolist(),
         'y': df['コンデンサの端子電圧 [V]'].tolist(),
+        'y_noisy': df['コンデンサの端子電圧 [V]'].tolist(),  # 初期はノイズなし
         'V': [V] * len(df),
         'R': [R] * len(df),
         'C': [C] * len(df),
+        'S': [S] * len(df),
     })
 
 
@@ -67,9 +76,12 @@ def create_plot(source):
         x_axis_label="時間 [秒]", y_axis_label="電圧 [V]",
         tools="pan,wheel_zoom,box_zoom,reset"
     )
-    plot.scatter('x', 'y', source=source)
+    plot.scatter('x', 'y_noisy', source=source, legend_label="ノイズあり", color="red")
+    plot.scatter('x', 'y', source=source, legend_label="ノイズなし")
     plot.xaxis.formatter = PrintfTickFormatter(format="%.1f")
     plot.yaxis.formatter = PrintfTickFormatter(format="%.1f")
+    # plot.legend.location = "top_left"
+    plot.legend.location = "center_right"
     return plot
 
 
@@ -82,6 +94,7 @@ def create_callback(source, sliders, radio_button_group):
         resistance=sliders['R'],
         capacitance=sliders['C'],
         samples=sliders['N'],
+        noise_slider=sliders['noise'],
         radio_group=radio_button_group
     ), code="""
         // 値の取得
@@ -92,9 +105,11 @@ def create_callback(source, sliders, radio_button_group):
         const num_samples = samples.value;
         const tau = R * C;
         const times = Array.from(Array(num_samples).keys()).map(i => i * T / num_samples);
+        const noise_scale = noise_slider.value;
 
         let x = [];
         let y = [];
+        let y_noisy = [];
 
         // モードの選択に基づいた計算
         if (radio_group.active === 0) {  // 充電モード
@@ -107,13 +122,19 @@ def create_callback(source, sliders, radio_button_group):
             y = y.map(v => Math.max(v, 0));  // 最小値でクリップ
         }
 
+        // ノイズの追加
+        const noise = y.map(() => (Math.random() - 0.5) * noise_scale);
+        y_noisy = y.map((v, i) => v + noise[i]);
+
         // データの更新
         source.data = {
             x: x,
             y: y,
+            y_noisy: y_noisy,
             V: Array(x.length).fill(V),
             R: Array(x.length).fill(R),
-            C: Array(x.length).fill(C)
+            C: Array(x.length).fill(C),
+            S: Array(x.length).fill(noise_scale),
         };
         source.change.emit();
     """)
@@ -129,18 +150,20 @@ def create_download_callback(source, radio_button_group):
         const V = data['V'][0].toFixed(15);
         const R = data['R'][0].toFixed(15);
         const C = data['C'][0].toFixed(15);
+        const S = data['S'][0].toFixed(15);
         const x = data['x'];
         const y = data['y'];
+        const y_noisy = data['y_noisy'];
 
         // ラジオボタンの選択状態を確認
         const selected_mode = radio_group.active === 0 ? 'charge' : 'discharge';
 
         // CSV データの生成
-        const csv = ['電源電圧 [V],抵抗 [Ω],静電容量(真値) [F],時間 [秒],コンデンサの端子電圧 [V]'];
+        const csv = ['電源電圧 [V],抵抗 [Ω],静電容量(真値) [F],ノイズ強度,時間 [秒],コンデンサの端子電圧 [V],ノイズありコンデンサの端子電圧 [V]'];
         // 1行目
-        csv.push([V, R, C, x[0].toFixed(15), y[0].toFixed(15)].join(','));
+        csv.push([V, R, C, S, x[0].toFixed(15), y[0].toFixed(15), y_noisy[0].toFixed(15)].join(','));
         for (let i = 1; i < x.length; i++) {
-            csv.push(['', '', '', x[i].toFixed(15), y[i].toFixed(15)].join(','));
+            csv.push(['', '', '', '', x[i].toFixed(15), y[i].toFixed(15), y_noisy[i].toFixed(15)].join(','));
         }
         const csvContent = csv.join('\\n');
 
@@ -183,7 +206,7 @@ def main():
     layout = column(
         row(
             column(sliders['V'], sliders['R'], sliders['C']),
-            column(sliders['T'], sliders['N'])
+            column(sliders['T'], sliders['N'], sliders['noise'])
         ),
         radio_button_group,
         button_download,

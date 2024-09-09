@@ -7,7 +7,7 @@ settings = {
     'V': {'min': 1.0, 'max': 20.0, 'step': 1.0, 'default': 1.0, 'text': '電源電圧 [V]'},
     'R': {'min': 1.0, 'max': 150.0, 'step': 1.0, 'default': 2.0, 'text': '抵抗 [Ohm]'},
     'C': {'min': 1.0, 'max': 30.0, 'step': 1.0, 'default': 3.0, 'text': '静電容量 [F]'},
-    'T': {'min': 1.0, 'max': 40000.0, 'step': 1.0, 'default': 50.0, 'text': '周期 [秒]'},
+    'T': {'min': 1.0, 'max': 180.0, 'step': 1.0, 'default': 50.0, 'text': '周期 [秒]'},
     'N': {'min': 10, 'max': 2000, 'step': 10, 'default': 10, 'text': 'サンプル数 [回/半周期]'},
 }
 

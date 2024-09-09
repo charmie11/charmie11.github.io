@@ -55,7 +55,6 @@ def create_initial_source(sliders):
     V, T, R, C = sliders['V'].value, sliders['T'].value, sliders['R'].value, sliders['C'].value
     circuit = Circuit(V, T, R, C)
     df = circuit.measure(num_samples=sliders['N'].value)
-    df = df.head(len(df) // 2)
     S = 0.0
     return ColumnDataSource(data={
         'x': df['時間 [秒]'].tolist(),

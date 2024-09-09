@@ -32,7 +32,7 @@ def initialize_sliders():
         code="""
         const tau = resistance.value * capacitance.value;
         period.start = 0.1 * tau;
-        period.end = 15.0 * tau;
+        period.end = 30.0 * tau;
         period.value = Math.min(Math.max(period.value, period.start), period.end);
         period.step = 0.1 * tau;
         period.change.emit();
@@ -60,7 +60,7 @@ def create_initial_source(sliders):
     return ColumnDataSource(data={
         'x': df['時間 [秒]'].tolist(),
         'y': df['コンデンサの端子電圧 [V]'].tolist(),
-        'y_noisy': df['コンデンサの端子電圧 [V]'].tolist(),  # 初期はノイズなし
+        'y_noisy': df['コンデンサの端子電圧 [V]'].tolist(),
         'V': [V] * len(df),
         'R': [R] * len(df),
         'C': [C] * len(df),
@@ -104,7 +104,7 @@ def create_callback(source, sliders, radio_button_group):
         const C = capacitance.value;
         const num_samples = samples.value;
         const tau = R * C;
-        const times = Array.from(Array(num_samples).keys()).map(i => i * T / num_samples);
+        const times = Array.from(Array(num_samples).keys()).map(i => i * 0.5 * T / (num_samples-1));
         const noise_scale = noise_slider.value;
 
         let x = [];

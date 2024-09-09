@@ -20,17 +20,17 @@ class Circuit:
         self.C = capacitance
         self.tau = self.R * self.C
 
-    def measure(self, num_samples):
+    def measure(self, num_samples, mode='charge'):
         assert num_samples > 1
         times = np.linspace(0, self.T, 2*num_samples)
 
-        v_charge = self.V * (1.0 - np.exp(-times[:num_samples]/self.tau))
-        v_charge[v_charge>self.V] = self.V
-
-        v_offset = self.V - v_charge[-1]
-        time_offset = times[num_samples-1]
-        v_discharge = self.V * np.exp(-(times[num_samples:]-time_offset)/self.tau) - v_offset
-        v_discharge[v_discharge<0.0] = 0.0
+        match mode:
+            case 'charge':
+                v_c = self.V * (1.0 - np.exp(-times/self.tau))
+                v_c[v_c>self.V] = self.V
+            case 'discharge':
+                v_c = self.V * np.exp(-(times)/self.tau)
+                v_c[v_c<0.0] = 0.0
         num_data = len(times)
 
         df = pd.DataFrame({
@@ -39,7 +39,7 @@ class Circuit:
             '静電容量(真値) [F]': [self.C] + [None] * (num_data - 1),
         })
         df["時間 [秒]"] = times
-        df["コンデンサの端子電圧 [V]"] = np.concat([v_charge, v_discharge])
+        df["コンデンサの端子電圧 [V]"] = v_c
 
         return df
 

@@ -91,21 +91,31 @@ def create_initial_source(sliders):
     })
 
 
-def create_plot(source):
-    """ プロットを作成 """
+def update_axis(plot):
     line_h = Span(location=0, dimension='width', line_color='black', line_width=1)
     line_v = Span(location=0, dimension='height', line_color='black', line_width=1)
+
+    plot.add_layout(line_h)
+    plot.add_layout(line_v)
+
+    plot.xaxis.axis_label_text_font_size = "13pt"
+    plot.yaxis.axis_label_text_font_size = "13pt"
+    plot.xaxis.major_label_text_font_size = "11pt"
+    plot.yaxis.major_label_text_font_size = "11pt"
+
+    plot.legend.location = "center_right"
+
+
+def create_plot(source):
+    """ プロットを作成 """
     size = 15
 
     plot_v = figure(
-        width=600, height=400,
-        title="コンデンサの端子電圧の遷移",
+        width=600, height=400, title="コンデンサの端子電圧の遷移",
         x_axis_label="時間 [秒]", y_axis_label="電圧 [V]",
         tools="pan,wheel_zoom,box_zoom,reset"
     )
 
-    plot_v.add_layout(line_h)
-    plot_v.add_layout(line_v)
     plot_v.scatter(
         't', 'v_noisy', source=source, legend_label="計測ノイズあり",
         marker='x', size=size, color="blue",
@@ -114,22 +124,13 @@ def create_plot(source):
         't', 'v', source=source, legend_label="計測ノイズなし",
         marker='circle', fill_alpha=0, size=size, color="red",
     )
-    plot_v.xaxis.formatter = PrintfTickFormatter(format="%.1f")
-    plot_v.yaxis.formatter = PrintfTickFormatter(format="%.1f")
-    plot_v.legend.location = "center_right"
-    plot_v.xaxis.axis_label_text_font_size = "13pt"
-    plot_v.yaxis.axis_label_text_font_size = "13pt"
-    plot_v.xaxis.major_label_text_font_size = "11pt"
-    plot_v.yaxis.major_label_text_font_size = "11pt"
+    update_axis(plot_v)
 
     plot_i = figure(
-        width=600, height=400,
-        title="回路に流れる電流の遷移",
+        width=600, height=400, title="回路に流れる電流の遷移",
         x_axis_label="時間 [秒]", y_axis_label="電流 [A]",
         tools="pan,wheel_zoom,box_zoom,reset",
     )
-    plot_i.add_layout(line_h)
-    plot_i.add_layout(line_v)
     plot_i.scatter(
         't', 'i_noisy', source=source, legend_label="計測ノイズあり",
         marker='x', size=size, color="blue",
@@ -138,13 +139,7 @@ def create_plot(source):
         't', 'i', source=source, legend_label="計測ノイズなし",
         marker='circle', fill_alpha=0, size=size, color="red",
     )
-    plot_i.xaxis.formatter = PrintfTickFormatter(format="%.1f")
-    plot_i.yaxis.formatter = PrintfTickFormatter(format="%.1f")
-    plot_i.legend.location = "center_right"
-    plot_i.xaxis.axis_label_text_font_size = "13pt"
-    plot_i.yaxis.axis_label_text_font_size = "13pt"
-    plot_i.xaxis.major_label_text_font_size = "11pt"
-    plot_i.yaxis.major_label_text_font_size = "11pt"
+    update_axis(plot_i)
 
     return plot_v, plot_i
 
@@ -226,20 +221,6 @@ def create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i):
         texts['tau'].value = `${tau.toFixed(2)}`;  // R*Cの計算結果を表示
         texts['i_max'].value = `${(E/R).toFixed(2)}`;  // E/Rの計算結果を表示
 
-        // plot_iの縦軸の範囲を調整
-        const v_min = Math.min(...v_noisy);
-        const v_max = Math.max(...v_noisy);
-        plot_v.y_range.start = v_min;
-        plot_v.y_range.end = v_max;
-        plot_v.change.emit();
-
-        // plot_iの縦軸の範囲を調整
-        const i_min = Math.min(...i_noisy);
-        const i_max = Math.max(...i_noisy);
-        const i_abs_max = Math.max(Math.abs(i_min), Math.abs(i_max));
-        plot_i.y_range.start = -i_abs_max;
-        plot_i.y_range.end = i_abs_max;
-        plot_i.change.emit();
     """)
 
 

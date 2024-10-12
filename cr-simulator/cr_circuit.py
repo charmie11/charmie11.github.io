@@ -4,17 +4,19 @@ import plotly.express as px
 
 
 settings = {
-    'V': {'min': 1.0, 'max': 20.0, 'step': 1.0, 'default': 1.0, 'text': '電源電圧 [V]'},
-    'R': {'min': 1.0, 'max': 150.0, 'step': 1.0, 'default': 2.0, 'text': '抵抗 [Ohm]'},
-    'C': {'min': 1.0, 'max': 30.0, 'step': 1.0, 'default': 3.0, 'text': '静電容量 [F]'},
-    'T': {'min': 1.0, 'max': 180.0, 'step': 1.0, 'default': 50.0, 'text': '周期 [秒]'},
-    'N': {'min': 10, 'max': 2000, 'step': 10, 'default': 10, 'text': 'サンプル数 [回/半周期]'},
+    'E': {'min': 1.0, 'max': 300.0, 'step': 1.0, 'default': 11.0, 'text': '電源電圧 E[V]'},
+    'R': {'min': 1.0, 'max': 140.0, 'step': 1.0, 'default': 2.0, 'text': '抵抗 R[Ohm]'},
+    'C': {'min': 1.0, 'max': 30.0, 'step': 1.0, 'default': 3.0, 'text': '静電容量 C[F]'},
+    'T': {'min': 1.0, 'max': 40000.0, 'step': 1.0, 'default': 50.0, 'text': '周期 T[秒]'},
+    'N': {'min': 10, 'max': 1000, 'step': 10, 'default': 10, 'text': 'サンプル数 N[回/半周期]'},
+    'voltage_noise': {'min': 0.0, 'max': 1.0, 'step': 0.1, 'default': 0.0, 'text': '電圧計測ノイズ強度'},
+    'current_noise': {'min': 0.0, 'max': 1.0, 'step': 0.1, 'default': 0.0, 'text': '電流計測ノイズ強度'},
 }
 
 
 class Circuit:
     def __init__(self, voltage, period, resistance, capacitance):
-        self.V = voltage
+        self.E = voltage
         self.T = period
         self.R = resistance
         self.C = capacitance
@@ -22,24 +24,28 @@ class Circuit:
 
     def measure(self, num_samples, mode='charge'):
         assert num_samples > 1
-        times = np.linspace(0, self.T, 2*num_samples)
+        times = np.linspace(0, self.T, num_samples)
+        v_c, i_c = None, None
+        if mode == 'charge':
+            v_c = self.E * (1.0 - np.exp(-times / self.tau))
+            i_c = self.E * np.exp(-times / self.tau) / self.R
+        elif mode == 'discharge':
+            v_c = self.E * np.exp(-times / self.tau)
+            i_c = -self.E * np.exp(-times / self.tau) / self.R
+            pass
+        else:
+            ValueError("mode should be either 'charge' or 'discharge'")
 
-        match mode:
-            case 'charge':
-                v_c = self.V * (1.0 - np.exp(-times/self.tau))
-                v_c[v_c>self.V] = self.V
-            case 'discharge':
-                v_c = self.V * np.exp(-(times)/self.tau)
-                v_c[v_c<0.0] = 0.0
         num_data = len(times)
 
         df = pd.DataFrame({
-            '電源電圧 [V]': [self.V] + [None] * (num_data - 1),
+            '電源電圧 [V]': [self.E] + [None] * (num_data - 1),
             '抵抗 [Ω]': [self.R] + [None] * (num_data - 1),
             '静電容量(真値) [F]': [self.C] + [None] * (num_data - 1),
         })
         df["時間 [秒]"] = times
         df["コンデンサの端子電圧 [V]"] = v_c
+        df["電流 [A]"] = i_c
 
         return df
 
@@ -59,11 +65,11 @@ class Circuit:
             ),
             yaxis=dict(
                 title="コンデンサの端子電圧 [V]",
-                range=[0, 1.1*self.V],
+                range=[0, 1.1*self.E],
                 tickformat='.1f',
             )
         )
         # fig.add_vline(x=0.5*self.T, line_dash="dash")
-        fig.add_hline(y=self.V, line_dash="dash")
+        fig.add_hline(y=self.E, line_dash="dash")
 
         return df, fig

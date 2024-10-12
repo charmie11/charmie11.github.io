@@ -144,7 +144,8 @@ def create_plot(source):
     return plot_v, plot_i
 
 
-def create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i):
+# def create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i):
+def create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_limit, line_i_limit):
     """ プロット更新の JavaScript コールバック """
     return CustomJS(args=dict(
         source=source,
@@ -156,9 +157,11 @@ def create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i):
         noise_voltage_slider=sliders['voltage_noise'],
         noise_current_slider=sliders['current_noise'],
         radio_group=radio_button_group,
-        texts=texts,
+        # texts=texts,
         plot_v=plot_v,
         plot_i=plot_i,
+        line_v_limit=line_v_limit,
+        line_i_limit=line_i_limit,
     ), code="""
         // 正規分布を生成する関数 (Box-Muller法)
         function generateGaussianNoise(mean, stdDev) {
@@ -217,9 +220,19 @@ def create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i):
         };
         source.change.emit();
 
-        // テキストボックスの値を更新
-        texts['tau'].value = `${tau.toFixed(2)}`;  // R*Cの計算結果を表示
-        texts['i_max'].value = `${(E/R).toFixed(2)}`;  // E/Rの計算結果を表示
+        // プロットの上限・下限を設定
+        line_v_limit.location = E;
+        plot_v.change.emit();
+        if (radio_group.active === 0) {  // 充電モード
+            line_i_limit.location = E/R;
+        } else {  // 放電モード
+            line_i_limit.location = -E/R;
+        }
+        plot_i.change.emit();
+
+        // // テキストボックスの値を更新
+        // texts['tau'].value = `${tau.toFixed(2)}`;  // R*Cの計算結果を表示
+        // texts['i_max'].value = `${(E/R).toFixed(2)}`;  // E/Rの計算結果を表示
 
     """)
 
@@ -272,17 +285,25 @@ def main():
 
     # スライダーとデータの初期化
     sliders = initialize_sliders()
-    texts = initialize_texts(sliders['E'].value, sliders['R'].value, sliders['C'].value)
+    # texts = initialize_texts(sliders['E'].value, sliders['R'].value, sliders['C'].value)
     source = create_initial_source(sliders)
 
     # プロットの作成
     plot_v, plot_i = create_plot(source)
 
+    # 線の追加
+    line_v_limit = Span(location=sliders['E'].value, dimension='width', line_color='black', line_dash='dashed', line_width=1)
+    line_i_limit = Span(location=sliders['E'].value/sliders['R'].value, dimension='width', line_color='black', line_dash='dashed', line_width=1)
+
+    plot_v.add_layout(line_v_limit)
+    plot_i.add_layout(line_i_limit)
+
     # ラジオボタンの設定
     radio_button_group = RadioButtonGroup(labels=["充電", "放電"], active=0)
 
     # コールバックの設定
-    callback = create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i)
+    # callback = create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i)
+    callback = create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_limit, line_i_limit)
     for slider in sliders.values():
         slider.js_on_change('value', callback)
     radio_button_group.js_on_change('active', callback)
@@ -295,9 +316,7 @@ def main():
     layout = column(
         row(sliders['E'], sliders['voltage_noise']),
         row(sliders['R'], sliders['current_noise']),
-        row(texts['i_max']),
         row(sliders['C']),
-        row(texts['tau']),
         row(sliders['T'], sliders['N']),
         radio_button_group,
         button_download,

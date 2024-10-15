@@ -91,7 +91,28 @@ def create_initial_source(sliders):
     })
 
 
-def update_axis(plot):
+def create_plot(source, plot_data='v'):
+    assert plot_data in ['v', 'i']
+
+    size = 15
+    title = "コンデンサの端子電圧の遷移" if plot_data == 'v' else "電流の遷移"
+    y_axis_label = "電圧 [V]" if plot_data == 'v' else "電流 [A]"
+    plot = figure(
+        title=title,
+        width=600, height=400,
+        x_axis_label="時間 [秒]", y_axis_label=y_axis_label,
+        tools="pan,wheel_zoom,box_zoom,reset"
+    )
+
+    plot.scatter(
+        't', f'{plot_data}_noisy', source=source, legend_label="計測ノイズあり",
+        marker='x', size=size, color="blue",
+    )
+    plot.scatter(
+        't', f'{plot_data}', source=source, legend_label="計測ノイズなし",
+        marker='circle', fill_alpha=0, size=size, color="red",
+    )
+
     line_h = Span(location=0, dimension='width', line_color='black', line_width=1)
     line_v = Span(location=0, dimension='height', line_color='black', line_width=1)
 
@@ -105,46 +126,9 @@ def update_axis(plot):
 
     plot.legend.location = "center_right"
 
-
-def create_plot(source):
-    """ プロットを作成 """
-    size = 15
-
-    plot_v = figure(
-        width=600, height=400, title="コンデンサの端子電圧の遷移",
-        x_axis_label="時間 [秒]", y_axis_label="電圧 [V]",
-        tools="pan,wheel_zoom,box_zoom,reset"
-    )
-
-    plot_v.scatter(
-        't', 'v_noisy', source=source, legend_label="計測ノイズあり",
-        marker='x', size=size, color="blue",
-    )
-    plot_v.scatter(
-        't', 'v', source=source, legend_label="計測ノイズなし",
-        marker='circle', fill_alpha=0, size=size, color="red",
-    )
-    update_axis(plot_v)
-
-    plot_i = figure(
-        width=600, height=400, title="回路に流れる電流の遷移",
-        x_axis_label="時間 [秒]", y_axis_label="電流 [A]",
-        tools="pan,wheel_zoom,box_zoom,reset",
-    )
-    plot_i.scatter(
-        't', 'i_noisy', source=source, legend_label="計測ノイズあり",
-        marker='x', size=size, color="blue",
-    )
-    plot_i.scatter(
-        't', 'i', source=source, legend_label="計測ノイズなし",
-        marker='circle', fill_alpha=0, size=size, color="red",
-    )
-    update_axis(plot_i)
-
-    return plot_v, plot_i
+    return plot
 
 
-# def create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i):
 def create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_limit, line_i_limit):
     """ プロット更新の JavaScript コールバック """
     return CustomJS(args=dict(
@@ -220,9 +204,11 @@ def create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_
         };
         source.change.emit();
 
-        // プロットの上限・下限を設定
+        // 電圧の上限を表示
         line_v_limit.location = E;
         plot_v.change.emit();
+
+        // 電流の上限・下限を表示
         if (radio_group.active === 0) {  // 充電モード
             line_i_limit.location = E/R;
         } else {  // 放電モード
@@ -285,11 +271,11 @@ def main():
 
     # スライダーとデータの初期化
     sliders = initialize_sliders()
-    # texts = initialize_texts(sliders['E'].value, sliders['R'].value, sliders['C'].value)
     source = create_initial_source(sliders)
 
     # プロットの作成
-    plot_v, plot_i = create_plot(source)
+    plot_v = create_plot(source, 'v')
+    plot_i = create_plot(source, 'i')
 
     # 線の追加
     line_v_limit = Span(location=sliders['E'].value, dimension='width', line_color='black', line_dash='dashed', line_width=1)
@@ -302,7 +288,6 @@ def main():
     radio_button_group = RadioButtonGroup(labels=["充電", "放電"], active=0)
 
     # コールバックの設定
-    # callback = create_callback(source, sliders, radio_button_group, texts, plot_v, plot_i)
     callback = create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_limit, line_i_limit)
     for slider in sliders.values():
         slider.js_on_change('value', callback)
@@ -313,14 +298,38 @@ def main():
     button_download.js_on_click(create_download_callback(source, radio_button_group))
 
     # レイアウトの設定と表示
-    layout = column(
-        row(sliders['E'], sliders['voltage_noise']),
-        row(sliders['R'], sliders['current_noise']),
-        row(sliders['C']),
-        row(sliders['T'], sliders['N']),
-        radio_button_group,
-        button_download,
-        row(plot_v, plot_i),
+    # top: settings, bottom: plot
+    # layout = column(
+    #     row(sliders['E'], sliders['voltage_noise']),
+    #     row(sliders['R'], sliders['current_noise']),
+    #     row(sliders['C']),
+    #     row(sliders['T'], sliders['N']),
+    #     radio_button_group,
+    #     button_download,
+    #     # row(plot_v, plot_i, sizing_mode='scale_width'),
+    #     row(plot_v, plot_i),
+    # )
+    # # left: settings, right: plot
+    # layout = column(
+    #     row(column(sliders['E'], sliders['voltage_noise']), plot_v),
+    #     row(column(sliders['R'], sliders['current_noise']), plot_i),
+    #     row(sliders['C']),
+    #     row(sliders['T'], sliders['N']),
+    #     radio_button_group,
+    #     button_download,
+    # )
+    # left: settings, right: plot
+    layout = row(
+        column(
+            sliders['E'], sliders['voltage_noise'],
+            sliders['R'], sliders['current_noise'],
+            sliders['C'],
+            sliders['T'], sliders['N'],
+            radio_button_group,
+            button_download,
+            sizing_mode="fixed", width=200, height=600,
+        ),
+        column(plot_v, plot_i),
     )
     filename = "app.html"
     output_file(filename, title="CR直列回路シミュレータ")

@@ -38,9 +38,9 @@ def initialize_sliders():
         """
     )
 
-    # R, C の値に応じて周期のスライダーを更新
-    sliders['R'].js_on_change('value', update_slider_max)
-    sliders['C'].js_on_change('value', update_slider_max)
+    # # R, C の値に応じて周期のスライダーを更新
+    # sliders['R'].js_on_change('value', update_slider_max)
+    # sliders['C'].js_on_change('value', update_slider_max)
 
     return sliders
 
@@ -70,11 +70,14 @@ def create_plot(source, plot_data='v'):
     size = 15
     title = "コンデンサの端子電圧の遷移" if plot_data == 'v' else "電流の遷移"
     y_axis_label = "電圧 [V]" if plot_data == 'v' else "電流 [A]"
+    x_range = (-500, 10000)
+    y_range = (-5, 105) if plot_data == 'v' else (-11, 11)
     plot = figure(
         title=title,
         width=600, height=400,
+        x_range=x_range, y_range=y_range,
         x_axis_label="時間 [秒]", y_axis_label=y_axis_label,
-        tools="pan,wheel_zoom,box_zoom,reset"
+        tools="hover,pan,wheel_zoom,box_zoom,reset,save"
     )
 
     plot.scatter(
@@ -97,7 +100,8 @@ def create_plot(source, plot_data='v'):
     plot.xaxis.major_label_text_font_size = "11pt"
     plot.yaxis.major_label_text_font_size = "11pt"
 
-    plot.legend.location = "center_right"
+    # plot.legend.location = "bottom_right"  if plot_data == 'v' else "top_right"
+    plot.legend.location = "bottom_right"
 
     return plot
 
@@ -134,7 +138,8 @@ def create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_
         const C = capacitance.value;
         const num_samples = samples.value;
         const tau = R * C;
-        const times = Array.from(Array(num_samples).keys()).map(a => a * T / num_samples);
+        // const times = Array.from(Array(num_samples).keys()).map(a => a * T / num_samples);
+        const times = Array.from(Array(num_samples).keys()).map(a => a * T / (num_samples-1));
         const sigma_v = noise_voltage_slider.value;
         const sigma_i = noise_current_slider.value;
 
@@ -144,13 +149,12 @@ def create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_
         let i = [];
         let i_noisy = [];
 
+        x = times;
         // モードの選択に基づいた計算
         if (radio_group.active === 0) {  // 充電モード
-            x = times;
             v = x.map(a => E * (1.0 - Math.exp(-a / tau)));
             i = x.map(a => E * Math.exp(-a / tau) / R);
         } else {  // 放電モード
-            x = times;
             v = x.map(a => E * Math.exp(-a / tau));
             i = x.map(a => -E * Math.exp(-a / tau) / R);
         }
@@ -259,6 +263,7 @@ def main():
     # プロットの作成
     plot_v = create_plot(source, 'v')
     plot_i = create_plot(source, 'i')
+    plot_i.x_range = plot_v.x_range
 
     # 線の追加
     line_v_limit = Span(location=sliders['E'].value, dimension='width', line_color='black', line_dash='dashed', line_width=1)

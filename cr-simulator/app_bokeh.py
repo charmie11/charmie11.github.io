@@ -23,12 +23,9 @@ def initialize_sliders():
     # 周期スライダーの更新コールバック
     update_slider_max = CustomJS(
         args=dict(
-            E=sliders['E'],
             R=sliders['R'],
             C=sliders['C'],
             T=sliders['T'],
-            sigma_v=sliders['voltage_noise'],
-            sigma_i=sliders['current_noise'],
         ),
         code="""
         // 周期の横軸を変更
@@ -38,24 +35,10 @@ def initialize_sliders():
         T.step = 0.1 * tau;
         T.value = Math.min(Math.max(T.value, T.start), T.end);
         T.change.emit();
-        
-        // 電圧計測ノイズの横軸を変更
-        sigma_v.end = 0.10 * E.value;
-        sigma_v.step = 0.01 * sigma_v.end;
-        sigma_v.value = Math.min(Math.max(sigma_v.value, sigma_v.start), sigma_v.end);
-        sigma_v.change.emit();
-
-        // 電龍計測ノイズの横軸を変更
-        const i_max = E.value / R.value;
-        sigma_i.end = 0.10 * i_max;
-        sigma_i.step = 0.01 * sigma_i.end;
-        sigma_i.value = Math.min(Math.max(sigma_i.value, sigma_i.start), sigma_i.end);
-        sigma_i.change.emit();
         """
     )
 
     # R, C の値に応じて周期のスライダーを更新
-    sliders['E'].js_on_change('value', update_slider_max)
     sliders['R'].js_on_change('value', update_slider_max)
     sliders['C'].js_on_change('value', update_slider_max)
 

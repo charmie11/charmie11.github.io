@@ -1,6 +1,6 @@
 from bokeh.io import output_file
 from bokeh.layouts import column, row
-from bokeh.models import ColumnDataSource, PrintfTickFormatter, CustomJS, Slider, Button, RadioButtonGroup, Span, TextInput
+from bokeh.models import ColumnDataSource, CustomJS, Slider, Button, RadioButtonGroup, Span
 from bokeh.plotting import figure, show
 from cr_circuit import Circuit, settings
 
@@ -60,16 +60,6 @@ def initialize_sliders():
     sliders['C'].js_on_change('value', update_slider_max)
 
     return sliders
-
-
-def initialize_texts(E, R, C):
-    texts = {
-        # "tau": TextInput(value=f"{R*C}", title="R*C: ", styles={'text_font_size': '13pt'}),
-        # "i_max": TextInput(value=f"{E/R}", title="E/R: ", styles={'font-size': '13pt'}, css_classes=["custom-input"]),
-        "tau": TextInput(value=f"{R*C}", title="R*C: "),
-        "i_max": TextInput(value=f"{E/R}", title="E/R: "),
-    }
-    return texts
 
 
 def create_initial_source(sliders):
@@ -141,7 +131,6 @@ def create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_
         noise_voltage_slider=sliders['voltage_noise'],
         noise_current_slider=sliders['current_noise'],
         radio_group=radio_button_group,
-        # texts=texts,
         plot_v=plot_v,
         plot_i=plot_i,
         line_v_limit=line_v_limit,
@@ -216,10 +205,6 @@ def create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_
         }
         plot_i.change.emit();
 
-        // // テキストボックスの値を更新
-        // texts['tau'].value = `${tau.toFixed(2)}`;  // R*Cの計算結果を表示
-        // texts['i_max'].value = `${(E/R).toFixed(2)}`;  // E/Rの計算結果を表示
-
     """)
 
 
@@ -228,40 +213,55 @@ def create_download_callback(source, radio_button_group):
     return CustomJS(
         args=dict(source=source, radio_group=radio_button_group),
         code="""
-        // 最新のデータを取得
-        const data = source.data;
-        const E = data['E'][0].toFixed(15);
-        const R = data['R'][0].toFixed(15);
-        const C = data['C'][0].toFixed(15);
-        const sigma_v = data['sigma_v'][0].toFixed(15);
-        const sigma_i = data['sigma_i'][0].toFixed(15);
-        const t = data['t'];
-        const v = data['v'];
-        const v_noisy = data['v_noisy'];
-        const i = data['i'];
-        const i_noisy = data['i_noisy'];
+            // SheetJSをCDNからロード
+            var script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+            script.onload = function() {
+                // 最新のデータを取得
+                const data = source.data;
+                const E = data['E'][0].toFixed(15);
+                const R = data['R'][0].toFixed(15);
+                const C = data['C'][0].toFixed(15);
+                const sigma_v = data['sigma_v'][0].toFixed(15);
+                const sigma_i = data['sigma_i'][0].toFixed(15);
+                // const E = data['E'][0];
+                // const R = data['R'][0];
+                // const C = data['C'][0];
+                // const sigma_v = data['sigma_v'][0];
+                // const sigma_i = data['sigma_i'][0];
+                const t = data['t'];
+                const v = data['v'];
+                const v_noisy = data['v_noisy'];
+                const i = data['i'];
+                const i_noisy = data['i_noisy'];
 
-        // ラジオボタンの選択状態を確認
-        const selected_mode = radio_group.active === 0 ? 'charge' : 'discharge';
+                // ラジオボタンの選択状態を確認
+                const selected_mode = radio_group.active === 0 ? 'charge' : 'discharge';
 
-        // CSV データの生成
-        const csv = ['電源電圧 [V],抵抗 [Ω],静電容量(真値) [F],電圧計測ノイズ強度,電流計測ノイズ強度,時間 [秒],コンデンサの端子電圧 [V],ノイズありコンデンサの端子電圧 [V],電流 [A],ノイズあり電流 [A]'];
-        // 1行目
-        csv.push([E, R, C, sigma_v, sigma_i, t[0].toFixed(15), v[0].toFixed(15), v_noisy[0].toFixed(15), i[0].toFixed(15), i_noisy[0].toFixed(15)].join(','));
-        for (let n = 1; n < t.length; n++) {
-            csv.push(['', '', '', '', '', t[n].toFixed(15), v[n].toFixed(15), v_noisy[n].toFixed(15), i[n].toFixed(15), i_noisy[n].toFixed(15)].join(','));
-        }
-        const csvContent = csv.join('\\n');
+                // データを2次元配列に変換（Excelに対応）
+                const rows = [
+                    ['電源電圧 [V]', '抵抗 [Ω]', '静電容量(真値) [F]', '電圧計測ノイズ強度', '電流計測ノイズ強度', '時間 [秒]', 'コンデンサの端子電圧 [V]', 'ノイズありコンデンサの端子電圧 [V]', '電流 [A]', 'ノイズあり電流 [A]']
+                ];
+                // 1行目
+                rows.push([E, R, C, sigma_v, sigma_i, t[0].toFixed(15), v[0].toFixed(15), v_noisy[0].toFixed(15), i[0].toFixed(15), i_noisy[0].toFixed(15)]);
+                // rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], v_noisy[0], i[0], i_noisy[0]]);
+                for (let n = 1; n < t.length; n++) {
+                    rows.push(['', '', '', '', '', t[n].toFixed(15), v[n].toFixed(15), v_noisy[n].toFixed(15), i[n].toFixed(15), i_noisy[n].toFixed(15)]);
+                    // rows.push(['', '', '', '', '', t[n], v[n], v_noisy[n], i[n], i_noisy[n]]);
+                }
 
-        // ファイル名の設定
-        const fileName = selected_mode === 'charge' ? 'charge_data.csv' : 'discharge_data.csv';
+                // xlsxファイルの作成
+                var ws = XLSX.utils.aoa_to_sheet(rows);  // 2次元配列からシートを作成
+                var wb = XLSX.utils.book_new();  // 新しいワークブック作成
+                XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  // ワークブックにシートを追加
 
-        // CSV ファイルをダウンロード
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = fileName;
-        link.click();
+                // ファイル名の設定
+                const fileName = selected_mode === 'charge' ? 'charge_data.xlsx' : 'discharge_data.xlsx';
+
+                // xlsxファイルをダウンロード
+                XLSX.writeFile(wb, fileName);  // xlsxファイルをダウンロード
+            };
+            document.head.appendChild(script);  // スクリプトをHTMLに追加
         """
     )
 
@@ -294,32 +294,19 @@ def main():
     radio_button_group.js_on_change('active', callback)
 
     # ダウンロードボタンの設定
-    button_download = Button(label="ダウンロード", button_type="success")
+    button_download = Button(label="ダウンロード", button_type="success", background='red')
     button_download.js_on_click(create_download_callback(source, radio_button_group))
 
     # レイアウトの設定と表示
-    # top: settings, bottom: plot
-    # layout = column(
-    #     row(sliders['E'], sliders['voltage_noise']),
-    #     row(sliders['R'], sliders['current_noise']),
-    #     row(sliders['C']),
-    #     row(sliders['T'], sliders['N']),
-    #     radio_button_group,
-    #     button_download,
-    #     # row(plot_v, plot_i, sizing_mode='scale_width'),
-    #     row(plot_v, plot_i),
-    # )
-    # # left: settings, right: plot
-    # layout = column(
-    #     row(column(sliders['E'], sliders['voltage_noise']), plot_v),
-    #     row(column(sliders['R'], sliders['current_noise']), plot_i),
-    #     row(sliders['C']),
-    #     row(sliders['T'], sliders['N']),
-    #     radio_button_group,
-    #     button_download,
-    # )
+    from bokeh.models import Div
+
+    sheetjs_script = Div(text="""
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    """, width=0, height=0)  # サイズを最小限にする
+
     # left: settings, right: plot
     layout = row(
+        sheetjs_script,
         column(
             sliders['E'], sliders['voltage_noise'],
             sliders['R'], sliders['current_noise'],
@@ -332,7 +319,7 @@ def main():
         column(plot_v, plot_i),
     )
     filename = "app.html"
-    output_file(filename, title="CR直列回路シミュレータ")
+    output_file(filename, title="CR直列回路シミュレータ", mode="inline")
 
     show(layout)
 

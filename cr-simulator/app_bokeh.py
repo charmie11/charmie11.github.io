@@ -219,16 +219,16 @@ def create_download_callback(source, radio_button_group):
             script.onload = function() {
                 // 最新のデータを取得
                 const data = source.data;
-                const E = data['E'][0].toFixed(15);
-                const R = data['R'][0].toFixed(15);
-                const C = data['C'][0].toFixed(15);
-                const sigma_v = data['sigma_v'][0].toFixed(15);
-                const sigma_i = data['sigma_i'][0].toFixed(15);
-                // const E = data['E'][0];
-                // const R = data['R'][0];
-                // const C = data['C'][0];
-                // const sigma_v = data['sigma_v'][0];
-                // const sigma_i = data['sigma_i'][0];
+                // const E = data['E'][0].toFixed(15);
+                // const R = data['R'][0].toFixed(15);
+                // const C = data['C'][0].toFixed(15);
+                // const sigma_v = data['sigma_v'][0].toFixed(15);
+                // const sigma_i = data['sigma_i'][0].toFixed(15);
+                const E = data['E'][0];
+                const R = data['R'][0];
+                const C = data['C'][0];
+                const sigma_v = data['sigma_v'][0];
+                const sigma_i = data['sigma_i'][0];
                 const t = data['t'];
                 const v = data['v'];
                 const v_noisy = data['v_noisy'];
@@ -243,11 +243,11 @@ def create_download_callback(source, radio_button_group):
                     ['電源電圧 [V]', '抵抗 [Ω]', '静電容量(真値) [F]', '電圧計測ノイズ強度', '電流計測ノイズ強度', '時間 [秒]', 'コンデンサの端子電圧 [V]', 'ノイズありコンデンサの端子電圧 [V]', '電流 [A]', 'ノイズあり電流 [A]']
                 ];
                 // 1行目
-                rows.push([E, R, C, sigma_v, sigma_i, t[0].toFixed(15), v[0].toFixed(15), v_noisy[0].toFixed(15), i[0].toFixed(15), i_noisy[0].toFixed(15)]);
-                // rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], v_noisy[0], i[0], i_noisy[0]]);
+                // rows.push([E.toFixed(15), R.toFixed(15), C.toFixed(15), sigma_v.toFixed(15), sigma_i.toFixed(15), t[0].toFixed(15), v[0].toFixed(15), v_noisy[0].toFixed(15), i[0].toFixed(15), i_noisy[0].toFixed(15)]);
+                rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], v_noisy[0], i[0], i_noisy[0]]);
                 for (let n = 1; n < t.length; n++) {
-                    rows.push(['', '', '', '', '', t[n].toFixed(15), v[n].toFixed(15), v_noisy[n].toFixed(15), i[n].toFixed(15), i_noisy[n].toFixed(15)]);
-                    // rows.push(['', '', '', '', '', t[n], v[n], v_noisy[n], i[n], i_noisy[n]]);
+                    // rows.push(['', '', '', '', '', t[n].toFixed(15), v[n].toFixed(15), v_noisy[n].toFixed(15), i[n].toFixed(15), i_noisy[n].toFixed(15)]);
+                    rows.push(['', '', '', '', '', t[n], v[n], v_noisy[n], i[n], i_noisy[n]]);
                 }
 
                 // xlsxファイルの作成

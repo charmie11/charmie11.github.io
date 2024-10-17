@@ -4,13 +4,13 @@ import plotly.express as px
 
 
 settings = {
-    'E': {'min': 1.0, 'max': 300.0, 'step': 1.0, 'default': 11.0, 'text': '電源電圧 E[V]'},
-    'R': {'min': 1.0, 'max': 140.0, 'step': 1.0, 'default': 2.0, 'text': '抵抗 R[Ohm]'},
-    'C': {'min': 1.0, 'max': 30.0, 'step': 1.0, 'default': 3.0, 'text': '静電容量 C[F]'},
-    'T': {'min': 1.0, 'max': 40000.0, 'step': 1.0, 'default': 50.0, 'text': '周期 T[秒]'},
-    'N': {'min': 10, 'max': 1000, 'step': 10, 'default': 10, 'text': 'サンプル数 N[回/半周期]'},
-    'voltage_noise': {'min': 0.0, 'max': 1.0, 'step': 0.1, 'default': 0.0, 'text': '電圧計測ノイズ強度'},
-    'current_noise': {'min': 0.0, 'max': 1.0, 'step': 0.1, 'default': 0.0, 'text': '電流計測ノイズ強度'},
+    'E': {'min': 1.0, 'max': 100.0, 'step': 1.0, 'default': 50.0, 'text': '電源電圧 E[V]'},
+    'R': {'min': 10.0, 'max': 30.0, 'step': 1.0, 'default': 15.0, 'text': '抵抗 R[Ohm]'},
+    'C': {'min': 1.0, 'max': 20.0, 'step': 1.0, 'default': 10.0, 'text': '静電容量 C[F]'},
+    'T': {'min': 10.0, 'max': 6000.0, 'step': 10.0, 'default': 3000.0, 'text': '半周期 T/2[秒]'},
+    'N': {'min': 10, 'max': 1000, 'step': 10, 'default': 50, 'text': 'サンプル数 N[回/半周期]'},
+    'voltage_noise': {'min': 0.0, 'max': 1.0, 'step': 0.01, 'default': 0.0, 'text': '電圧計測ノイズ強度'},
+    'current_noise': {'min': 0.0, 'max': 1.0, 'step': 0.01, 'default': 0.0, 'text': '電流計測ノイズ強度'},
 }
 
 

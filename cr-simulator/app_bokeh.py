@@ -100,7 +100,7 @@ def create_plot(source, plot_data='v'):
     plot.xaxis.major_label_text_font_size = "11pt"
     plot.yaxis.major_label_text_font_size = "11pt"
 
-    plot.legend.location = "top_right"  if plot_data == 'v' else "bottom_right"
+    plot.legend.location = "center_right"  if plot_data == 'v' else "bottom_right"
 
     return plot
 

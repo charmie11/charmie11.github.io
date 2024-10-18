@@ -71,13 +71,13 @@ def create_plot(source, plot_data='v'):
     title = "コンデンサの端子電圧の遷移" if plot_data == 'v' else "電流の遷移"
     y_axis_label = "電圧 [V]" if plot_data == 'v' else "電流 [A]"
     x_range = (-500, 6500)
-    y_range = (-5, 105) if plot_data == 'v' else (-11, 11)
+    y_range = (-5, 55) if plot_data == 'v' else (-55, 55)
     plot = figure(
         title=title,
         width=600, height=400,
         x_range=x_range, y_range=y_range,
         x_axis_label="時間 [秒]", y_axis_label=y_axis_label,
-        tools="hover,pan,wheel_zoom,box_zoom,reset,save"
+        tools="hover,wheel_zoom,box_zoom,reset,save"
     )
 
     plot.scatter(
@@ -100,8 +100,7 @@ def create_plot(source, plot_data='v'):
     plot.xaxis.major_label_text_font_size = "11pt"
     plot.yaxis.major_label_text_font_size = "11pt"
 
-    # plot.legend.location = "bottom_right"  if plot_data == 'v' else "top_right"
-    plot.legend.location = "bottom_right"
+    plot.legend.location = "top_right"  if plot_data == 'v' else "bottom_right"
 
     return plot
 
@@ -223,7 +222,7 @@ def create_download_callback(source, radio_button_group):
                 // データを2次元配列に変換（Excelに対応）
                 const rows = [
                     // ['電源電圧 [V]', '抵抗 [Ω]', '静電容量(真値) [F]', '電圧計測ノイズ強度', '電流計測ノイズ強度', '時間 [秒]', 'コンデンサの端子電圧 [V]', 'ノイズありコンデンサの端子電圧 [V]', '電流 [A]', 'ノイズあり電流 [A]']
-                    ['E [V]', 'R [Ω]', 'C [F]', 'sigma_v', 'sigma_i', 't [秒]', 'V [V]', 'ln(V)', 'V_* [V]', 'ln(V_*)', 'I [A]', 'ln(-I)', 'I_* [A]', 'ln(-I_*)']
+                    ['E [V]', 'R [Ω]', 'C [F]', 'sigma_v', 'sigma_i', 't [秒]', 'V [V]', 'ln(V)', 'V* [V]', 'ln(V*)', 'I [A]', 'ln(-I)', 'I* [A]', 'ln(-I*)']
                 ];
                 // 1行目
                 rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], '', v_noisy[0], '', i[0], '', i_noisy[0], '']);

@@ -260,7 +260,7 @@ def main():
 
     # 線の追加
     line_v_limit = Span(location=sliders['E'].value, dimension='width', line_color='black', line_dash='dashed', line_width=1)
-    line_i_limit = Span(location=sliders['E'].value/sliders['R'].value, dimension='width', line_color='black', line_dash='dashed', line_width=1)
+    line_i_limit = Span(location=-sliders['E'].value/sliders['R'].value, dimension='width', line_color='black', line_dash='dashed', line_width=1)
 
     plot_v.add_layout(line_v_limit)
     plot_i.add_layout(line_i_limit)

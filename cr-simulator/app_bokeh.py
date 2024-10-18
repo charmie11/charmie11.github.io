@@ -266,7 +266,7 @@ def main():
     plot_i.add_layout(line_i_limit)
 
     # ラジオボタンの設定
-    radio_button_group = RadioButtonGroup(labels=["充電", "放電"], active=0)
+    radio_button_group = RadioButtonGroup(labels=["充電", "放電"], active=1)
 
     # コールバックの設定
     callback = create_callback(source, sliders, radio_button_group, plot_v, plot_i, line_v_limit, line_i_limit)

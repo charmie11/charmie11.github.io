@@ -22,7 +22,7 @@ class Circuit:
         self.C = capacitance
         self.tau = self.R * self.C
 
-    def measure(self, num_samples, mode='charge'):
+    def measure(self, num_samples, mode='discharge'):
         assert num_samples > 1
         times = np.linspace(0, self.T, num_samples)
         v_c, i_c = None, None

@@ -69,7 +69,7 @@ class CircuitData:
 def extract_data_from_excel(filename):
     """ extract data from excel file obtained via CR circuit simulator
     the excel contains the following column
-        E, R, C, sigma_v, sigma_i, t, V, "", noisy_V, "", I, "", noisy_I, ""
+        E, R, C, sigma_v, sigma_i, t, V, "", I, "", noisy_V, "", noisy_I, ""
     """
     assert os.path.exists(filename)
     df = pd.read_excel(filename)
@@ -80,8 +80,8 @@ def extract_data_from_excel(filename):
     sigma_i = df[df.columns[4]].to_numpy()[0]
     t = df[df.columns[5]].to_numpy()
     V = df[df.columns[6]].to_numpy()
-    noisy_V = df[df.columns[8]].to_numpy()
-    I = df[df.columns[10]].to_numpy()
+    I = df[df.columns[8]].to_numpy()
+    noisy_V = df[df.columns[10]].to_numpy()
     noisy_I = df[df.columns[12]].to_numpy()
     data_theory = CircuitData(t, V, I)
     data_measured = CircuitData(t, noisy_V, noisy_I)

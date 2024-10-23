@@ -58,11 +58,11 @@ def create_plot(source, plot_data='v'):
     )
 
     plot.scatter(
-        't', f'{plot_data}_noisy', source=source, legend_label="計測ノイズあり",
+        't', f'{plot_data}_noisy', source=source, legend_label="計測値",
         marker='x', size=size, color="blue",
     )
     plot.scatter(
-        't', f'{plot_data}', source=source, legend_label="計測ノイズなし",
+        't', f'{plot_data}', source=source, legend_label="理論値",
         marker='circle', fill_alpha=0, size=size, color="red",
     )
 
@@ -198,13 +198,15 @@ def create_download_callback(source, radio_button_group):
 
                 // データを2次元配列に変換（Excelに対応）
                 const rows = [
-                    // ['電源電圧 [V]', '抵抗 [Ω]', '静電容量(真値) [F]', '電圧計測ノイズ強度', '電流計測ノイズ強度', '時間 [秒]', 'コンデンサの端子電圧 [V]', 'ノイズありコンデンサの端子電圧 [V]', '電流 [A]', 'ノイズあり電流 [A]']
-                    ['E [V]', 'R [Ω]', 'C [F]', 'sigma_v', 'sigma_i', 't [秒]', 'V [V]', 'ln(V)', 'V* [V]', 'ln(V*)', 'I [A]', 'ln(-I)', 'I* [A]', 'ln(-I*)']
+                    ['電源電圧 E [V]', '抵抗 R [Ω]', '静電容量 C [F]', '電圧計測ノイズ強度 sigma_v', '電流計測ノイズ強度 sigma_i', '時間 t [秒]', 'コンデンサの端子電圧 (理論値) V [V]', 'ln(V)', '電流 (理論値) I [A]', 'ln(I)', 'コンデンサの端子電圧 (計測値) V* [V]', 'ln(V*)', '電流 (計測値) I* [A]', 'ln(I*)']
+                    // ['E [V]', 'R [Ω]', 'C [F]', 'sigma_v', 'sigma_i', 't [秒]', 'V [V]', 'ln(V)', 'V* [V]', 'ln(V*)', 'I [A]', 'ln(-I)', 'I* [A]', 'ln(-I*)']
                 ];
                 // 1行目
-                rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], '', v_noisy[0], '', i[0], '', i_noisy[0], '']);
+                // rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], '', v_noisy[0], '', i[0], '', i_noisy[0], '']);
+                rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], '', i[0], '', v_noisy[0], '', i_noisy[0], '']);
                 for (let n = 1; n < t.length; n++) {
-                    rows.push(['', '', '', '', '', t[n], v[n], '', v_noisy[n], '', i[n], '', i_noisy[n], '']);
+                    // rows.push(['', '', '', '', '', t[n], v[n], '', v_noisy[n], '', i[n], '', i_noisy[n], '']);
+                    rows.push(['', '', '', '', '', t[n], v[n], '', i[n], '', v_noisy[n], '', i_noisy[n], '']);
                 }
 
                 // xlsxファイルの作成

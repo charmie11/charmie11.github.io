@@ -223,3 +223,145 @@ def create_download_callback(source, radio_button_group):
             document.head.appendChild(script);  // スクリプトをHTMLに追加
         """
     )
+
+def create_analysis_callback(source, results):
+    return CustomJS(
+        args=dict(source=source, results=results),
+        code="""
+            // データを取得
+            const data = source.data;
+
+            const t = data['t'];
+            const E = data['E'][0];
+            const R = data['R'][0];
+            const C = data['C'][0];
+            const tau = R * C;
+            const v_noisy = data['v_noisy'];
+            const i_noisy = data['i_noisy'];
+            const N = t.length;
+            const T = t[N-1] / tau;
+
+            const filtered_t = [];
+            const filtered_ln_v = [];
+            const filtered_ln_i = [];
+
+            let n = 0; // ループカウンタを初期化
+            while (n < N) {
+                if ((v_noisy[n] > 0) && (i_noisy[n] < 0)) {
+                    filtered_t.push(t[n]);
+                    filtered_ln_v.push(Math.log(v_noisy[n]));
+                    filtered_ln_i.push(Math.log(-i_noisy[n]));
+                } else {
+                    break; // 条件を満たさない場合はループを終了
+                }
+                n++; // ループカウンタをインクリメント
+            }
+
+            const N_hat = filtered_t.length;
+            const T_hat = filtered_t[N_hat-1] / tau;
+
+            if (N_hat < 2) {
+                console.log("Not enough data points for fitting.");
+                return;
+            }
+            
+            // xとln(y)の平均を計算
+            const mean_t = filtered_t.reduce((sum, value) => sum + value, 0) / N_hat;
+            const mean_ln_v = filtered_ln_v.reduce((sum, value) => sum + value, 0) / N_hat;
+            const mean_ln_i = filtered_ln_i.reduce((sum, value) => sum + value, 0) / N_hat;
+            
+            // 傾き a の計算 (最小二乗法)
+            let num_v = 0;  // 分子
+            let num_i = 0;  // 分子
+            let den = 0;    // 分母
+            for (let n = 0; n < N_hat; n++) {
+                num_v += (filtered_t[n] - mean_t) * (filtered_ln_v[n] - mean_ln_v);
+                num_i += (filtered_t[n] - mean_t) * (filtered_ln_i[n] - mean_ln_i);
+                den += (filtered_t[n] - mean_t) ** 2;
+            }
+            
+            if (den === 0) {
+                console.log("Denominator is zero, cannot compute slope.");
+                return; // ゼロ除算を防ぐために終了
+            }
+            
+            const a_v = num_v / den;
+            const b_v = mean_ln_v - a_v * mean_t;
+            const a_i = num_i / den;
+            const b_i = mean_ln_i - a_i * mean_t;
+            
+            const E_hat = Math.exp(b_v);
+            const R_hat = Math.exp(b_v - b_i);
+            const C_hat = -1.0 / (R_hat * a_v);
+
+            results.data["E"].push(E);
+            results.data["R"].push(R);
+            results.data["C"].push(C);
+            results.data["sigma_v"].push(source.data["sigma_v"][0]);
+            results.data["sigma_i"].push(source.data["sigma_i"][0]);
+            results.data["T"].push(T);
+            results.data["N"].push(N);
+            results.data["T'"].push(T_hat);
+            results.data["N'"].push(N_hat);
+            results.data["E'"].push(E_hat);
+            results.data["R'"].push(R_hat);
+            results.data["C'"].push(C_hat);
+    
+            // データ更新
+            results.change.emit();
+        """
+    )
+
+
+def create_download_results_callback(results):
+    """ ダウンロードボタンのコールバック """
+    return CustomJS(
+        args=dict(results=results),
+        code="""
+            // SheetJSをCDNからロード
+            var script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+            script.onload = function() {
+                // 最新のデータを取得
+                const data = results.data;
+                const E = data["E"];
+                const R = data["R"];
+                const C = data["C"];
+                const sigma_v = data["sigma_v"];
+                const sigma_i = data["sigma_i"];
+                const T = data["T"];
+                const N = data["N"];
+                const T_hat = data["T'"];
+                const N_hat = data["N'"];
+                const E_hat = data["E'"];
+                const R_hat = data["R'"];
+                const C_hat = data["C'"];
+
+                // データを2次元配列に変換（Excelに対応）
+                const rows = [
+                    ['電源電圧 E [V]', '抵抗 R [Ω]', '静電容量 C [F]', '電圧計測ノイズ強度 sigma_v', '電流計測ノイズ強度 sigma_i',
+                     '周期 T [tau]', '計測数 N [回]', '推定に使用したデータの時間 [tau]', '推定に使用したデータ数 [個]',
+                     '電源電圧の推定値 E [V]', '抵抗の推定値 R [Ω]', '静電容量の推定値 C [F]']
+                ];
+                for (let n = 0; n < E.length; n++) {
+                    rows.push([
+                        E[n], R[n], C[n], sigma_v[n], sigma_i[n],
+                        T[n], N[n], T_hat[n], N_hat[n],
+                        E_hat[n], R_hat[n], C_hat[n]]
+                    );
+                }
+
+                // xlsxファイルの作成
+                var ws = XLSX.utils.aoa_to_sheet(rows);  // 2次元配列からシートを作成
+                var wb = XLSX.utils.book_new();  // 新しいワークブック作成
+                XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');  // ワークブックにシートを追加
+
+                // ファイル名の設定
+                const fileName = 'analysis_result_summary.xlsx';
+
+                // xlsxファイルをダウンロード
+                XLSX.writeFile(wb, fileName);  // xlsxファイルをダウンロード
+            };
+            document.head.appendChild(script);  // スクリプトをHTMLに追加
+        """
+    )

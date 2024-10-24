@@ -35,7 +35,7 @@ def main():
     plot_i.add_layout(line_i_limit)
 
     # 解析結果のまとめ
-    columns = ["E", "R", "C", "sigma_v", "sigma_i", "T", "N", "T'", "N'", "E'", "R'", "C'"]
+    columns = ["E", "R", "C", "sigma_v", "sigma_i", "T", "N", "T*", "N*", "E'", "R'", "C'"]
     data = {c: [] for c in columns}
     results = ColumnDataSource(data=data)
 
@@ -62,16 +62,26 @@ def main():
     )
 
     columns = [TableColumn(field=c, title=c) for c in columns]
-    result_table = DataTable(source=results, columns=columns)
+    result_table = DataTable(source=results, columns=columns, width=(plot_v.width + plot_i.width))
 
     layout = column(
         sheetjs_script,
-        row(sliders['E'], sliders['voltage_noise']),
-        row(sliders['R'], sliders['current_noise']),
-        row(sliders['C']),
-        row(sliders['T'], sliders['N']),
-        row(button_analysis, button_download),
-        row(plot_v, plot_i),
+        # settings & plots
+        row(
+            # settings
+            column(
+                sliders['E'], sliders['voltage_noise'],
+                sliders['R'], sliders['current_noise'],
+                sliders['C'],
+                sliders['T'], sliders['N'],
+                button_analysis, button_download,
+            ),
+            # plots
+            column(
+                plot_v, plot_i,
+            ),
+        ),
+        # data table
         result_table
     )
     filename = "app_analysis.html"

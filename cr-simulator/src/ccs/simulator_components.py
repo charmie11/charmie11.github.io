@@ -239,7 +239,7 @@ def create_analysis_callback(source, results):
             const v_noisy = data['v_noisy'];
             const i_noisy = data['i_noisy'];
             const N = t.length;
-            const T = t[N-1] / tau;
+            const T = t[N-1];
 
             const filtered_t = [];
             const filtered_ln_v = [];
@@ -258,7 +258,7 @@ def create_analysis_callback(source, results):
             }
 
             const N_hat = filtered_t.length;
-            const T_hat = filtered_t[N_hat-1] / tau;
+            const T_hat = filtered_t[N_hat-1];
 
             if (N_hat < 2) {
                 console.log("Not enough data points for fitting.");
@@ -293,6 +293,9 @@ def create_analysis_callback(source, results):
             const E_hat = Math.exp(b_v);
             const R_hat = Math.exp(b_v - b_i);
             const C_hat = -1.0 / (R_hat * a_v);
+            // const C_hat_v = -1.0 / (R_hat * a_v);
+            // const C_hat_i = -1.0 / (R_hat * a_i);
+            // const C_hat = (C_hat_v + C_hat_i) / 2.0;
 
             results.data["E"].push(E);
             results.data["R"].push(R);
@@ -301,8 +304,8 @@ def create_analysis_callback(source, results):
             results.data["sigma_i"].push(source.data["sigma_i"][0]);
             results.data["T"].push(T);
             results.data["N"].push(N);
-            results.data["T'"].push(T_hat);
-            results.data["N'"].push(N_hat);
+            results.data["T*"].push(T_hat);
+            results.data["N*"].push(N_hat);
             results.data["E'"].push(E_hat);
             results.data["R'"].push(R_hat);
             results.data["C'"].push(C_hat);
@@ -331,17 +334,17 @@ def create_download_results_callback(results):
                 const sigma_i = data["sigma_i"];
                 const T = data["T"];
                 const N = data["N"];
-                const T_hat = data["T'"];
-                const N_hat = data["N'"];
+                const T_hat = data["T*"];
+                const N_hat = data["N*"];
                 const E_hat = data["E'"];
                 const R_hat = data["R'"];
                 const C_hat = data["C'"];
 
                 // データを2次元配列に変換（Excelに対応）
                 const rows = [
-                    ['電源電圧 E [V]', '抵抗 R [Ω]', '静電容量 C [F]', '電圧計測ノイズ強度 sigma_v', '電流計測ノイズ強度 sigma_i',
-                     '周期 T [tau]', '計測数 N [回]', '推定に使用したデータの時間 [tau]', '推定に使用したデータ数 [個]',
-                     '電源電圧の推定値 E [V]', '抵抗の推定値 R [Ω]', '静電容量の推定値 C [F]']
+                    ['電源電圧（真値） E [V]', '抵抗値（真値） R [Ω]', '静電容量（真値） C [F]', '電圧計測ノイズ強度 sigma_v', '電流計測ノイズ強度 sigma_i',
+                     '周期 T [秒]', '計測数 N [回]', '推定に使用したデータの最終時間 T* [秒]', '推定に使用したデータ数 N* [個]',
+                     '電源電圧（推定値） E [V]', '抵抗値（推定値） R [Ω]', '静電容量（推定値） C [F]']
                 ];
                 for (let n = 0; n < E.length; n++) {
                     rows.push([

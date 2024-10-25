@@ -1,3 +1,5 @@
+import numpy as np
+
 from bokeh.models import ColumnDataSource, CustomJS, Slider, Span
 from bokeh.plotting import figure
 
@@ -25,19 +27,29 @@ def initialize_sliders():
 def create_initial_source(sliders):
     """ 初期の ColumnDataSource を作成 """
     E, T, R, C = sliders['E'].value, sliders['T'].value, sliders['R'].value, sliders['C'].value
+    sigma_v, sigma_i = sliders['voltage_noise'].value, sliders['current_noise'].value
     circuit = Circuit(E, T, R, C)
-    df = circuit.measure(num_samples=sliders['N'].value)
+    N = sliders['N'].value
+    df = circuit.measure(num_samples=N)
+    v = df['コンデンサの端子電圧 [V]'].to_numpy()
+    v_noisy = v + np.random.normal(0.0, sigma_v, N)
+    i = df['電流 [A]'].to_numpy()
+    i_noisy = i + np.random.normal(0.0, sigma_i, N)
     return ColumnDataSource(data={
         't': df['時間 [秒]'].tolist(),
-        'v': df['コンデンサの端子電圧 [V]'].tolist(),
-        'v_noisy': df['コンデンサの端子電圧 [V]'].tolist(),
-        'i': df['電流 [A]'].tolist(),
-        'i_noisy': df['電流 [A]'].tolist(),
+        # 'v': df['コンデンサの端子電圧 [V]'].tolist(),
+        # 'v_noisy': df['コンデンサの端子電圧 [V]'].tolist(),
+        # 'i': df['電流 [A]'].tolist(),
+        # 'i_noisy': df['電流 [A]'].tolist(),
+        'v': v.tolist(),
+        'v_noisy': v_noisy.tolist(),
+        'i': i.tolist(),
+        'i_noisy': i_noisy.tolist(),
         'E': [E] * len(df),
         'R': [R] * len(df),
         'C': [C] * len(df),
-        'sigma_v': [0.0] * len(df),
-        'sigma_i': [0.0] * len(df),
+        'sigma_v': [sigma_v] * len(df),
+        'sigma_i': [sigma_i] * len(df),
     })
 
 
@@ -77,7 +89,7 @@ def create_plot(source, plot_data='v'):
     plot.xaxis.major_label_text_font_size = "11pt"
     plot.yaxis.major_label_text_font_size = "11pt"
 
-    plot.legend.location = "center_right"  if plot_data == 'v' else "bottom_right"
+    plot.legend.location = "center_right" if plot_data == 'v' else "bottom_right"
 
     return plot
 
@@ -224,6 +236,7 @@ def create_download_callback(source, radio_button_group):
         """
     )
 
+
 def create_analysis_callback(source, results):
     return CustomJS(
         args=dict(source=source, results=results),
@@ -264,12 +277,12 @@ def create_analysis_callback(source, results):
                 console.log("Not enough data points for fitting.");
                 return;
             }
-            
+
             // xとln(y)の平均を計算
             const mean_t = filtered_t.reduce((sum, value) => sum + value, 0) / N_hat;
             const mean_ln_v = filtered_ln_v.reduce((sum, value) => sum + value, 0) / N_hat;
             const mean_ln_i = filtered_ln_i.reduce((sum, value) => sum + value, 0) / N_hat;
-            
+
             // 傾き a の計算 (最小二乗法)
             let num_v = 0;  // 分子
             let num_i = 0;  // 分子
@@ -279,17 +292,17 @@ def create_analysis_callback(source, results):
                 num_i += (filtered_t[n] - mean_t) * (filtered_ln_i[n] - mean_ln_i);
                 den += (filtered_t[n] - mean_t) ** 2;
             }
-            
+
             if (den === 0) {
                 console.log("Denominator is zero, cannot compute slope.");
                 return; // ゼロ除算を防ぐために終了
             }
-            
+
             const a_v = num_v / den;
             const b_v = mean_ln_v - a_v * mean_t;
             const a_i = num_i / den;
             const b_i = mean_ln_i - a_i * mean_t;
-            
+
             const E_hat = Math.exp(b_v);
             const R_hat = Math.exp(b_v - b_i);
             const C_hat = -1.0 / (R_hat * a_v);
@@ -309,7 +322,7 @@ def create_analysis_callback(source, results):
             results.data["E'"].push(E_hat);
             results.data["R'"].push(R_hat);
             results.data["C'"].push(C_hat);
-    
+
             // データ更新
             results.change.emit();
         """

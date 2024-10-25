@@ -9,8 +9,8 @@ CIRCUIT_SETTINGS = {
     'C': {'min': 1.0, 'max': 30.0, 'step': 1.0, 'default': 30.0, 'text': r"\[C[F]\] (静電容量)"},
     'T': {'min': 10.0, 'max': 6000.0, 'step': 10.0, 'default': 180.0, 'text': r"\[T/2\] [秒] (半周期)"},
     'N': {'min': 10, 'max': 1000, 'step': 10, 'default': 100, 'text': r"\[N\][回/半周期] (計測回数)"},
-    'voltage_noise': {'min': 0.0, 'max': 2.0, 'step': 0.10, 'default': 0.0, 'text': r"\[\sigma_v \] (電圧計測ノイズ強度)"},
-    'current_noise': {'min': 0.0, 'max': 0.5, 'step': 0.05, 'default': 0.0, 'text': r"\[\sigma_i \] (電流計測ノイズ強度)"},
+    'voltage_noise': {'min': 0.0, 'max': 2.0, 'step': 0.10, 'default': 0.50, 'text': r"\[\sigma_v \] (電圧計測ノイズ強度)"},
+    'current_noise': {'min': 0.0, 'max': 0.5, 'step': 0.05, 'default': 0.25, 'text': r"\[\sigma_i \] (電流計測ノイズ強度)"},
 }
 
 

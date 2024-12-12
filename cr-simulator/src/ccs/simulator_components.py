@@ -37,10 +37,6 @@ def create_initial_source(sliders):
     i_noisy = i + np.random.normal(0.0, sigma_i, N)
     return ColumnDataSource(data={
         't': df['時間 [秒]'].tolist(),
-        # 'v': df['コンデンサの端子電圧 [V]'].tolist(),
-        # 'v_noisy': df['コンデンサの端子電圧 [V]'].tolist(),
-        # 'i': df['電流 [A]'].tolist(),
-        # 'i_noisy': df['電流 [A]'].tolist(),
         'v': v.tolist(),
         'v_noisy': v_noisy.tolist(),
         'i': i.tolist(),
@@ -66,7 +62,7 @@ def create_plot(source, plot_data='v'):
         width=600, height=400,
         x_range=x_range, y_range=y_range,
         x_axis_label="時間 [秒]", y_axis_label=y_axis_label,
-        tools="hover,wheel_zoom,box_zoom,reset,save"
+        tools="box_zoom,reset,save"
     )
 
     plot.scatter(
@@ -210,15 +206,15 @@ def create_download_callback(source, radio_button_group):
 
                 // データを2次元配列に変換（Excelに対応）
                 const rows = [
-                    ['電源電圧 E [V]', '抵抗 R [Ω]', '静電容量 C [F]', '電圧計測ノイズ強度 sigma_v', '電流計測ノイズ強度 sigma_i', '時間 t [秒]', 'コンデンサの端子電圧 (理論値) V [V]', 'ln(V)', '電流 (理論値) I [A]', 'ln(I)', 'コンデンサの端子電圧 (計測値) V* [V]', 'ln(V*)', '電流 (計測値) I* [A]', 'ln(I*)']
-                    // ['E [V]', 'R [Ω]', 'C [F]', 'sigma_v', 'sigma_i', 't [秒]', 'V [V]', 'ln(V)', 'V* [V]', 'ln(V*)', 'I [A]', 'ln(-I)', 'I* [A]', 'ln(-I*)']
+                    //['電源電圧 E [V]', '抵抗 R [Ω]', '静電容量 C [F]', '電圧計測ノイズ強度 sigma_v', '電流計測ノイズ強度 sigma_i', '時間 t [秒]', 'コンデンサの端子電圧 (理論値) V [V]', 'ln(V)', '電流 (理論値) I [A]', 'ln(I)', 'コンデンサの端子電圧 (計測値) V* [V]', 'ln(V*)', '電流 (計測値) I* [A]', 'ln(I*)']
+                    ['E [V]', 'R [Ω]', 'C [F]', 'sigma_v', 'sigma_i', 'N [回/半周期]', 'T/2 [秒]', 't [秒]', 'V [V]', 'I [A]', 'V* [V]', 'I* [A]']
                 ];
                 // 1行目
                 // rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], '', v_noisy[0], '', i[0], '', i_noisy[0], '']);
-                rows.push([E, R, C, sigma_v, sigma_i, t[0], v[0], '', i[0], '', v_noisy[0], '', i_noisy[0], '']);
+                rows.push([E, R, C, sigma_v, sigma_i, t.length, t[t.length-1], t[0], v[0], i[0], v_noisy[0], i_noisy[0]]);
                 for (let n = 1; n < t.length; n++) {
-                    // rows.push(['', '', '', '', '', t[n], v[n], '', v_noisy[n], '', i[n], '', i_noisy[n], '']);
-                    rows.push(['', '', '', '', '', t[n], v[n], '', i[n], '', v_noisy[n], '', i_noisy[n], '']);
+                    // rows.push(['', '', '', '', '', '', '', t[n], v[n], '', v_noisy[n], '', i[n], '', i_noisy[n], '']);
+                    rows.push(['', '', '', '', '', '', '', t[n], v[n], i[n], v_noisy[n], i_noisy[n]]);
                 }
 
                 // xlsxファイルの作成

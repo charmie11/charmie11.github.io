@@ -64,6 +64,7 @@ AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th Internat
 
 ## **国内学会・研究会**
 
+1. 中村 一路, **小山田 雄仁**, *Poisson Surface Reconstructionによる点群データの誤差推定*, 動的画像処理実利用化ワークショップ2025, Mar., 2025.
 1. **小山田 雄仁**, 尾鶴 亮, *菌検出技術に基づく顕微鏡下凝集試験(MAT)の判断基準の客観化と応用*, 第60回レプトスピラシンポジウム, Aug., 2024.
 1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori, and Haruhiko Maenami, [*アイデア出しの振り返り用グルーピング再検討支援システム*](https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246699), 第34回社会システム部会研究会, Mar., 2024.
 1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori, and Haruhiko Maenami, [*AIチャットサービスによる議論の振り返り支援の検討*](https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246720), 第34回社会システム部会研究会, Mar., 2024.

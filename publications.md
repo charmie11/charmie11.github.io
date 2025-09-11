@@ -20,6 +20,7 @@ title: Publications
 
 ## International Conferences, Workshops, Symposiums
 
+1. Mikihiko Mori, Naoki Kajitani, **Yuji Oyamada**, Haruhiko Maenami, *Developing a Reflection Support System in Idea Organization Workshops*, New Perspectives in Science Education 14th Edition, Mar., 2025.
 1. Risa Nakano, **Yuji Oyamada**, and Ryo Ozuru, *Objectification of Evaluation Criteria in MAT Using Deep Learning*, 13th Conference of ILS and 4th Meeting of ELS, Sep., 2024. 
 1. Madoka Chosokabe, Shohei Koie, and **Yuji Oyamada**, *Examining the Effect of ChatGPT on Small Group Ideation Discussions*, Human-Centric Decision and Negotiation Support for Societal Transitions (GDN), pp. 142-153, 2024 ([paper](https://link.springer.com/chapter/10.1007/978-3-031-59373-4_12)).
 1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori, Haruhiko Maenami, *Idea Grouping Support System*, International Conference on Software Technology and Engineering (ICSTE), Oct., 2023.

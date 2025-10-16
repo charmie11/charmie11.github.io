@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ccs"
+version = "0.2.0"
+description = "CR Circuit Simulator"
+authors = ["Yuji Oyamada <ug.oyamada@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+bokeh = "^3.6.0"
+polars = "^1.9.0"
+pandas = "^2.2.3"
+plotly = "^5.24.1"
+openpyxl = "^3.1.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

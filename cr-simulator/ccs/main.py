@@ -11,7 +11,7 @@ from bokeh.resources import CDN
 
 def create_groups_config():
     """
-    Generates the configuration for all simulation groups.
+    シミュレーションの前提条件となる全グループの設定を生成します。
     """
     group_prefixes = ['A', 'B', 'C']
     group_numbers = range(1, 6)
@@ -45,7 +45,7 @@ def create_groups_config():
 
 def create_widgets(all_groups):
     """
-    Creates the Bokeh widgets that make up the simulator's UI.
+    シミュレータのUIを構成するBokehウィジェットを生成します。
     """
     widgets = {}
     widgets['source_clipped'] = ColumnDataSource(data={'t': [], 'v1': [], 'v2': [], 'v3': []})
@@ -78,12 +78,12 @@ def create_widgets(all_groups):
     subscripts = ['₁', '₂', '₃']
 
     for i in range(3):
-        p.scatter(x='t', y=f'v{i + 1}', source=widgets['source_raw'], marker='x',
-                  color=colors[i], size=5, legend_label=f"V{subscripts[i]}(t) (補正前)")
+        p.scatter(x='t', y=f'v{i + 1}', source=widgets['source_raw'], marker='circle', fill_color=None,
+                  color=colors[i], size=8, legend_label=f"V{subscripts[i]}(t) (補正前)")
 
     for i in range(3):
-        p.scatter(x='t', y=f'v{i + 1}', source=widgets['source_clipped'], marker='circle',
-                  color=colors[i], size=4, legend_label=f"V{subscripts[i]}(t) (補正後)")
+        p.scatter(x='t', y=f'v{i + 1}', source=widgets['source_clipped'], marker='x',
+                  color=colors[i], size=8, legend_label=f"V{subscripts[i]}(t) (補正後)")
 
     p.legend.ncols = 2
     p.legend.location = "bottom_right"
@@ -96,7 +96,7 @@ def create_widgets(all_groups):
 
 def create_callbacks(widgets, groups_config):
     """
-    Creates and attaches JavaScript callbacks to the widgets.
+    ウィジェットの動作を定義するJavaScriptコールバックを作成し、アタッチします。
     """
     r_slider_callback = CustomJS(args=dict(slider=widgets['R_slider'], label=widgets['r_label']), code="""
         const value_kOhm = (slider.value / 1000).toFixed(0);
@@ -133,7 +133,7 @@ def create_callbacks(widgets, groups_config):
         let group = prefix + number;
         if (is_asterisk) { group += '*'; }
 
-        const V0 = 5.0;
+        const E = 5.0; // 電源電圧
         const R = r_slider.value;
         const config = groups_config[group];
         const nominal_caps_uF = config.nominal_caps_uF;
@@ -157,17 +157,17 @@ def create_callbacks(widgets, groups_config):
         const voltages_clipped = [[], [], []];
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < num_data_points; j++) {
-                const v_ideal = V0 * (1 - Math.exp(-t_full[j] / taus[i]));
+                const v_ideal = E * (1 - Math.exp(-t_full[j] / taus[i]));
                 const u1 = Math.random(); const u2 = Math.random();
                 const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
-                const noise = z0 * (V0 * noise_level);
+                const noise = z0 * (E * noise_level);
 
                 const raw_v = v_ideal + noise;
                 voltages_raw[i].push(raw_v);
 
                 let clipped_v = raw_v;
-                if (clipped_v >= V0) {
-                    clipped_v = V0 * 0.99999;
+                if (clipped_v >= E) {
+                    clipped_v = E * 0.99999;
                 }
                 voltages_clipped[i].push(clipped_v);
             }
@@ -210,8 +210,7 @@ def create_callbacks(widgets, groups_config):
     widgets['start_button'].js_on_click(start_measurement_js)
 
     download_callback = CustomJS(args=dict(
-        full_data_source_clipped=widgets['full_data_source_clipped'],
-        full_data_source_raw=widgets['full_data_source_raw'],
+        full_data_source_clipped=widgets['full_data_source_clipped'],  # clippedデータのみ使用
         prefix_select=widgets['prefix_select'],
         number_select=widgets['number_select'],
         asterisk_checkbox=widgets['asterisk_checkbox'],
@@ -223,28 +222,29 @@ def create_callbacks(widgets, groups_config):
         let group = prefix + number;
         if (is_asterisk) { group += '*'; }
 
-        const V0 = 5.0;
+        const E = 5.0; // 電源電圧
         const R = r_slider.value;
-        const data_clipped = full_data_source_clipped.data;
-        const data_raw = full_data_source_raw.data;
-        const t = data_raw['t'];
+        const data = full_data_source_clipped.data;
+        const t = data['t'];
 
         if (t.length === 0) {
             alert("先に計測を開始してください。");
             return;
         }
 
-        let csv_content = "\\uFEFF" + "電源電圧,抵抗値,時刻,V_1_raw(t),V_2_raw(t),V_3_raw(t),V_1_clipped(t),V_2_clipped(t),V_3_clipped(t)\\n";
+        // ヘッダーを簡略化
+        let csv_content = "\\uFEFF" + "電源電圧,抵抗値,時刻,V_1(t),V_2(t),V_3(t)\\n";
         for (let i = 0; i < t.length; i++) {
-            const row_start = (i === 0) ? `${V0},${R},` : `,,`;
-            const row_data = `${t[i]},${data_raw['v1'][i]},${data_raw['v2'][i]},${data_raw['v3'][i]},${data_clipped['v1'][i]},${data_clipped['v2'][i]},${data_clipped['v3'][i]}\\n`;
+            const row_start = (i === 0) ? `${E},${R},` : `,,`;
+            // clippedデータのみを書き込む
+            const row_data = `${t[i]},${data['v1'][i]},${data['v2'][i]},${data['v3'][i]}\\n`;
             csv_content += row_start + row_data;
         }
 
         const blob = new Blob([csv_content], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         const url = URL.createObjectURL(blob);
-        const filename = `measurement_data.csv`;
+        const filename = `measurement_data_${group.replace('*', '_star')}.csv`;
         link.setAttribute('href', url);
         link.setAttribute('download', filename);
         link.style.visibility = 'hidden';
@@ -257,7 +257,7 @@ def create_callbacks(widgets, groups_config):
 
 def create_layout(widgets):
     """
-    Creates the final layout by arranging the widgets.
+    ウィジェットを配置して最終的なレイアウトを作成します。
     """
     asterisk_layout = column(widgets['asterisk_label'], widgets['asterisk_checkbox'])
 
@@ -283,7 +283,7 @@ def create_layout(widgets):
 
 def save_configs(groups_config, path):
     """
-    Saves the group assignment configurations to a CSV file.
+    グループの割り当て設定をCSVファイルに保存します。
     """
     print("\n--- 全グループの割り当て設定 ---")
     csv_output = ["グループ名,公称値1 [uF],公称値2 [uF],公称値3 [uF],精度 [%]\n"]
@@ -302,7 +302,7 @@ def save_configs(groups_config, path):
 
 def main():
     """
-    Main execution function.
+    メインの実行関数。設定の生成からHTMLの保存までを行います。
     """
     groups_config, all_groups = create_groups_config()
     widgets = create_widgets(all_groups)

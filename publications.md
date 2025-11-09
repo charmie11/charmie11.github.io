@@ -42,7 +42,7 @@ AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th Internat
 1. Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *A Framework for Improvement of Importance Map for Image Retargeting Assisted by Light Field Images*, IEEE 5th Global Conference on Consumer Electronics, pp. 105-106, Oct., 2016.
 1. Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Wavelet-Based Depth Map Estimation for Light Field Cameras*, IEEE 5th Global Conference on Consumer Electronics, pp. 167-168, Oct., 2016.
 1. Takayuki Tomioka, Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *DEPTH MAP ESTIMATION USING CENSUS TRANSFORM FOR LIGHT FIELD CAMERAS*, IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), pp. 1641-1645, Mar., 2016.
-1. **Yuji Oyamada**, *Augmetned Reality Visualisation Fusion*, International Display Workshop (IDW), pp. 1284-1286, Dec., 2015.
+1. **Yuji Oyamada**, *Augmented Reality Visualization Fusion*, International Display Workshop (IDW), pp. 1284-1286, Dec., 2015.
 1. Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Image Retargeting Method by Similarity Transformation, Cropping and Letterboxing Operators*, IEEE 4th Global Conference on Consumer Electronics (GCCE), pp. 208-209, Oct., 2015.
 1. Hemal Naik, **Yuji Oyamada**, Peter Keitler, and Nassir Navab, *Exploiting Photogrammetric Targets for Industrial AR*, IEEE International Symposium on Mixed and Augmented Reality (ISMAR), pp. 144-147, Oct., 2015.
 1. Yasushi Ono, Kazu Mishiba, **Yuji Oyamada**, Yoshiharu Hirata, and Katsuya Kondo, *Resolution Improvement of Point Dose Distribution in Intensity Modulated Radiation Therapy*, International Symposium on Communications and Information Technologies (ISCIT), pp. 137-140, Oct., 2015.

@@ -71,7 +71,7 @@ AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th Internat
 1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori, and Haruhiko Maenami, [*AIチャットサービスによる議論の振り返り支援の検討*](https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246720), 第34回社会システム部会研究会, Mar., 2024.
 1. 中野 里咲, **小山田 雄仁**, 尾鶴 亮, [*深層学習による顕微鏡下凝集試験の客観化*](https://ken.ieice.org/ken/paper/20240303fcCM/), 電子情報通信学会 医用画像研究会 (MI研究会), Mar., 2024.
 1. Ryo Ozuru, Risa Nakano, **Yuji Oyamada**, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, *Seeing is believing. Making Agglutination Tests from Qualitative to Quantitative with Deep Learning*, The 96th Annual Meeting of Japanese Society for Bacteriology Symposium 13: Bacteriology by the numbers, Mar., 2023.
-1. 梶谷 尚生, **小山田 雄仁**, 森 幹彦, 晴彦 前波, *対話型ワークショップ支援のための可視化技術に関する検討*, [第119回GN研究発表会](https://www.ipsj.or.jp/kenkyukai/event/gn119.html), Mar., 2023.
+1. 梶谷 尚生, **小山田 雄仁**, 森 幹彦, 前波 晴彦, *対話型ワークショップ支援のための可視化技術に関する検討*, [第119回GN研究発表会](https://www.ipsj.or.jp/kenkyukai/event/gn119.html), Mar., 2023.
 1. 中野 里咲, **小山田 雄仁**, 尾鶴 亮, 宮原 敏, 吉村 芳修, 齋藤 光正, 廣松 賢治, *深層学習モデルによる顕微鏡下凝集試験の凝集率推定とその応用*, 第58回レプトスピラシンポジウム, Jun., 2022.
 1. 尾鶴 亮, 中野 里咲，**小山田 雄仁**, *凝集反応検査を自動化する ーレプトスピラ症における顕微鏡下凝集試験の深層学習判定モデルを基にー*, 第95回日本細菌学会総会 細菌若手コロッセウム, Mar., 2022.
 1. 森 幹彦, **小山田 雄仁**, 晴彦 前波, *付箋紙の移動に基づくワークショップの状況把握の試み*, [第27回社会システム部会研究会](https://easychair.org/smart-program/SocSys027/), Mar., 2022.

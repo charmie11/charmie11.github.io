@@ -10,7 +10,7 @@ title: Publications
 1. **Yuji Oyamada**, Ryo Ozuru, Toshiyuki Masuzawa, Satoshi Miyahara, Yasuhiko Nikaido, Fumiko Obata, Mitsumasa Saito, Sharon Yvette Angelina M. Villanueva, and Jun Fujii, [*A machine learning model of microscopic agglutination test for diagnosis of leptospirosis*](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0259907), PLOS ONE, Vol. 16, No. 11, pp. 1-16, Nov., 2021.
 1. Takayuki Tomioka, Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Depth Map Estimation Using Census Transform for Light Field Cameras*, IEICE Transactions on information and Systems, Vol. E100-D, No. 11, pp. 2711-2720, Nov., 2017.
 1. Kazu Mishiba, **Yuji Oyamada**, and Katsuya Kondo, *Content-Aware Image Retargeting Incorporated with Letterboxing*, IEICE Transactions on Information and Systems, Vol. E100.D, No. 4, pp. 865-873, Apr., 2017.
-1. Yu Nakajima, Takahiro Nozaki, **Yuji Oyamada**, and Kouhei Ohnishi, *An Object-Coordinate-Based Bilateral Control System Using Visual Information*, Electronics and Communications in Japan, Vol. 96, No. 8, pp. 41-49, 2013.
+1. Yu Nakajima, Takahiro Nozaki, **Yuji Oyamada**, and Kouhei Ohnishi, *An Object-Coordinate-Based Bilateral Control System Using Visual Information*, Electronics and Communications in Japan, Vol. 96, No. 8, pp. 41-49, Jul., 2013.
 1. **Yuji Oyamada**, Haruka Asai, and Hideo Saito, *Blind Deconvolution for A Curved Motion Based on Cepstral Analysis*, IPSJ Transactions on Computer Vision and Applications (CVA), Vol. 3, pp. 32-43, Jun., 2011.
 
 ## 和文論文誌

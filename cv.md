@@ -71,22 +71,22 @@ Faculty of Engineering, Tottori University, Japan
 ## Grants & Funding
 
 1. **Grant-in-Aid for Scientific Research (C)**, Japan Society for the Promotion of Science (JSPS)
-    * Title: [厳冬期の切枝にサクラが開花～微弱な散乱光照射によるアントシアニン発現の光学応用](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-25K15539/)
+    * Title: [厳冬期の切枝にサクラが開花～微弱な散乱光照射によるアントシアニン発現の光学応用](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-25K15539/) (Flowering of Cherry Blossoms on Cut Branches in Mid-Winter: Optical Application of Anthocyanin Expression by Weak Scattered Light Irradiation)
     * Period: [2025.04] - [Present]
     * Role: Co-Investigator (PI: Dr. Tadashi Ishigaki)
 1. **Grant-in-Aid for Scientific Research (C)**, Japan Society for the Promotion of Science (JSPS)
-    * Title: [問題解決型グループ学習における根拠に基づく意見集約支援システム](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-21K02780/)
+    * Title: [問題解決型グループ学習における根拠に基づく意見集約支援システム](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-21K02780/) (Opinion Aggregation Support System Based on Evidence in Problem-Solving Group Learning)
     * Period: [2021.04] - [2024.03]
     * Role: Co-Investigator (PI: Dr. Mikihiko Mori)
 1. **Grant-in-Aid for Scientific Research (若手B)**, Japan Society for the Promotion of Science (JSPS)
-    * Title: [経験知を補うデータ選択・計測による貧弱な計算資源の利用活性化](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-19K20296/)
+    * Title: [経験知を補うデータ選択・計測による貧弱な計算資源の利用活性化](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-19K20296/) (Utilizing scarce computing resources through data selection and measurement that supplements empirical knowledge)
     * Period: [2019.04] - [2024.03]
     * Role: Principal Investigator
 1. **Grant-in-Aid for Scientific Research (C)**, Japan Society for the Promotion of Science (JSPS)
-    * Title: [密に群れた場合の接触・隠蔽を考慮した細胞等変形移動体の確率的動線解析に関する研究](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-16K06387/)
+    * Title: [密に群れた場合の接触・隠蔽を考慮した細胞等変形移動体の確率的動線解析に関する研究](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-16K06387/) (High-Precision Biological Signal Measurement by Millimeter-Wave Radar)
     * Period: [2016.04] - [2019.03]
     * Role: Co-Investigator (PI: Prof. Katsuya Kondo)
 1. **Grant-in-Aid for Scientific Research (若手B)**, Japan Society for the Promotion of Science (JSPS)
-    * Title: [多値高階グラフマッチングによる高速かつ省メモリな多元画像のマッチング](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-16K16087/)
+    * Title: [多値高階グラフマッチングによる高速かつ省メモリな多元画像のマッチング](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-16K16087/) (Fast and Memory Efficient Multi Modal Image Matching Based on Higher Order Graph Matching)
     * Period: [2016.04] - [2019.03]
     * Role: Principal Investigator

@@ -27,9 +27,9 @@ Faculty of Engineering, Tottori University, Japan
 
 ## Education
 
-* **Ph.D. in Engineering** Keio University, Japan (Aug. 2011)
-* **M.S. in Engineering** Keio University, Japan (Mar. 2008)
-* **B.S. in Engineering** Keio University, Japan (Mar. 2006)
+* **Ph.D. in Engineering**, Keio University, Japan (Sep. 2011)
+* **M.S. in Engineering**, Keio University, Japan (Mar. 2008)
+* **B.S. in Engineering**, Keio University, Japan (Mar. 2006)
 
 ---
 

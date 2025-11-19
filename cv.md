@@ -43,7 +43,6 @@ Faculty of Engineering, Tottori University, Japan
 ---
 
 ## Research Ethics Training
-*(Essential for Ethics Committee Review)*
 
 * **APRIN e-learning program (eAPRIN)**
     * **Course:** Tottori University Basic Course for Researchers (Biomedical Sciences)

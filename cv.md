@@ -11,21 +11,17 @@ Faculty of Engineering, Tottori University, Japan
 
 * **Address:** 4-101 Koyama-cho Minami, Tottori, 680-8552, Japan
 * **Email:** oyamada@tottori-u.ac.jp
-* **URL:** [https://charmie11.github.io/](https://charmie11.github.io/)
+* **Web:** [https://charmie11.github.io/](https://charmie11.github.io/)
 * **researchmap:** [https://researchmap.jp/7000005002](https://researchmap.jp/7000005002)
 * **Last Updated:** November 2025
 
 ---
 
-## Research Ethics Training
-*(Essential for Ethics Committee Review)*
+## Research Interests
 
-* **APRIN e-learning program (eAPRIN)**
-    * **Course:** Tottori University Basic Course for Researchers (Biomedical Sciences)
-    * **Date of Completion:** September 26, 2025
-    * **Expiration Date:** March 31, 2030
-    * **Ref. Number:** AP0001879788
-    * **Certificate:** [View Certificate (PDF)](./pictures/AP0001879788.pdf)
+* Computer Vision
+* Deep Learning for Image Analysis
+* Augmented Reality
 
 ---
 
@@ -46,11 +42,15 @@ Faculty of Engineering, Tottori University, Japan
 
 ---
 
-## Research Interests
+## Research Ethics Training
+*(Essential for Ethics Committee Review)*
 
-* Computer Vision
-* Deep Learning for Image Analysis
-* Augmented Reality
+* **APRIN e-learning program (eAPRIN)**
+    * **Course:** Tottori University Basic Course for Researchers (Biomedical Sciences)
+    * **Date of Completion:** September 26, 2025
+    * **Expiration Date:** March 31, 2030
+    * **Ref. Number:** AP0001879788
+    * **Certificate:** [View Certificate (PDF)](./pictures/AP0001879788.pdf)
 
 ---
 

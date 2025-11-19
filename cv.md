@@ -20,12 +20,12 @@ Faculty of Engineering, Tottori University, Japan
 ## Research Ethics Training
 *(Essential for Ethics Committee Review)*
 
-* **APRIN e-learning program (CITI Japan)**
-    * Course: Biomedical Research Investigators
-    * Date of Completion: **[YYYY-MM-DD]** * Ref. Number: **[XXXXXXXX]**
-* **Research Ethics Seminar**
-    * Organizer: Tottori University
-    * Date of Attendance: **[YYYY-MM-DD]**
+* **APRIN e-learning program (eAPRIN)**
+    * **Course:** Tottori University Basic Course for Researchers (Biomedical Sciences)
+    * **Date of Completion:** September 26, 2025
+    * **Expiration Date:** March 31, 2030
+    * **Ref. Number:** AP0001879788
+    * **Certificate:** [View Certificate (PDF)](./pictures/AP0001879788.pdf)
 
 ---
 

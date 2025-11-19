@@ -12,7 +12,7 @@ Faculty of Engineering, Tottori University, Japan
 * **Address:** 4-101 Koyama-cho Minami, Tottori, 680-8552, Japan
 * **Email:** oyamada@tottori-u.ac.jp
 * **Web:** [https://charmie11.github.io/](https://charmie11.github.io/)
-* **researchmap:** [https://researchmap.jp/7000005002](https://researchmap.jp/7000005002)
+* **researchmap:** [https://researchmap.jp/7000005002](https://researchmap.jp/7000005002?lang=en)
 * **Last Updated:** November 2025
 
 ---

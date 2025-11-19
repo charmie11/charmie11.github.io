@@ -50,7 +50,7 @@ Faculty of Engineering, Tottori University, Japan
     * **Date of Completion:** September 26, 2025
     * **Expiration Date:** March 31, 2030
     * **Ref. Number:** AP0001879788
-    * **Certificate:** [View Certificate (PDF)](./pictures/AP0001879788.pdf)
+    * **Certificate:** [View Certificate (PDF)](./files/eaprin_certificate_YujiOyamada_by203003.pdf)
 
 ---
 

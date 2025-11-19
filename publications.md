@@ -127,8 +127,8 @@ AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST*, 12th Internat
 5. 卒論セッション優秀賞 for *ケプストラム解析を用いたブレ画像のBlind Deconvolution*, CVIM, Jun., 2009
 6. Best Student Paper Award for *Cepstrum based Blind Image Deconvolution*, IWVCC, Nov., 2008.
 
-<embed src="pictures/Award_MIRU2021_reviewer.pdf" type="application/pdf" style="width:500px;height:500px;">
+<embed src="files/Award_MIRU2021_reviewer.pdf" type="application/pdf" style="width:500px;height:500px;">
 
-<img src="pictures/Award_VRST2018_HonorableMentionPoster.jpg" alt="VRST 2018 Honorable Mention (Poster&Demo)" style="width:300px;" />
+<img src="files/Award_VRST2018_HonorableMentionPoster.jpg" alt="VRST 2018 Honorable Mention (Poster&Demo)" style="width:300px;" />
 
-<embed src="pictures/Award_MIRU2018_reviewer.pdf" type="application/pdf" style="width:500px;height:500px;">
+<embed src="files/Award_MIRU2018_reviewer.pdf" type="application/pdf" style="width:500px;height:500px;">

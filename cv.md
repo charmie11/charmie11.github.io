@@ -93,7 +93,3 @@ Faculty of Engineering, Tottori University, Japan
 
 ---
 
-    max-width: 100% !important;
-  }
-}
-</style>

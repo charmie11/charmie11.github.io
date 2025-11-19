@@ -13,7 +13,7 @@ Faculty of Engineering, Tottori University, Japan
 * **Email:** oyamada@tottori-u.ac.jp
 * **Web:** [https://charmie11.github.io/](https://charmie11.github.io/)
 * **researchmap:** [https://researchmap.jp/7000005002](https://researchmap.jp/7000005002?lang=en)
-* **Last Updated:** November 2025
+* **Last Updated:** {{ site.time | date: "%Y-%m-%d" }}
 
 ---
 

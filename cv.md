@@ -90,3 +90,27 @@ Faculty of Engineering, Tottori University, Japan
     * Title: [多値高階グラフマッチングによる高速かつ省メモリな多元画像のマッチング](https://kaken.nii.ac.jp/ja/grant/KAKENHI-PROJECT-16K16087/) (Fast and Memory Efficient Multi Modal Image Matching Based on Higher Order Graph Matching)
     * Period: [2016.04] - [2019.03]
     * Role: Principal Investigator
+
+---
+
+<style>
+@media print {
+  /* 一般的なヘッダーやナビゲーションのクラスを非表示に */
+  header, nav, .site-header, .site-nav, .header, .navigation, #header {
+    display: none !important;
+  }
+  
+  /* フッターも不要ならここを有効に */
+  footer, .site-footer {
+    display: none !important;
+  }
+
+  /* 余白を調整して紙面を有効活用 */
+  body, .page-content, article {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+</style>

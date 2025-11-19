@@ -44,7 +44,7 @@ Faculty of Engineering, Tottori University, Japan
 
 ## Research Ethics Training
 
-* **APRIN e-learning program (eAPRIN)**
+* **[APRIN](https://www.aprin.or.jp/en) e-learning program (eAPRIN)**
     * **Course:** Tottori University Basic Course for Researchers (Biomedical Sciences)
     * **Date of Completion:** September 26, 2025
     * **Expiration Date:** March 31, 2030

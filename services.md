@@ -4,8 +4,14 @@ title: Services
 ---
 
 ## Committee members/委員など
+
+- 電子情報通信学会 医用画像研究会
+  - 専門委員: 2015年4月-現在
+- 情報処理学会 [コンピュータビジョンとイメージメディア研究会](http://cvim.ipsj.or.jp/)
+  - 運営委員: 2022年4月-現在
 - IDW (International Display Workshops)
-  - 2024: Program Chair for DES-WS
+  - 2025: I4D Contest Executive Chair, Program Chair for DES-WS
+  - 2024: I4D Contest Member, Program Chair for DES-WS
   - 2023: Publication, Metaverse Arrangement Member, Program Chair for DES-WS
   - 2022: Executive Vice-Chair, Local Arrangement Vice-Chair, Program Chair for DES-WS
   - 2021: Local Arrangement Vice-Chair, Program Chair for DES-WS
@@ -16,8 +22,6 @@ title: Services
   - 2016: Executive Vice-Chair, Program Secretary, Program Chair for DES-WS, Facilitator for ARVR
   - 2015: Program Secretary, Program Chair for DES-WS, Facilitator for ARVR
   - DES-WS (IDW): Program Chair (2015-Current)
-- 電子情報通信学会 医用画像研究会: 専門委員 (2015年4月-現在)
-- 情報処理学会 [コンピュータビジョンとイメージメディア研究会](http://cvim.ipsj.or.jp/): 運営委員 (2022年4月-現在)
 - SSII
   - 2022: ISSO部会 顧問
   - 2021: ISSO部会 部会長
@@ -26,7 +30,9 @@ title: Services
 - VCAS (ACCV Invited Workshop on Vision, Communication, and System) 2009: Workshop secretary
 
 ## Reviews/査読
+
 Please let me know if I can contribute to your journals, conferences, workshops, or anythings.
+
 ### Journals/論文誌
 - International Journals
   - Applied Sciences (MDPI)
@@ -48,6 +54,7 @@ Please let me know if I can contribute to your journals, conferences, workshops,
   - 画像電子学会論文誌
 
 ### Conferences/国内学会
+
 - International Conferences
   - 3DV (2015)
   - ACCV (2012, 2014)

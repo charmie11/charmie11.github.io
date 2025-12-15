@@ -10,8 +10,8 @@ title: Services
 - 情報処理学会 [コンピュータビジョンとイメージメディア研究会](http://cvim.ipsj.or.jp/)
   - 運営委員: 2022年4月-現在
 - IDW (International Display Workshops)
-  - 2025: I4D Contest Executive Chair, Program Chair for DES-WS
-  - 2024: I4D Contest Member, Program Chair for DES-WS
+  - 2025: I<sup>4</sup>D Contest Executive Chair, Program Chair for DES-WS
+  - 2024: I<sup>4</sup>D Contest Member, Program Chair for DES-WS
   - 2023: Publication, Metaverse Arrangement Member, Program Chair for DES-WS
   - 2022: Executive Vice-Chair, Local Arrangement Vice-Chair, Program Chair for DES-WS
   - 2021: Local Arrangement Vice-Chair, Program Chair for DES-WS

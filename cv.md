@@ -1,4 +1,4 @@
----
+<img width="468" height="12" alt="image" src="https://github.com/user-attachments/assets/f2e68d51-2ca0-4e90-9d15-b940dc9b8689" />---
 layout: page
 title: Curriculum Vitae
 permalink: /cv/
@@ -28,8 +28,11 @@ Faculty of Engineering, Tottori University, Japan
 ## Education
 
 * **Ph.D. in Engineering**, Keio University, Japan (Sep. 2011)
+  * Thesis Title: Pre/Post Blur Correction from a Single Photo Shooting
 * **M.S. in Engineering**, Keio University, Japan (Mar. 2008)
+  * Thesis Title: Projector-Camera Systemsのためのプロジェクタの投影による焦点ボケ推定(in Japanese)
 * **B.S. in Engineering**, Keio University, Japan (Mar. 2006)
+  * Thesis Title: NARSystem: ARを用いた顔の立体ディスプレイ(in Japanese)
 
 ---
 

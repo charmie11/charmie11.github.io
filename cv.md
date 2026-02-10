@@ -1,4 +1,4 @@
-<img width="468" height="12" alt="image" src="https://github.com/user-attachments/assets/f2e68d51-2ca0-4e90-9d15-b940dc9b8689" />---
+---
 layout: page
 title: Curriculum Vitae
 permalink: /cv/

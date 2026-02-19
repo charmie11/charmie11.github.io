@@ -5,6 +5,7 @@ title: Publications
 
 ## Journal Papers
 
+1. **Yuji Oyamada**, Naoki Kajitani, Mikihiko Mori, and Haruhiko Maenami, [*A Graphical User Interface-Based Support System to Enhance the Visibility of Idea Grouping in Workshops*](https://www.fujipress.jp/jrm/rb/robot003800010288/), Journal of Robotics and Mechatronics, Vol.38, No.1, pp. 288-298, 2026.
 1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, [*Emulating visual evaluations in the microscopic agglutination test with deep learning*](https://www.sciencedirect.com/science/article/pii/S0167701225001654), Journal of Microbiological Methods, Vol. 237, pp. 107249, Oct., 2025. 
 1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Michinobu Yoshimura, and Kenji Hiromatsu, [*Objectification of evaluation criteria in microscopic agglutination test using deep learning*](https://www.sciencedirect.com/science/article/pii/S0167701224000678), Journal of Microbiological Methods (Short Communications), Vol. 222, pp. 106955, Jul., 2024. 
 1. **Yuji Oyamada**, Ryo Ozuru, Toshiyuki Masuzawa, Satoshi Miyahara, Yasuhiko Nikaido, Fumiko Obata, Mitsumasa Saito, Sharon Yvette Angelina M. Villanueva, and Jun Fujii, [*A machine learning model of microscopic agglutination test for diagnosis of leptospirosis*](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0259907), PLOS ONE, Vol. 16, No. 11, pp. 1-16, Nov., 2021.

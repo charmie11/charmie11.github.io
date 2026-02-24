@@ -5,11 +5,12 @@ title: Services
 
 ## Committee members/委員など
 
-- 電子情報通信学会 医用画像研究会
+- 電子情報通信学会 [医用画像研究会](https://www.ieice.org/iss/mi/wp/)
   - 専門委員: 2015年4月-現在
 - 情報処理学会 [コンピュータビジョンとイメージメディア研究会](http://cvim.ipsj.or.jp/)
-  - 運営委員: 2022年4月-現在
-- IDW (International Display Workshops)
+  - 運営委員: 2022年4月-2026年3月
+- [IDW (International Display Workshops)](https://www.idw.or.jp/)
+  - 2026: Program Chair for DES-WS
   - 2025: I<sup>4</sup>D Contest Executive Chair, Program Chair for DES-WS
   - 2024: I<sup>4</sup>D Contest Member, Program Chair for DES-WS
   - 2023: Publication, Metaverse Arrangement Member, Program Chair for DES-WS
@@ -21,7 +22,6 @@ title: Services
   - 2017: Executive Vice-Chair, Program Secretary, Program Chair for DES-WS, Facilitator for ARVR
   - 2016: Executive Vice-Chair, Program Secretary, Program Chair for DES-WS, Facilitator for ARVR
   - 2015: Program Secretary, Program Chair for DES-WS, Facilitator for ARVR
-  - DES-WS (IDW): Program Chair (2015-Current)
 - SSII
   - 2022: ISSO部会 顧問
   - 2021: ISSO部会 部会長

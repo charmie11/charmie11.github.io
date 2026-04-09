@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-09T07:30:57Z",
+  "generated_at_utc": "2026-04-09T07:39:45Z",
   "source": "publications.bib",
   "sections": [
     {
@@ -235,6 +235,12 @@
           "display_html": "Philipp Stefan, Patrick Wucherer, <strong>Yuji Oyamada</strong>, Meng Ma, Alexander Schoch, Motoko Kanegae, Naoki Shimizu, Tatsuya Kodera, Sebastien Callier, Matthias Weighl, Maki Sugimoto, Pascal Fallavollita, Hideo Saito, and Nassir Navab, <a href=\"https://sites.google.com/d/1DYmjre_r8oqjCcZ--1m0JgzwNPaqXRic/p/1gODDRXIwKbp9Fl-pco2GGdKhYpoURveN/edit\"><em>An AR Edutainment System Supporting Bone Anatomy Learning</em></a>, <em>IEEE Virtual Reality (VR)</em>, pp. 113--114, Mar., 2014."
         },
         {
+          "key": "Vogel-2014-SPIE",
+          "year": 2014,
+          "month_num": 2,
+          "display_html": "Jakob Vogel, Alexandru O. Duliu, <strong>Yuji Oyamada</strong>, Jose Gardiazabal, Tobias Lasser, Mahzad Ziai, Rudiger Hein, and Nassir Navab, <em>Towards robust identification and tracking of Nevi in sparse photographic time series</em>, <em>SPIE Medical Imaging</em>, Vol. 9035, Feb., 2014."
+        },
+        {
           "key": "Ikeda-2012-ICPR",
           "year": 2012,
           "month_num": 11,
@@ -317,12 +323,6 @@
           "year": 2019,
           "month_num": 7,
           "display_html": "<strong>Yuji Oyamada</strong>, Sharon Yvette Angelina M. Villanueva, and Ryo Ozuru, <em>An Artificial Intelligence Approach Towards a Computer-Aided Microscopic Agglutination Test</em>, <em>International Leptospirosis Conference</em>, Jul., 2019."
-        },
-        {
-          "key": "Vogel-2014-SPIE",
-          "year": 2014,
-          "month_num": 2,
-          "display_html": "Jakob Vogel, Alexandru O. Duliu, <strong>Yuji Oyamada</strong>, Jose Gardiazabal, Tobias Lasser, Mahzad Ziai, Rudiger Hein, and Nassir Navab, <em>Towards robust identification and tracking of Nevi in sparse photographic time series</em>, <em>SPIE Medical Imaging</em>, Vol. 9035, Feb., 2014."
         },
         {
           "key": "Ikeda-2012-KJMR",

@@ -13,6 +13,8 @@ Before joining Tottori University, I was a postdoctoral researcher in Keio Unive
 
 My research interests range from basic Computer Vision problems to their practical applications (see the [Research]({{ site.baseurl }}/research) page for further detail).
 
+<div style="clear: both;"></div>
+
 ## Contacts
 
 - Email: oyamada[at]tottori-u.ac.jp (Please convert [at] to @)

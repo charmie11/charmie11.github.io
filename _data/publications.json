@@ -1,0 +1,684 @@
+{
+  "generated_at_utc": "2026-04-09T07:30:57Z",
+  "source": "publications.bib",
+  "sections": [
+    {
+      "id": "journal",
+      "title": "Journal Papers",
+      "items": [
+        {
+          "key": "Oyamada-2026-JRM",
+          "year": 2026,
+          "month_num": 0,
+          "display_html": "<strong>Yuji Oyamada</strong>, Naoki Kajitani, Mikihiko Mori, and Haruhiko Maenami, <a href=\"https://www.fujipress.jp/jrm/rb/robot003800010288/\"><em>A Graphical User Interface-Based Support System to Enhance the Visibility of Idea Grouping in Workshops</em></a>, <em>Journal of Robotics and Mechatronics</em>, Vol. 38, No. 1, pp. 288--298, 2026."
+        },
+        {
+          "key": "Nakano-2025-JMM",
+          "year": 2025,
+          "month_num": 10,
+          "display_html": "Risa Nakano, <strong>Yuji Oyamada</strong>, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, <a href=\"https://www.sciencedirect.com/science/article/pii/S0167701225001654\"><em>Emulating visual evaluations in the microscopic agglutination test with deep learning</em></a>, <em>Journal of Microbiological Methods</em>, Vol. 237, pp. 107249, Oct., 2025."
+        },
+        {
+          "key": "Nakano-2024-JMM",
+          "year": 2024,
+          "month_num": 7,
+          "display_html": "Risa Nakano, <strong>Yuji Oyamada</strong>, Ryo Ozuru, Michinobu Yoshimura, and Kenji Hiromatsu, <a href=\"https://www.sciencedirect.com/science/article/pii/S0167701224000678\"><em>Objectification of evaluation criteria in microscopic agglutination test using deep learning</em></a>, <em>Journal of Microbiological Methods</em>, Vol. 222, pp. 106955, Short Communications, Jul., 2024."
+        },
+        {
+          "key": "Oyamada-2021-PLOSONE",
+          "year": 2021,
+          "month_num": 11,
+          "display_html": "<strong>Yuji Oyamada</strong>, Ryo Ozuru, Toshiyuki Masuzawa, Satoshi Miyahara, Yasuhiko Nikaido, Fumiko Obata, Mitsumasa Saito, Sharon Yvette Angelina M. Villanueva, and Jun Fujii, <a href=\"https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0259907\"><em>A machine learning model of microscopic agglutination test for diagnosis of leptospirosis</em></a>, <em>PLOS ONE</em>, Vol. 16, No. 11, pp. 1--16, Nov., 2021."
+        },
+        {
+          "key": "Tomioka-2017-IEICE",
+          "year": 2017,
+          "month_num": 11,
+          "display_html": "Takayuki Tomioka, Kazu Mishiba, <strong>Yuji Oyamada</strong>, and Katsuya Kondo, <em>Depth Map Estimation Using Census Transform for Light Field Cameras</em>, <em>IEICE Transactions on Information and Systems</em>, Vol. E100-D, No. 11, pp. 2711--2720, Nov., 2017."
+        },
+        {
+          "key": "Mishiba-2017-IEICE",
+          "year": 2017,
+          "month_num": 4,
+          "display_html": "Kazu Mishiba, <strong>Yuji Oyamada</strong>, and Katsuya Kondo, <em>Content-Aware Image Retargeting Incorporated with Letterboxing</em>, <em>IEICE Transactions on Information and Systems</em>, Vol. E100-D, No. 4, pp. 865--873, Apr., 2017."
+        },
+        {
+          "key": "Nakajima-2013-ECJ",
+          "year": 2013,
+          "month_num": 7,
+          "display_html": "Yu Nakajima, Takahiro Nozaki, <strong>Yuji Oyamada</strong>, and Kouhei Ohnishi, <em>An Object-Coordinate-Based Bilateral Control System Using Visual Information</em>, <em>Electronics and Communications in Japan</em>, Vol. 96, No. 8, pp. 41--49, Jul., 2013."
+        },
+        {
+          "key": "Oyamada-2011-IPSJCVA",
+          "year": 2011,
+          "month_num": 6,
+          "display_html": "<strong>Yuji Oyamada</strong>, Haruka Asai, and Hideo Saito, <em>Blind Deconvolution for A Curved Motion Based on Cepstral Analysis</em>, <em>IPSJ Transactions on Computer Vision and Applications (CVA)</em>, Vol. 3, pp. 32--43, Jun., 2011."
+        }
+      ]
+    },
+    {
+      "id": "ja-journal",
+      "title": "和文論文誌",
+      "items": [
+        {
+          "key": "Ikeda-2013-ITE",
+          "year": 2013,
+          "month_num": 3,
+          "display_html": "池田 拓也, <strong>小山田 雄仁</strong>, 杉本 麻樹, and 斎藤 英雄, <em>RGB-Dカメラから得られる部分物体形状と影に基づく光源推定</em>, <em>映像情報メディア学会誌</em>, Vol. 67, No. 4, pp. J124--J133, Mar., 2013."
+        },
+        {
+          "key": "Nakajima-2012-IEEJ",
+          "year": 2012,
+          "month_num": 3,
+          "display_html": "中島 悠, 野崎 貴裕, <strong>小山田 雄仁</strong>, and 大西 公平, <em>視覚情報を用いた物体座標系におけるバイラテラル制御</em>, <em>電気学会論文誌産業応用部門誌</em>, Vol. 132-D, No. 3, pp. 374--380, Mar., 2012."
+        },
+        {
+          "key": "Oyamada-2007-VRSJ",
+          "year": 2007,
+          "month_num": 12,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>プロジェクタスクリーン上に生じる焦点ボケ解消のための投影画像の事前補正法</em>, <em>バーチャルリアリティ学会論文誌</em>, Vol. 12, No. 4, pp. 479--486, Dec., 2007."
+        }
+      ]
+    },
+    {
+      "id": "int-conf-full",
+      "title": "International Conferences (Full Papers)",
+      "items": [
+        {
+          "key": "Mori-2025-NPSE",
+          "year": 2025,
+          "month_num": 3,
+          "display_html": "Mikihiko Mori, Naoki Kajitani, <strong>Yuji Oyamada</strong>, and Haruhiko Maenami, <em>Developing a Reflection Support System in Idea Organization Workshops</em>, <em>New Perspectives in Science Education 14th Edition</em>, Mar., 2025."
+        },
+        {
+          "key": "Chosokabe-2024-GDN",
+          "year": 2024,
+          "month_num": 5,
+          "display_html": "Madoka Chosokabe, Shohei Koie, and <strong>Yuji Oyamada</strong>, <a href=\"https://link.springer.com/chapter/10.1007/978-3-031-59373-4_12\"><em>Examining the Effect of ChatGPT on Small Group Ideation Discussions</em></a>, <em>Human-Centric Decision and Negotiation Support for Societal Transitions (GDN)</em>, pp. 142--153, Springer book chapter, May., 2024."
+        },
+        {
+          "key": "Chosokabe-2023-GDN",
+          "year": 2023,
+          "month_num": 6,
+          "display_html": "Madoka Chosokabe, <strong>Yuji Oyamada</strong>, and Shohei Koie, <em>Examination of the Use of ChatGPT in Group Discussion</em>, <em>23rd International Conference on Group Decision and Negotiation (GDN)</em>, Jun., 2023."
+        },
+        {
+          "key": "Oyamada-2023-IWFCV",
+          "year": 2023,
+          "month_num": 2,
+          "display_html": "<strong>Yuji Oyamada</strong>, <em>Gaussian Process based Illumination Planning for Photometric Stereo</em>, <em>International Workshop on Frontiers of Computer Vision (IWFCV)</em>, Feb., 2023."
+        },
+        {
+          "key": "Oyamada-2020-FCV",
+          "year": 2020,
+          "month_num": 4,
+          "display_html": "<strong>Yuji Oyamada</strong>, <a href=\"https://link.springer.com/chapter/10.1007/978-981-15-4818-5_25\"><em>Gaussian Processes for Efficient Plane-Based Camera Calibration</em></a>, <em>Frontiers of Computer Vision</em>, pp. 333--346, Post proceedings, Apr., 2020."
+        },
+        {
+          "key": "Oyamada-2019-IDW",
+          "year": 2019,
+          "month_num": 11,
+          "display_html": "<strong>Yuji Oyamada</strong>, Sadao Nakajima, Kazutake Uehara, Hiroki Yoshioka, and Masamichi Kurosaki, <em>Towards Next Generation Neurosurgical Microscope: A VR Assisted Prototype System</em>, <em>International Display Workshops (IDW)</em>, pp. 1549--1551, Nov., 2019."
+        },
+        {
+          "key": "Gledel-2018-VRST",
+          "year": 2018,
+          "month_num": 11,
+          "display_html": "Clement Gledel, Hideaki Uchiyama, <strong>Yuji Oyamada</strong>, and Rin-ichiro Taniguchi, <em>Texture synthesis for stable planar tracking</em>, <em>Virtual Reality Software and Technology (VRST)</em>, pp. 123:1--123:2, Nov., 2018."
+        },
+        {
+          "key": "Uchiyama-2018-ICPR",
+          "year": 2018,
+          "month_num": 8,
+          "display_html": "Hideaki Uchiyama and <strong>Yuji Oyamada</strong>, <a href=\"https://sites.google.com/d/1DYmjre_r8oqjCcZ--1m0JgzwNPaqXRic/p/1zzyyjICzqqt_rlO7ATUtHJxmlcRTsUk3/edit\"><em>Transparent Random Dot Markers</em></a>, <em>International Conference on Pattern Recognition (ICPR)</em>, pp. 254--259, Aug., 2018."
+        },
+        {
+          "key": "Oyamada-2018-IWFCV",
+          "year": 2018,
+          "month_num": 2,
+          "display_html": "<strong>Yuji Oyamada</strong>, Tomotaka Ohnishi, Kazu Mishiba, and Katsuya Kondo, <a href=\"https://sites.google.com/d/1DYmjre_r8oqjCcZ--1m0JgzwNPaqXRic/p/1pLbgUv4LlR23nFJx22Av0eRPFxmzNxf2/edit\"><em>Deep Convolutional 3D Object Classification from a Single Depth Image and Its Normal Map</em></a>, <em>International Workshop on Frontier of Computer Vision (IW-FCV)</em>, Feb., 2018."
+        },
+        {
+          "key": "Miyoshi-2017-APMAR",
+          "year": 2017,
+          "month_num": 7,
+          "display_html": "Yuya Miyoshi, <strong>Yuji Oyamada</strong>, Aya Shiraiwa, Kazu Mishiba, and Katsuya Kondo, <a href=\"https://sites.google.com/d/1DYmjre_r8oqjCcZ--1m0JgzwNPaqXRic/p/1UqEvlMuGI1FGs0qrDZE0puXqKPgdxl0f/edit\"><em>An Augmented Reality Supports for Self-learners Learning Activity Involving Motion: A Case Study on an Alphabet Writing System</em></a>, <em>Asia-Pacific Workshop on Mixed-Reality (APMAR)</em>, Jul., 2017."
+        },
+        {
+          "key": "Oyamada-2016-IDW",
+          "year": 2016,
+          "month_num": 12,
+          "display_html": "<strong>Yuji Oyamada</strong>, <em>Display Electronic Systems: Augmented Reality in the Next Decade</em>, <em>International Display Workshop (IDW)</em>, pp. 1274--1277, Dec., 2016."
+        },
+        {
+          "key": "Miyake-2016-IFHT",
+          "year": 2016,
+          "month_num": 11,
+          "display_html": "Tomohiro Miyake, Naoto Kakuta, Ryota Fujioka, <strong>Yuji Oyamada</strong>, Kazu Mishiba, and Katsuya Kondo, <em>RECONSTRUCTION OF 3D TEMPERATURE DISTRIBUTIONS IN FREE CONVECTION FIELD AROUND A SMALL HEATED SPHERE IN WATER</em>, <em>International Forum on Heat Transfer (IFHT)</em>, pp. 1997-1--1997-6, Nov., 2016."
+        },
+        {
+          "key": "Mishiba-2016-GCCE-b",
+          "year": 2016,
+          "month_num": 10,
+          "display_html": "Kazu Mishiba, <strong>Yuji Oyamada</strong>, and Katsuya Kondo, <em>Wavelet-Based Depth Map Estimation for Light Field Cameras</em>, <em>IEEE 5th Global Conference on Consumer Electronics</em>, pp. 167--168, Oct., 2016."
+        },
+        {
+          "key": "Mishiba-2016-GCCE-a",
+          "year": 2016,
+          "month_num": 10,
+          "display_html": "Kazu Mishiba, <strong>Yuji Oyamada</strong>, and Katsuya Kondo, <em>A Framework for Improvement of Importance Map for Image Retargeting Assisted by Light Field Images</em>, <em>IEEE 5th Global Conference on Consumer Electronics</em>, pp. 105--106, Oct., 2016."
+        },
+        {
+          "key": "Kanamori-2016-GCCE",
+          "year": 2016,
+          "month_num": 10,
+          "display_html": "Takahiro Kanamori, Kazu Mishiba, <strong>Yuji Oyamada</strong>, and Katsuya Kondo, <em>Sparse Representation Using Weighted Graph Fourier Transform Based on Color-Depth Correlation for Depth Map Compression</em>, <em>IEEE 5th Global Conference on Consumer Electronics</em>, pp. 29--30, Oct., 2016."
+        },
+        {
+          "key": "Tomioka-2016-ICASSP",
+          "year": 2016,
+          "month_num": 3,
+          "display_html": "Takayuki Tomioka, Kazu Mishiba, <strong>Yuji Oyamada</strong>, and Katsuya Kondo, <em>DEPTH MAP ESTIMATION USING CENSUS TRANSFORM FOR LIGHT FIELD CAMERAS</em>, <em>IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, pp. 1641--1645, Mar., 2016."
+        },
+        {
+          "key": "Oyamada-2015-IDW",
+          "year": 2015,
+          "month_num": 12,
+          "display_html": "<strong>Yuji Oyamada</strong>, <em>Augmented Reality Visualization Fusion</em>, <em>International Display Workshop (IDW)</em>, pp. 1284--1286, Dec., 2015."
+        },
+        {
+          "key": "Ono-2015-ISCIT",
+          "year": 2015,
+          "month_num": 10,
+          "display_html": "Yasushi Ono, Kazu Mishiba, <strong>Yuji Oyamada</strong>, Yoshiharu Hirata, and Katsuya Kondo, <em>Resolution Improvement of Point Dose Distribution in Intensity Modulated Radiation Therapy</em>, <em>International Symposium on Communications and Information Technologies (ISCIT)</em>, pp. 137--140, Oct., 2015."
+        },
+        {
+          "key": "Naik-2015-ISMAR",
+          "year": 2015,
+          "month_num": 10,
+          "display_html": "Hemal Naik, <strong>Yuji Oyamada</strong>, Peter Keitler, and Nassir Navab, <em>Exploiting Photogrammetric Targets for Industrial AR</em>, <em>IEEE International Symposium on Mixed and Augmented Reality (ISMAR)</em>, pp. 144--147, Oct., 2015."
+        },
+        {
+          "key": "Mishiba-2015-GCCE",
+          "year": 2015,
+          "month_num": 10,
+          "display_html": "Kazu Mishiba, <strong>Yuji Oyamada</strong>, and Katsuya Kondo, <em>Image Retargeting Method by Similarity Transformation, Cropping and Letterboxing Operators</em>, <em>IEEE 4th Global Conference on Consumer Electronics (GCCE)</em>, pp. 208--209, Oct., 2015."
+        },
+        {
+          "key": "Okagawa-2015-MVA",
+          "year": 2015,
+          "month_num": 5,
+          "display_html": "Asuka Okagawa, <strong>Yuji Oyamada</strong>, Yoshihiko Mochizuki, and Hiroshi Ishikawa, <em>Multi-organ Segmentation by Minimization of Higher-order Energy for CT Boundary</em>, <em>IAPR International Conference on Machine Vision Applications (MVA)</em>, pp. 547--550, May., 2015."
+        },
+        {
+          "key": "Morita-2015-MVA",
+          "year": 2015,
+          "month_num": 5,
+          "display_html": "Minato Morita, Asuka Okagawa, <strong>Yuji Oyamada</strong>, Yoshihiko Mochizuki, and Hiroshi Ishikawa, <em>Multiple-organ Segmentation Based on Spatially-divided Neighboring Data Energy</em>, <em>IAPR International Conference on Machine Vision Applications (MVA)</em>, pp. 158--161, May., 2015."
+        },
+        {
+          "key": "Kobayashi-2015-MVA",
+          "year": 2015,
+          "month_num": 5,
+          "display_html": "Naoki Kobayashi, <strong>Yuji Oyamada</strong>, Yoshihiko Mochizuki, and Hiroshi Ishikawa, <em>Three-DoF Pose Estimation of Asteroids by Appearance-based Linear Regression with Divided Parameter Space</em>, <em>IAPR International Conference on Machine Vision Applications (MVA)</em>, pp. 551--554, May., 2015."
+        },
+        {
+          "key": "Prasuhn-2014-ICIP",
+          "year": 2014,
+          "month_num": 10,
+          "display_html": "Lukas Prasuhn, <strong>Yuji Oyamada</strong>, Yoshihiko Mochizuki, and Hiroshi Ishikawa, <em>A HOG-BASED HAND GESTURE RECOGNITION SYSTEM ON A MOBILE DEVICE</em>, <em>International Conference on Image Processing (ICIP)</em>, pp. 3973--3977, Oct., 2014."
+        },
+        {
+          "key": "Stefan-2014-VR",
+          "year": 2014,
+          "month_num": 3,
+          "display_html": "Philipp Stefan, Patrick Wucherer, <strong>Yuji Oyamada</strong>, Meng Ma, Alexander Schoch, Motoko Kanegae, Naoki Shimizu, Tatsuya Kodera, Sebastien Callier, Matthias Weighl, Maki Sugimoto, Pascal Fallavollita, Hideo Saito, and Nassir Navab, <a href=\"https://sites.google.com/d/1DYmjre_r8oqjCcZ--1m0JgzwNPaqXRic/p/1gODDRXIwKbp9Fl-pco2GGdKhYpoURveN/edit\"><em>An AR Edutainment System Supporting Bone Anatomy Learning</em></a>, <em>IEEE Virtual Reality (VR)</em>, pp. 113--114, Mar., 2014."
+        },
+        {
+          "key": "Ikeda-2012-ICPR",
+          "year": 2012,
+          "month_num": 11,
+          "display_html": "Takuya Ikeda, <strong>Yuji Oyamada</strong>, Maki Sugimoto, and Hideo Saito, <em>Illumination Estimation from Shadow and Incomplete Object Shape Using an RGB-D Camera</em>, <em>International Conference on Pattern Recognition (ICPR)</em>, pp. 165--169, Nov., 2012."
+        },
+        {
+          "key": "Oyamada-2012-ISMAR",
+          "year": 2012,
+          "month_num": 10,
+          "display_html": "<strong>Yuji Oyamada</strong>, Pascal Fallavollita, and Nassir Navab, <a href=\"https://sites.google.com/d/1DYmjre_r8oqjCcZ--1m0JgzwNPaqXRic/p/1doVz6TAT1e8x71pzLy8W6tgUNBSZygIe/edit\"><em>Single Camera Calibration using partially visible calibration objects based on Random Dots Marker Tracking Algorithm</em></a>, <em>The IEEE and ACM International Symposium on Mixed and Augmented Reality, Workshop on Tracking Methods and Applications (TMA)</em>, pp. 1--7, Oct., 2012."
+        },
+        {
+          "key": "Asai-2010-ICIP",
+          "year": 2010,
+          "month_num": 9,
+          "display_html": "Haruka Asai, <strong>Yuji Oyamada</strong>, Hideo Saito, and Julien Pilet, <em>Cepstral Analysis Based Blind Deconvolution for Motion Blur</em>, <em>IEEE International Conference on Image Processing (ICIP)</em>, pp. 1153--1156, Sep., 2010."
+        },
+        {
+          "key": "Oyamada-2009-PROCAMS",
+          "year": 2009,
+          "month_num": 6,
+          "display_html": "<strong>Yuji Oyamada</strong> and Hideo Saito, <em>Blind Deconvolution Based Projector Defocus Removing with Uncalibrated Projector-Camera Pair</em>, <em>IEEE International Workshop on Projector-Camera Systems (PROCAMS)</em>, pp. 1--2, Jun., 2009."
+        },
+        {
+          "key": "Oyamada-2008-IWVCC",
+          "year": 2008,
+          "month_num": 11,
+          "display_html": "<strong>Yuji Oyamada</strong> and Hideo Saito, <em>Cepstrum based Blind Image Deconvolution</em>, <em>International Workshop on Vision, Communications and Circuits (IWVCC)</em>, pp. 197--200, Nov., 2008."
+        },
+        {
+          "key": "Oyamada-2008-ACIVS",
+          "year": 2008,
+          "month_num": 10,
+          "display_html": "<strong>Yuji Oyamada</strong> and Hideo Saito, <em>Defocus Blur Correcting Projector-Camera System</em>, <em>Advanced Concepts for Intelligent Vision Systems (ACIVS)</em>, pp. 453--464, Oct., 2008."
+        },
+        {
+          "key": "Oyamada-2008-WSCG",
+          "year": 2008,
+          "month_num": 2,
+          "display_html": "<strong>Yuji Oyamada</strong> and Hideo Saito, <em>Estimation of Projector Defocus Blur by Extracting Texture Rich Region in Projection Image</em>, <em>International Conference in Central Europe on Computer Graphics, Visualization and Computer Vision (WSCG)</em>, pp. 153--160, Feb., 2008."
+        },
+        {
+          "key": "Oyamada-2007-PROCAMS",
+          "year": 2007,
+          "month_num": 6,
+          "display_html": "<strong>Yuji Oyamada</strong> and Hideo Saito, <em>Focal Pre-Correction of Projected Image for Deblurring Screen Image</em>, <em>IEEE International Workshop on Projector-Camera Systems (PROCAMS)</em>, pp. 1--8, Jun., 2007."
+        },
+        {
+          "key": "Oyamada-2007-FCV",
+          "year": 2007,
+          "month_num": 1,
+          "display_html": "<strong>Yuji Oyamada</strong> and Hideo Saito, <em>Pre-Correction of Projected Images for Deblurring on Projector Screen</em>, <em>Japan-Korea Joint Workshop on Frontiers of Computer Vision (FCV)</em>, pp. 307--312, Jan., 2007."
+        }
+      ]
+    },
+    {
+      "id": "int-conf-abst",
+      "title": "International Conferences (Presentations / Abstracts)",
+      "items": [
+        {
+          "key": "Nakano-2024-ILS",
+          "year": 2024,
+          "month_num": 9,
+          "display_html": "Risa Nakano, <strong>Yuji Oyamada</strong>, and Ryo Ozuru, <em>Objectification of Evaluation Criteria in MAT Using Deep Learning</em>, <em>13th Conference of ILS and 4th Meeting of ELS</em>, Sep., 2024."
+        },
+        {
+          "key": "Kajitani-2023-ICSTE",
+          "year": 2023,
+          "month_num": 10,
+          "display_html": "Naoki Kajitani, <strong>Yuji Oyamada</strong>, Mikihiko Mori, and Haruhiko Maenami, <em>Idea Grouping Support System</em>, <em>International Conference on Software Technology and Engineering (ICSTE)</em>, Oct., 2023."
+        },
+        {
+          "key": "Nakano-2022-ILS",
+          "year": 2022,
+          "month_num": 11,
+          "display_html": "Risa Nakano, <strong>Yuji Oyamada</strong>, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, <em>DEEP LEARNING-BASED AGGLUTINATION RATE ESTIMATION FOR MICROSCOPIC AGGLUTINATION TEST</em>, <em>12th International Leptospirosis Society Conference</em>, Nov., 2022."
+        },
+        {
+          "key": "Oyamada-2019-ILS",
+          "year": 2019,
+          "month_num": 7,
+          "display_html": "<strong>Yuji Oyamada</strong>, Sharon Yvette Angelina M. Villanueva, and Ryo Ozuru, <em>An Artificial Intelligence Approach Towards a Computer-Aided Microscopic Agglutination Test</em>, <em>International Leptospirosis Conference</em>, Jul., 2019."
+        },
+        {
+          "key": "Vogel-2014-SPIE",
+          "year": 2014,
+          "month_num": 2,
+          "display_html": "Jakob Vogel, Alexandru O. Duliu, <strong>Yuji Oyamada</strong>, Jose Gardiazabal, Tobias Lasser, Mahzad Ziai, Rudiger Hein, and Nassir Navab, <em>Towards robust identification and tracking of Nevi in sparse photographic time series</em>, <em>SPIE Medical Imaging</em>, Vol. 9035, Feb., 2014."
+        },
+        {
+          "key": "Ikeda-2012-KJMR",
+          "year": 2012,
+          "month_num": 4,
+          "display_html": "Takuya Ikeda, <strong>Yuji Oyamada</strong>, Maki Sugimoto, and Hideo Saito, <em>Illumination Estimation from Object Shape and Shadow Captured by RGB-D Camera</em>, <em>Korea-Japan Workshop on Mixed Reality (KJMR)</em>, Apr., 2012."
+        }
+      ]
+    },
+    {
+      "id": "dom-conf",
+      "title": "国内学会・研究会",
+      "items": [
+        {
+          "key": "Nakamura-2025-DIA",
+          "year": 2025,
+          "month_num": 3,
+          "display_html": "中村 一路 and <strong>小山田 雄仁</strong>, <em>Poisson Surface Reconstructionによる点群データの誤差推定</em>, <em>動的画像処理実利用化ワークショップ2025</em>, Mar., 2025."
+        },
+        {
+          "key": "Oyamada-2024-LeptoSymp",
+          "year": 2024,
+          "month_num": 8,
+          "display_html": "<strong>小山田 雄仁</strong> and 尾鶴 亮, <em>菌検出技術に基づく顕微鏡下凝集試験(MAT)の判断基準の客観化と応用</em>, <em>第60回レプトスピラシンポジウム</em>, Aug., 2024."
+        },
+        {
+          "key": "Nakano-2024-IEICE-MI",
+          "year": 2024,
+          "month_num": 3,
+          "display_html": "中野 里咲, <strong>小山田 雄仁</strong>, and 尾鶴 亮, <a href=\"https://ken.ieice.org/ken/paper/20240303fcCM/\"><em>深層学習による顕微鏡下凝集試験の客観化</em></a>, <em>電子情報通信学会 医用画像研究会 (MI研究会)</em>, Mar., 2024."
+        },
+        {
+          "key": "Kajitani-2024-SocSys-b",
+          "year": 2024,
+          "month_num": 3,
+          "display_html": "梶谷 尚生, <strong>小山田 雄仁</strong>, 森 幹彦, and 前波 晴彦, <a href=\"https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246720\"><em>AIチャットサービスによる議論の振り返り支援の検討</em></a>, <em>第34回社会システム部会研究会</em>, Mar., 2024."
+        },
+        {
+          "key": "Kajitani-2024-SocSys-a",
+          "year": 2024,
+          "month_num": 3,
+          "display_html": "梶谷 尚生, <strong>小山田 雄仁</strong>, 森 幹彦, and 前波 晴彦, <a href=\"https://easychair.org/smart-program/SocSys034/2024-03-13.html#talk:246699\"><em>アイデア出しの振り返り用グルーピング再検討支援システム</em></a>, <em>第34回社会システム部会研究会</em>, Mar., 2024."
+        },
+        {
+          "key": "Ozuru-2023-JSB",
+          "year": 2023,
+          "month_num": 3,
+          "display_html": "Ryo Ozuru, Risa Nakano, <strong>Yuji Oyamada</strong>, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, <em>Seeing is believing. Making Agglutination Tests from Qualitative to Quantitative with Deep Learning</em>, <em>The 96th Annual Meeting of Japanese Society for Bacteriology, Symposium 13: Bacteriology by the numbers</em>, Mar., 2023."
+        },
+        {
+          "key": "Kajitani-2023-GN",
+          "year": 2023,
+          "month_num": 3,
+          "display_html": "梶谷 尚生, <strong>小山田 雄仁</strong>, 森 幹彦, and 前波 晴彦, <a href=\"https://www.ipsj.or.jp/kenkyukai/event/gn119.html\"><em>対話型ワークショップ支援のための可視化技術に関する検討</em></a>, <em>第119回GN研究発表会</em>, Mar., 2023."
+        },
+        {
+          "key": "Nakano-2022-LeptoSymp",
+          "year": 2022,
+          "month_num": 6,
+          "display_html": "中野 里咲, <strong>小山田 雄仁</strong>, 尾鶴 亮, 宮原 敏, Yoshimasa Yoshimura, Mitsumasa Saito, and 廣松 賢治, <em>深層学習モデルによる顕微鏡下凝集試験の凝集率推定とその応用</em>, <em>第58回レプトスピラシンポジウム</em>, Jun., 2022."
+        },
+        {
+          "key": "Ozuru-2022-YSB",
+          "year": 2022,
+          "month_num": 3,
+          "display_html": "尾鶴 亮, 中野 里咲, and <strong>小山田 雄仁</strong>, <em>凝集反応検査を自動化する ーレプトスピラ症における顕微鏡下凝集試験の深層学習判定モデルを基にー</em>, <em>第95回日本細菌学会総会 細菌若手コロッセウム</em>, Mar., 2022."
+        },
+        {
+          "key": "Nakano-2022-DIA",
+          "year": 2022,
+          "month_num": 3,
+          "display_html": "中野 里咲, <strong>小山田 雄仁</strong>, and 尾鶴 亮, <em>深層学習によるレプトスピラ症の診断支援</em>, <em>動的画像処理実利用化ワークショップ (DIA)</em>, Mar., 2022."
+        },
+        {
+          "key": "Mori-2022-SocSys",
+          "year": 2022,
+          "month_num": 3,
+          "display_html": "森 幹彦, <strong>小山田 雄仁</strong>, and 前波 晴彦, <a href=\"https://easychair.org/smart-program/SocSys027/\"><em>付箋紙の移動に基づくワークショップの状況把握の試み</em></a>, <em>第27回社会システム部会研究会</em>, Mar., 2022."
+        },
+        {
+          "key": "Fujii-2022-DIA",
+          "year": 2022,
+          "month_num": 3,
+          "display_html": "藤井 惇也 and <strong>小山田 雄仁</strong>, <em>照度差ステレオのための計画計測の試み</em>, <em>動的画像処理実利用化ワークショップ (DIA)</em>, Mar., 2022."
+        },
+        {
+          "key": "Maenami-2021-SocSys",
+          "year": 2021,
+          "month_num": 3,
+          "display_html": "前波 晴彦, <strong>小山田 雄仁</strong>, and 森 幹彦, <em>ワークショップ映像にもとづいた議論分析システム構築の試み</em>, <em>第24回社会システム部会研究会</em>, Mar., 2021."
+        },
+        {
+          "key": "Mori-2020-InfoEdu",
+          "year": 2020,
+          "month_num": 12,
+          "display_html": "森 幹彦, <strong>小山田 雄仁</strong>, and 前波 晴彦, <em>付箋紙の移動に着目したワークショップ映像分析システムの検討</em>, <em>情報教育シンポジウム論文集</em>, pp. 39--46, Dec., 2020."
+        },
+        {
+          "key": "Oyamada-2020-JSBI",
+          "year": 2020,
+          "month_num": 9,
+          "display_html": "<strong>Yuji Oyamada</strong>, Yasuhiko Nikaido, Satoshi Miyahara, Mitsumasa Saito, Sharon Villanueva, Toshiyuki Masuzawa, and Ryo Ozuru, <em>サポートベクターマシンを用いた顕微鏡下凝集試験 (MAT) の自動化</em>, <em>日本バイオインフォマティクス学会年会</em>, Sep., 2020."
+        },
+        {
+          "key": "Minato-2020-DIA",
+          "year": 2020,
+          "month_num": 3,
+          "display_html": "湊 翔希, <strong>小山田 雄仁</strong>, 西山 正志, and 岩井 儀雄, <em>ステレオカメラ校正における移動カメラの効果検証</em>, <em>動的画像処理実利用化ワークショップ (DIA)</em>, Mar., 2020."
+        },
+        {
+          "key": "Nakajima-2019-JNS",
+          "year": 2019,
+          "month_num": 10,
+          "display_html": "中島 定男, 吉岡 裕樹, 黒崎 雅道, 上原 一剛, and <strong>小山田 雄仁</strong>, <em>MixedRealityを利用した次世代脳神経外科手術支援システムについての基礎技術</em>, <em>日本脳神経外科学会 第78回学術総会</em>, Oct., 2019."
+        },
+        {
+          "key": "Oyamada-2019-JSAI",
+          "year": 2019,
+          "month_num": 6,
+          "display_html": "<strong>Yuji Oyamada</strong>, Mikihiko Mori, and Haruhiko Maenami, <em>Vision Based Analysis on Trajectories of Notes Representing Ideas Toward Workshop Summarization</em>, <em>The 33rd Annual Conference of Japan Society for Artificial Intelligence (人工知能学会)</em>, Jun., 2019."
+        },
+        {
+          "key": "Oyamada-2019-IS",
+          "year": 2019,
+          "month_num": 6,
+          "display_html": "<strong>小山田 雄仁</strong> and 勝俣 槙太郎, <em>劣モジュラ関数最大化によるカメラ校正に適した画像選択</em>, <em>第25回画像センシングシンポジウム</em>, pp. 1--4, IS2-17, Jun., 2019."
+        },
+        {
+          "key": "Ozuru-2019-LeptoSymp",
+          "year": 2019,
+          "month_num": 4,
+          "display_html": "尾鶴 亮 and <strong>小山田 雄仁</strong>, <em>顕微鏡下凝集試験(MAT)の自動化を目指した機械学習モデルの構築</em>, <em>第56回レプトスピラ・シンポジウム</em>, Apr., 2019."
+        },
+        {
+          "key": "Onishi-2018-IEICE",
+          "year": 2018,
+          "month_num": 2,
+          "display_html": "大西 友貴, <strong>小山田 雄仁</strong>, 三柴 数, and 近藤 克哉, <em>深層畳み込みニューラルネットワークによる単一距離画像とその法線マップを用いた物体識別</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 117, No. 442, pp. 31--36, Feb., 2018."
+        },
+        {
+          "key": "Maeda-2017-IEICE",
+          "year": 2017,
+          "month_num": 3,
+          "display_html": "前田 和輝, 近藤 克哉, 三柴 数, <strong>小山田 雄仁</strong>, and 藏光 誠, <em>タイル色を考慮した熱画像解析による外壁異常の検出支援</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 116, No. 482, pp. 35--40, Mar., 2017."
+        },
+        {
+          "key": "Kondo-2016-IEICE",
+          "year": 2016,
+          "month_num": 11,
+          "display_html": "近藤 克哉, 三柴 数, <strong>小山田 雄仁</strong>, 吉川 雅基, and 栗政 明弘, <em>細胞相互の輝度の違いが大きな場合の細胞検出</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 116, No. 298, pp. 1--4, Nov., 2016."
+        },
+        {
+          "key": "Onishi-2016-IEICE",
+          "year": 2016,
+          "month_num": 9,
+          "display_html": "大西 友貴, <strong>小山田 雄仁</strong>, 三柴 数, and 近藤 克哉, <em>P2-invariantを用いた文書画像検索</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 116, No. 208, pp. 13--18, Sep., 2016."
+        },
+        {
+          "key": "Morita-2014-CVIM",
+          "year": 2014,
+          "month_num": 0,
+          "display_html": "森田 皆人, 岡川 明日翔, 小滝 将太, 望月 義彦, <strong>小山田 雄仁</strong>, and 石川 博, <em>1階のデータ項を用いた多臓器同時セグメンテーション</em>, <em>コンピュータビジョンとイメージメディア（CVIM）</em>, pp. 1--7, 2014(16), 2014."
+        },
+        {
+          "key": "Iwano-2014-CVIM",
+          "year": 2014,
+          "month_num": 0,
+          "display_html": "岩野 俊介, <strong>小山田 雄仁</strong>, 望月 義彦, and 石川 博, <em>多視点照度差画像を用いた光源方向推定</em>, <em>コンピュータビジョンとイメージメディア（CVIM）</em>, pp. 1--5, 2014(13), 2014."
+        },
+        {
+          "key": "Ishii-2014-CVIM",
+          "year": 2014,
+          "month_num": 0,
+          "display_html": "石井 智大, 望月 義彦, <strong>小山田 雄仁</strong>, and 石川 博, <em>Convolutional Neural Networkを用いた一般物体認識手法の解析</em>, <em>コンピュータビジョンとイメージメディア（CVIM）</em>, pp. 1--8, 2014(14), 2014."
+        },
+        {
+          "key": "Tsuboi-2013-VRSJ",
+          "year": 2013,
+          "month_num": 9,
+          "display_html": "坪井 一菜, <strong>小山田 雄仁</strong>, 斎藤 英雄, and 杉本 麻樹, <em>距離画像カメラを用いた部分形状マッチングに基づく任意物体上での空間型AR</em>, <em>日本バーチャルリアリティ学会大会</em>, Sep., 2013."
+        },
+        {
+          "key": "Oyamada-2013-MIRU",
+          "year": 2013,
+          "month_num": 7,
+          "display_html": "<strong>Yuji Oyamada</strong>, Pascal Fallavollita, Hideo Saito, and Nassir Navab, <em>Occlusion Handling Multiple Camera Calibration using a Planar Marker Tracking Algorithm</em>, <em>画像の認識・理解シンポジウム (MIRU)</em>, Jul., 2013."
+        },
+        {
+          "key": "Ikeda-2012-MIRU",
+          "year": 2012,
+          "month_num": 8,
+          "display_html": "池田 拓也, <strong>小山田 雄仁</strong>, 杉本 麻樹, and 斎藤 英雄, <em>RGB-Dカメラから得られる部分物体形状と影に基づく光源推定</em>, <em>画像の認識・理解シンポジウム (MIRU)</em>, Aug., 2012."
+        },
+        {
+          "key": "Tsuboi-2012-CVIM",
+          "year": 2012,
+          "month_num": 5,
+          "display_html": "坪井 一菜, 鐘ヶ江 資子, <strong>小山田 雄仁</strong>, 杉本 麻樹, and 斎藤 英雄, <em>デプスカメラにより取得される部分形状テンプレートのマッチングによる3次元物体のリアルタイムトラッキング</em>, <em>研究報告コンピュータビジョンとイメージメディア (CVIM)</em>, Vol. 2012, No. 25, pp. 1--6, May., 2012."
+        },
+        {
+          "key": "Nakajima-2011-IEEJ",
+          "year": 2011,
+          "month_num": 3,
+          "display_html": "中島 悠, 野崎 貴裕, <strong>小山田 雄仁</strong>, and 大西 公平, <em>カメラを用いた物体空間座標系におけるバイラテラル制御系</em>, <em>電気学会産業計測制御研究会</em>, Vol. IIC-11, No. 25-27.29-48, pp. 77--82, Mar., 2011."
+        },
+        {
+          "key": "Nakamura-2010-CVIM",
+          "year": 2010,
+          "month_num": 5,
+          "display_html": "中村 隆之, <strong>小山田 雄仁</strong>, 斎藤 英雄, and Julien Pilet, <em>プロジェクターカメラシステムによる移動非剛体に対する動的テクスチャリングに向けた基礎検討</em>, <em>研究報告コンピュータビジョンとイメージメディア (CVIM)</em>, Vol. 2010, No. 27, pp. 1--8, May., 2010."
+        },
+        {
+          "key": "Asai-2010-CVIMa",
+          "year": 2010,
+          "month_num": 5,
+          "display_html": "浅井 晴香, <strong>小山田 雄仁</strong>, and 斎藤 英雄, <em>Blind Deconvolutionのための劣化画像のケプストラム解析</em>, <em>研究報告コンピュータビジョンとイメージメディア(CVIM)</em>, Vol. 2010, No. 2, pp. 1--8, May., 2010."
+        },
+        {
+          "key": "Asai-2009-MIRU",
+          "year": 2009,
+          "month_num": 7,
+          "display_html": "浅井 晴香, <strong>小山田 雄仁</strong>, and 斎藤 英雄, <em>ケプストラム解析を用いたブレ画像のBlind Deconvolution</em>, <em>画像の認識・理解シンポジウム (MIRU)</em>, pp. 1043--1050, Jul., 2009."
+        },
+        {
+          "key": "Asai-2009-CVIM",
+          "year": 2009,
+          "month_num": 6,
+          "display_html": "浅井 晴香, <strong>小山田 雄仁</strong>, and 斎藤 英雄, <em>ケプストラム解析を用いたブレ画像のBlind Deconvolution</em>, <em>研究報告コンピュータビジョンとイメージメディア(CVIM)</em>, Vol. 2009, No. 26, pp. 1--8, Jun., 2009."
+        },
+        {
+          "key": "Oyamada-2008-ViEW",
+          "year": 2008,
+          "month_num": 12,
+          "display_html": "<strong>小山田 雄仁</strong>, 浅井 晴香, 斎藤 英雄, 太田垣 康二, and 江口 満男, <em>ケプストラムに基づいたブレ画像補正</em>, <em>ビジョン技術の実利用ワークショップ (ViEW)</em>, pp. 263--268, Dec., 2008."
+        },
+        {
+          "key": "Oyamada-2008-IEICE-TR",
+          "year": 2008,
+          "month_num": 9,
+          "display_html": "<strong>小山田 雄仁</strong>, 斎藤 英雄, 太田垣 康二, and 江口 満男, <em>劣化画像のケプストラムを利用した手ブレ補正</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 108, No. 198, pp. 147--152, Sep., 2008."
+        },
+        {
+          "key": "Oyamada-2008-MIRU",
+          "year": 2008,
+          "month_num": 7,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>特徴領域抽出に基づくプロジェクタの焦点ボケ補正</em>, <em>画像の認識・理解シンポジウム (MIRU)</em>, pp. 739--744, Jul., 2008."
+        },
+        {
+          "key": "Oyamada-2008-IEICE-GE",
+          "year": 2008,
+          "month_num": 3,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>補正画像の繰り返し投影によるプロジェクタの焦点ボケ推定</em>, <em>電子情報通信学会総合大会</em>, pp. 214, Mar., 2008."
+        },
+        {
+          "key": "Oyamada-2008-IEICE-TR2",
+          "year": 2008,
+          "month_num": 1,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>表示画像の特徴領域抽出に基づくプロジェクタ−カメラシステムの焦点ボケの自動補正法</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 107, No. 427, pp. 1--8, Jan., 2008."
+        },
+        {
+          "key": "Oyamada-2007-MIRU",
+          "year": 2007,
+          "month_num": 7,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>投影面上に生じる焦点ボケ補正のための投影画像の事前補正法</em>, <em>画像の認識・理解シンポジウム (MIRU)</em>, pp. 1295--1300, Jul., 2007."
+        },
+        {
+          "key": "Oyamada-2007-IEICE",
+          "year": 2007,
+          "month_num": 1,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>Projection Based Augmented Realityのための投影画像の事前補正によるボケ除去法</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 106, No. 470, pp. 37--42, Jan., 2007."
+        },
+        {
+          "key": "Oyamada-2006-ITE",
+          "year": 2006,
+          "month_num": 12,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>プロジェクタスクリーンにおけるボケ除去のための投影画像の事前補正法</em>, <em>映像情報メディア学会2006年冬季大会</em>, Dec., 2006."
+        },
+        {
+          "key": "Oyamada-2006-IEICE-GE",
+          "year": 2006,
+          "month_num": 3,
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>拡張現実を用いた顔の立体表示システム</em>, <em>電子情報通信学会総合大会</em>, pp. 257, Mar., 2006."
+        }
+      ]
+    },
+    {
+      "id": "misc",
+      "title": "Misc",
+      "items": [
+        {
+          "key": "Nakano-2024-bioRxiv",
+          "year": 2024,
+          "month_num": 0,
+          "display_html": "Risa Nakano, <strong>Yuji Oyamada</strong>, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, <a href=\"https://www.biorxiv.org/content/10.1101/2024.04.09.588741v1\"><em>A Deep Learning-Based Evaluation for Microscopic Agglutination Test</em></a>, <em>bioRxiv</em>, 2024."
+        },
+        {
+          "key": "Nakano-2024-SSRN",
+          "year": 2024,
+          "month_num": 0,
+          "display_html": "Risa Nakano, <strong>Yuji Oyamada</strong>, Ryo Ozuru, Michinobu Yoshimura, and Kenji Hiromatsu, <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4791197\"><em>Objectification of Evaluation Criteria in Microscopic Agglutination Test Using Deep Learning</em></a>, <em>SSRN</em>, 2024."
+        },
+        {
+          "key": "Oyamada-2020-bioRxiv",
+          "year": 2020,
+          "month_num": 0,
+          "display_html": "<strong>Yuji Oyamada</strong>, Ryo Ozuru, Toshiyuki Masuzawa, Satoshi Miyahara, Yasuhiko Nikaido, Fumiko Obata, Mitsumasa Saito, Sharon Yvette Angelina M. Villanueva, and Jun Fujii, <a href=\"https://www.biorxiv.org/content/10.1101/2020.12.08.410712v1\"><em>A Machine Learning Approach Towards Standardizing Microscopic Agglutination Test for Diagnosis of Leptospirosis</em></a>, <em>bioRxiv</em>, 2020."
+        },
+        {
+          "key": "Yamazaki-2017-IEICE",
+          "year": 2017,
+          "month_num": 0,
+          "display_html": "山崎 俊彦, 井原 雅行, 大澤 博隆, <strong>小山田 雄仁</strong>, 服部 宏充, 森勢 将雅, and 山田 智広, <a href=\"https://app.journal.ieice.org/trial/100_10/k100_10_1030/index.html\"><em>情報社会の夢の未来予測と技術課題</em></a>, <em>電子情報通信学会創立100周年記念特集 暮らしを豊かにする情報処理技術, 1-2座談会</em>, 2017."
+        }
+      ]
+    },
+    {
+      "id": "awards",
+      "title": "Awards",
+      "items": [
+        {
+          "key": "Oyamada-2021-MIRU-Award",
+          "year": 2021,
+          "month_num": 7,
+          "display_html": "<a href=\"https://drive.google.com/file/d/1eo9r6cSjCAugephjvN6h9iN2KR5zoFiz/view?usp=sharing\"><em>MIRU論文評価功労賞</em></a>, MIRU 2021, Jul., 2021."
+        },
+        {
+          "key": "Oyamada-2020-IIBMP-Award",
+          "year": 2020,
+          "month_num": 9,
+          "display_html": "<a href=\"https://www.jsbi.org/iibmp2020/award/\"><em>ポスター賞</em></a>, 2020年日本バイオインフォマティクス学会年会 第9回生命医薬情報学連合大会 (IIBMP2020), Sep., 2020, for サポートベクターマシンを用いた顕微鏡下凝集試験 (MAT) の自動化."
+        },
+        {
+          "key": "Oyamada-2018-VRST-Award",
+          "year": 2018,
+          "month_num": 12,
+          "display_html": "<a href=\"https://drive.google.com/file/d/1vm9FlE5--lrquHHI44QAtrdR99Nf-DjX/view?usp=sharing\"><em>Honorable Mentions (Poster &amp; Demo)</em></a>, VRST 2018, Dec., 2018, for Texture synthesis for stable planar tracking."
+        },
+        {
+          "key": "Oyamada-2018-MIRU-Award",
+          "year": 2018,
+          "month_num": 8,
+          "display_html": "<a href=\"https://drive.google.com/file/d/17X6_295oerRpRIoMtDwjAIq2YNPAMxFp/view?usp=sharing\"><em>MIRU論文評価貢献賞</em></a>, MIRU 2018, Aug., 2018."
+        },
+        {
+          "key": "Oyamada-2009-CVIM-Award",
+          "year": 2009,
+          "month_num": 6,
+          "display_html": "<a href=\"https://cvim.ipsj.or.jp/index.php?id=award_winner\"><em>卒論セッション優秀賞</em></a>, CVIM, Jun., 2009, for ケプストラム解析を用いたブレ画像のBlind Deconvolution."
+        },
+        {
+          "key": "Oyamada-2008-IWVCC-Award",
+          "year": 2008,
+          "month_num": 11,
+          "display_html": "<em>Best Student Paper Award</em>, IWVCC, Nov., 2008, for Cepstrum based Blind Image Deconvolution."
+        }
+      ]
+    }
+  ]
+}

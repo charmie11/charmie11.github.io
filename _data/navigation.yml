@@ -2,20 +2,23 @@
 - title: Home
   url: /
 
+- title: CV
+  url: /cv
+
 - title: Research
-  url: research.md
+  url: /research
 
 - title: Publications
-  url: publications.md
+  url: /publications
 
 - title: Codes
-  url: codes.md
+  url: /codes
 
 - title: Lectures
-  url: lectures.md
+  url: /lectures
 
 - title: Services
-  url: services.md
+  url: /services
 
 - title: Personal
-  url: personal.md
+  url: /personal

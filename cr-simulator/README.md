@@ -1,8 +1,8 @@
 # View Planning for Reconstruction
 
-## packages
+## Packages
 
-| package | version | purpose |
+| Package | Version | Purpose |
 |:---:|:---:|:---:|
 | pandas | 2.2.3 | handle dataframe |
 | bokeh | 3.6.0 | interactive web app |

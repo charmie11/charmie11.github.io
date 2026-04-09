@@ -16,9 +16,9 @@ You can access my [github](https://github.com/charmie11) and [gitlab](https://gi
   - [CImg](http://cimg.eu/) [plugins](https://gitlab.com/charmie11/CImg-Plugins-Demo) (C++)
   - [im2patch/patch2im](https://gitlab.com/charmie11/MatLabImagePatching) (MatLab)
 - Computer Vision
-  - Camera Calibration
-  - [Camera Calibration using Ceres-solver](https://gitlab.com/charmie11/ccc)
-  - 2d pointsets tracking
+  - Camera calibration
+    - [Camera Calibration using Ceres-solver](https://gitlab.com/charmie11/ccc)
+  - 2D point set tracking
     - [Locally Likely Arrangement Hashing](https://gitlab.com/charmie11/LLAH)
     - [Transparent Random Dot Markers (TRDM)](https://gitlab.com/charmie11/trdm)
   - DTW

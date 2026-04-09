@@ -15,7 +15,7 @@ I have some stuff on the web.
 - Private ones:
   - [blog](https://charmie11.hatenablog.com/) (most of the articles are about books I read and written in Japanese)
   - [facebook](https://www.facebook.com/yuji.oyamada.9)
-  - 桐光学園バスケットボール部OB会[ホームページ](https://sites.google.com/view/tokobaskeob)
+  - [桐光学園バスケットボール部OB会 ホームページ](https://sites.google.com/view/tokobaskeob)
 - [IrfanView's Menu Bar](https://sites.google.com/d/1DYmjre_r8oqjCcZ--1m0JgzwNPaqXRic/p/1MM4RI-rSh2vSuqnvtr0MqlK2lRlsfAp8/edit)
 - LINE stamp
   - [Charmie](https://store.line.me/stickershop/product/8458416)

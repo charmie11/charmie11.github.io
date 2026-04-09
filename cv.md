@@ -6,7 +6,7 @@ permalink: /cv/
 
 # Yuji OYAMADA, Ph.D.
 
-**Assistant Professor** Department of Electrical Engineering and Computer Science  
+**Assistant Professor** Department of Electrical Engineering and Computer Science
 Faculty of Engineering, Tottori University, Japan
 
 * **Address:** 4-101 Koyama-cho Minami, Tottori, 680-8552, Japan
@@ -59,8 +59,8 @@ Faculty of Engineering, Tottori University, Japan
 ## Selected Publications
 
 1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Satoshi Miyahara, Michinobu Yoshimura, and Kenji Hiromatsu, *Emulating visual evaluations in the microscopic agglutination test with deep learning*, Journal of Microbiological Methods, Vol. 237, pp. 107249, Oct., 2025.
-1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Michinobu Yoshimura, and Kenji Hiromatsu, *Objectification of evaluation criteria in microscopic agglutination test using deep learning*, Journal of Microbiological Methods (Short Communications), Vol. 222, pp. 106955, Jul., 2024. 
-1. Risa Nakano, **Yuji Oyamada**, and Ryo Ozuru, *Objectification of Evaluation Criteria in MAT Using Deep Learning*, 13th Conference of ILS and 4th Meeting of ELS, Sep., 2024. 
+1. Risa Nakano, **Yuji Oyamada**, Ryo Ozuru, Michinobu Yoshimura, and Kenji Hiromatsu, *Objectification of evaluation criteria in microscopic agglutination test using deep learning*, Journal of Microbiological Methods (Short Communications), Vol. 222, pp. 106955, Jul., 2024.
+1. Risa Nakano, **Yuji Oyamada**, and Ryo Ozuru, *Objectification of Evaluation Criteria in MAT Using Deep Learning*, 13th Conference of ILS and 4th Meeting of ELS, Sep., 2024.
 1. Madoka Chosokabe, Shohei Koie, and **Yuji Oyamada**, *Examining the Effect of ChatGPT on Small Group Ideation Discussions*, Human-Centric Decision and Negotiation Support for Societal Transitions (GDN), pp. 142-153, May, 2024.
 1. Naoki Kajitani, **Yuji Oyamada**, Mikihiko Mori, Haruhiko Maenami, *Idea Grouping Support System*, International Conference on Software Technology and Engineering (ICSTE), Oct., 2023.
 1. **Yuji Oyamada**, Ryo Ozuru, Toshiyuki Masuzawa, Satoshi Miyahara, Yasuhiko Nikaido, Fumiko Obata, Mitsumasa Saito, Sharon Yvette Angelina M. Villanueva, and Jun Fujii, *A machine learning model of microscopic agglutination test for diagnosis of leptospirosis*, PLOS ONE, Vol. 16, No. 11, pp. 1-16, Nov., 2021.

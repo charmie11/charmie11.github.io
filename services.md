@@ -31,7 +31,7 @@ title: Services
 
 ## Reviews/査読
 
-Please let me know if I can contribute to your journals, conferences, workshops, or anythings.
+Please let me know if I can contribute to your journals, conferences, workshops, or anything else.
 
 ### Journals/論文誌
 - International Journals

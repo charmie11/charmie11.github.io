@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-09T07:39:45Z",
+  "generated_at_utc": "2026-06-23T13:41:26Z",
   "source": "publications.bib",
   "sections": [
     {
@@ -337,6 +337,18 @@
       "title": "国内学会・研究会",
       "items": [
         {
+          "key": "Miyazaki-2026-IEICE-SIP",
+          "year": 2026,
+          "month_num": 6,
+          "display_html": "宮崎 隆大, 中村 一路, and <strong>小山田 雄仁</strong>, <em>3Dスキャナを用いた3次元復元のためのオフライン撮影支援の検討</em>, <em>信学技報</em>, Vol. 126, No. 83(SIP2026-10), pp. 45--50, Jun., 2026."
+        },
+        {
+          "key": "Furukawa-2026-IEICE-MI",
+          "year": 2026,
+          "month_num": 6,
+          "display_html": "古川 陽斗, 松園 昇大, and <strong>小山田 雄仁</strong>, <em>信頼度の推移に基づく学習ダイナミクスの可視化</em>, <em>信学技報</em>, Vol. 126, No. 86 (MI2026-28), pp. 147--150, Jun., 2026."
+        },
+        {
           "key": "Nakamura-2025-DIA",
           "year": 2025,
           "month_num": 3,
@@ -352,7 +364,7 @@
           "key": "Nakano-2024-IEICE-MI",
           "year": 2024,
           "month_num": 3,
-          "display_html": "中野 里咲, <strong>小山田 雄仁</strong>, and 尾鶴 亮, <a href=\"https://ken.ieice.org/ken/paper/20240303fcCM/\"><em>深層学習による顕微鏡下凝集試験の客観化</em></a>, <em>電子情報通信学会 医用画像研究会 (MI研究会)</em>, Mar., 2024."
+          "display_html": "中野 里咲, <strong>小山田 雄仁</strong>, and 尾鶴 亮, <a href=\"https://ken.ieice.org/ken/paper/20240303fcCM/\"><em>深層学習による顕微鏡下凝集試験の客観化</em></a>, <em>信学技報</em>, Vol. 123, No. 411 (MI2023-34), pp. 15--18, Mar., 2024."
         },
         {
           "key": "Kajitani-2024-SocSys-b",
@@ -460,25 +472,25 @@
           "key": "Onishi-2018-IEICE",
           "year": 2018,
           "month_num": 2,
-          "display_html": "大西 友貴, <strong>小山田 雄仁</strong>, 三柴 数, and 近藤 克哉, <em>深層畳み込みニューラルネットワークによる単一距離画像とその法線マップを用いた物体識別</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 117, No. 442, pp. 31--36, Feb., 2018."
+          "display_html": "大西 友貴, <strong>小山田 雄仁</strong>, 三柴 数, and 近藤 克哉, <em>深層畳み込みニューラルネットワークによる単一距離画像とその法線マップを用いた物体識別</em>, <em>信学技報</em>, Vol. 117, No. 442 (PRMU2017-150), pp. 31--36, Feb., 2018."
         },
         {
           "key": "Maeda-2017-IEICE",
           "year": 2017,
           "month_num": 3,
-          "display_html": "前田 和輝, 近藤 克哉, 三柴 数, <strong>小山田 雄仁</strong>, and 藏光 誠, <em>タイル色を考慮した熱画像解析による外壁異常の検出支援</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 116, No. 482, pp. 35--40, Mar., 2017."
+          "display_html": "前田 和輝, 近藤 克哉, 三柴 数, <strong>小山田 雄仁</strong>, and 藏光 誠, <em>タイル色を考慮した熱画像解析による外壁異常の検出支援</em>, <em>信学技報</em>, Vol. 116, No. 482, pp. 35--40, Mar., 2017."
         },
         {
           "key": "Kondo-2016-IEICE",
           "year": 2016,
           "month_num": 11,
-          "display_html": "近藤 克哉, 三柴 数, <strong>小山田 雄仁</strong>, 吉川 雅基, and 栗政 明弘, <em>細胞相互の輝度の違いが大きな場合の細胞検出</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 116, No. 298, pp. 1--4, Nov., 2016."
+          "display_html": "近藤 克哉, 三柴 数, <strong>小山田 雄仁</strong>, 吉川 雅基, and 栗政 明弘, <em>細胞相互の輝度の違いが大きな場合の細胞検出</em>, <em>信学技報</em>, Vol. 116, No. 298, pp. 1--4, Nov., 2016."
         },
         {
           "key": "Onishi-2016-IEICE",
           "year": 2016,
           "month_num": 9,
-          "display_html": "大西 友貴, <strong>小山田 雄仁</strong>, 三柴 数, and 近藤 克哉, <em>P2-invariantを用いた文書画像検索</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 116, No. 208, pp. 13--18, Sep., 2016."
+          "display_html": "大西 友貴, <strong>小山田 雄仁</strong>, 三柴 数, and 近藤 克哉, <em>P2-invariantを用いた文書画像検索</em>, <em>信学技報</em>, Vol. 116, No. 208, pp. 13--18, Sep., 2016."
         },
         {
           "key": "Morita-2014-CVIM",
@@ -562,7 +574,7 @@
           "key": "Oyamada-2008-IEICE-TR",
           "year": 2008,
           "month_num": 9,
-          "display_html": "<strong>小山田 雄仁</strong>, 斎藤 英雄, 太田垣 康二, and 江口 満男, <em>劣化画像のケプストラムを利用した手ブレ補正</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 108, No. 198, pp. 147--152, Sep., 2008."
+          "display_html": "<strong>小山田 雄仁</strong>, 斎藤 英雄, 太田垣 康二, and 江口 満男, <em>劣化画像のケプストラムを利用した手ブレ補正</em>, <em>信学技報</em>, Vol. 108, No. 198, pp. 147--152, Sep., 2008."
         },
         {
           "key": "Oyamada-2008-MIRU",
@@ -580,7 +592,7 @@
           "key": "Oyamada-2008-IEICE-TR2",
           "year": 2008,
           "month_num": 1,
-          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>表示画像の特徴領域抽出に基づくプロジェクタ−カメラシステムの焦点ボケの自動補正法</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 107, No. 427, pp. 1--8, Jan., 2008."
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>表示画像の特徴領域抽出に基づくプロジェクタ−カメラシステムの焦点ボケの自動補正法</em>, <em>信学技報</em>, Vol. 107, No. 427, pp. 1--8, Jan., 2008."
         },
         {
           "key": "Oyamada-2007-MIRU",
@@ -592,7 +604,7 @@
           "key": "Oyamada-2007-IEICE",
           "year": 2007,
           "month_num": 1,
-          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>Projection Based Augmented Realityのための投影画像の事前補正によるボケ除去法</em>, <em>電子情報通信学会技術研究報告</em>, Vol. 106, No. 470, pp. 37--42, Jan., 2007."
+          "display_html": "<strong>小山田 雄仁</strong> and 斎藤 英雄, <em>Projection Based Augmented Realityのための投影画像の事前補正によるボケ除去法</em>, <em>信学技報</em>, Vol. 106, No. 470, pp. 37--42, Jan., 2007."
         },
         {
           "key": "Oyamada-2006-ITE",

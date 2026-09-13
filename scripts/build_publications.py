@@ -229,6 +229,8 @@ def get_section(entry: BibEntry) -> str:
     if "publication" in kws and "journal" in kws:
         joined = (entry.fields.get("title", "") + " " + entry.fields.get("journal", "")).strip()
         return "ja-journal" if has_japanese(joined) else "journal"
+    if "publication" in kws and "book-chapter" in kws:
+        return "book-chapter"
     if "publication" in kws and "int-conf-full" in kws:
         return "int-conf-full"
     if "publication" in kws and "int-conf-abst" in kws:
@@ -254,6 +256,7 @@ def build_display_html(entry: BibEntry, section_id: str) -> str:
     volume = latex_to_text(f.get("volume", ""))
     number = latex_to_text(f.get("number", ""))
     pages = latex_to_text(f.get("pages", ""))
+    publisher = latex_to_text(f.get("publisher", ""))
     year = int(re.sub(r"[^\d]", "", f.get("year", "0")) or "0")
     month_num = parse_month(f.get("month", ""))
     date_label = month_year_label(month_num, year)
@@ -283,6 +286,8 @@ def build_display_html(entry: BibEntry, section_id: str) -> str:
         details.append(f"No. {escape(number)}")
     if pages:
         details.append(f"pp. {escape(pages)}")
+    if publisher:
+        details.append(escape(publisher))
     if note:
         details.append(escape(note))
     if date_label:
@@ -307,6 +312,7 @@ def main() -> None:
     entries = parse_bibtex(raw)
 
     section_order = [
+        ("book-chapter", "Book Chapter"),
         ("journal", "Journal Papers"),
         ("ja-journal", "和文論文誌"),
         ("int-conf-full", "International Conferences (Full Papers)"),

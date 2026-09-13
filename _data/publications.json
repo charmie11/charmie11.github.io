@@ -1,7 +1,19 @@
 {
-  "generated_at_utc": "2026-06-23T13:41:26Z",
+  "generated_at_utc": "2026-09-13T21:19:41Z",
   "source": "publications.bib",
   "sections": [
+    {
+      "id": "book-chapter",
+      "title": "Book Chapter",
+      "items": [
+        {
+          "key": "Oyamada-2026-MiMB",
+          "year": 2026,
+          "month_num": 0,
+          "display_html": "<strong>Yuji Oyamada</strong> and Ryo Ozuru, <a href=\"https://doi.org/10.1007/978-1-0716-5500-9_19\"><em>Instance Segmentation as a Foundation for Quantitative Image Analysis in Leptospira Research</em></a>, <em>Leptospira spp.: Methods and Protocols</em>, pp. 219--237, Springer US, 2026."
+        }
+      ]
+    },
     {
       "id": "journal",
       "title": "Journal Papers",

@@ -214,12 +214,12 @@ def create_callbacks(widgets, groups_config):
         // 右側（R〜V列）の比較表ブロック定義
         const tableBlock = [
             ["公称値候補", "公称値 [uF]", "差の絶対値（計算値1）", "差の絶対値（計算値2）", "差の絶対値（計算値3）"],
-            ["公称値1", "10", "=ABS($N$2 - 10)", "=ABS($O$2 - 10)", "=ABS($P$2 - 10)"],
-            ["公称値2", "15", "=ABS($N$2 - 15)", "=ABS($O$2 - 15)", "=ABS($P$2 - 15)"],
-            ["公称値3", "22", "=ABS($N$2 - 22)", "=ABS($O$2 - 22)", "=ABS($P$2 - 22)"],
-            ["公称値4", "33", "=ABS($N$2 - 33)", "=ABS($O$2 - 33)", "=ABS($P$2 - 33)"],
-            ["公称値5", "47", "=ABS($N$2 - 47)", "=ABS($O$2 - 47)", "=ABS($P$2 - 47)"],
-            ["公称値6", "68", "=ABS($N$2 - 68)", "=ABS($O$2 - 68)", "=ABS($P$2 - 68)"],
+            ["公称値1", "10", "", "", ""],
+            ["公称値2", "15", "", "", ""],
+            ["公称値3", "22", "", "", ""],
+            ["公称値4", "33", "", "", ""],
+            ["公称値5", "47", "", "", ""],
+            ["公称値6", "68", "", "", ""],
             ["推定値", "", "", "", ""]
         ];
 
@@ -228,7 +228,6 @@ def create_callbacks(widgets, groups_config):
 
         for (let i = 0; i < t.length; i++) {
             const excelRow = i + 2;
-            const timeRef = `=C${excelRow}`;
 
             const row = [
                 E.toFixed(1),
@@ -237,7 +236,7 @@ def create_callbacks(widgets, groups_config):
                 data['v1'][i].toFixed(4),
                 data['v2'][i].toFixed(4),
                 data['v3'][i].toFixed(4),
-                timeRef,
+                t[i].toFixed(4),
                 "", "", "", // 変換電圧1-3
                 "", "", "", // 傾き1-3
                 "", "", ""  // 計算値1-3

@@ -62,7 +62,18 @@ def create_widgets(all_groups):
     widgets['r_label'] = Div(text=initial_r_text, margin=(0, 0, 10, 0))
 
     widgets['start_button'] = Button(label="計測開始", button_type="success", width=230)
-    widgets['download_button'] = Button(label="計測データをダウンロード (.csv)", button_type="primary", disabled=True, width=230)
+    widgets['download_link'] = Div(
+        text="""
+        <a id="cr-csv-download"
+           style="display:inline-block;width:230px;box-sizing:border-box;
+                  text-align:center;padding:8px 10px;border-radius:4px;
+                  background:#337ab7;color:#fff;text-decoration:none;
+                  pointer-events:none;opacity:0.5;">
+          計測データをダウンロード (.csv)
+        </a>
+        """,
+        width=230,
+    )
 
     # 散布図の作成（Googleスプレッドシートのデフォルト系列色：青、赤、オレンジ）
     p = figure(height=400, width=620, title="CR回路 充電電圧のシミュレーション",
@@ -102,13 +113,97 @@ def create_callbacks(widgets, groups_config):
         prefix_select=widgets['prefix_select'],
         number_select=widgets['number_select'],
         start_button=widgets['start_button'],
-        download_button=widgets['download_button'],
         plot=widgets['plot'],
         groups_config=groups_config
     ), code="""
+        function findDownloadLink() {
+            const queue = [document];
+            while (queue.length) {
+                const root = queue.shift();
+                const el = root.getElementById ? root.getElementById('cr-csv-download') : null;
+                if (el) { return el; }
+                const nodes = root.querySelectorAll ? root.querySelectorAll('*') : [];
+                for (const node of nodes) {
+                    if (node.shadowRoot) { queue.push(node.shadowRoot); }
+                }
+            }
+            return null;
+        }
+
+        function disableDownloadLink() {
+            const a = findDownloadLink();
+            if (!a) { return; }
+            a.style.pointerEvents = 'none';
+            a.style.opacity = '0.5';
+            a.removeAttribute('href');
+        }
+
+        function enableDownloadLink(group, E, data) {
+            const t = data['t'];
+            if (!t || t.length === 0) { return; }
+
+            const R = 100000;
+            const mainHeaders = [
+                "電源電圧_E [V]",
+                "抵抗値_R [ohm]",
+                "時刻_t [s]",
+                "電圧1 [V]",
+                "電圧2 [V]",
+                "電圧3 [V]",
+                "時刻_t [s]",
+                "変換電圧1",
+                "変換電圧2",
+                "変換電圧3",
+                "傾き1",
+                "傾き2",
+                "傾き3",
+                "計算値1 [uF]",
+                "計算値2 [uF]",
+                "計算値3 [uF]"
+            ];
+            const tableBlock = [
+                ["公称値候補", "公称値 [uF]", "差の絶対値（計算値1）", "差の絶対値（計算値2）", "差の絶対値（計算値3）"],
+                ["公称値1", "10", "", "", ""],
+                ["公称値2", "15", "", "", ""],
+                ["公称値3", "22", "", "", ""],
+                ["公称値4", "33", "", "", ""],
+                ["公称値5", "47", "", "", ""],
+                ["公称値6", "68", "", "", ""],
+                ["推定値", "", "", "", ""]
+            ];
+
+            let csv_content = "\\uFEFF" + mainHeaders.join(",") + ",," + tableBlock[0].join(",") + "\\n";
+            for (let i = 0; i < t.length; i++) {
+                const row = [
+                    E.toFixed(1),
+                    R,
+                    t[i].toFixed(4),
+                    data['v1'][i].toFixed(4),
+                    data['v2'][i].toFixed(4),
+                    data['v3'][i].toFixed(4),
+                    t[i].toFixed(4),
+                    "", "", "",
+                    "", "", "",
+                    "", "", ""
+                ];
+                let tableCols = ["", "", "", "", ""];
+                if (i < 7) {
+                    tableCols = tableBlock[i + 1];
+                }
+                csv_content += row.join(",") + ",," + tableCols.join(",") + "\\n";
+            }
+
+            const a = findDownloadLink();
+            if (!a) { return; }
+            a.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv_content);
+            a.download = "measurement_data_group_" + group + ".csv";
+            a.style.pointerEvents = "auto";
+            a.style.opacity = "1";
+        }
+
         if (window.animationInterval) { clearInterval(window.animationInterval); }
 
-        download_button.disabled = true;
+        disableDownloadLink();
         start_button.disabled = true;
         source.data = {'t': [], 'v1': [], 'v2': [], 'v3': []};
         source.change.emit();
@@ -126,7 +221,7 @@ def create_callbacks(widgets, groups_config):
         const taus = true_caps_F.map(C => R * C);
         const max_tau = Math.max(...taus);
         const t_end = 7.0 * max_tau;
-        const num_data_points = 1000;
+        const num_data_points = 100;
         const t_full = Array.from({length: num_data_points}, (_, i) => i * t_end / (num_data_points - 1));
 
         const voltages = [[], [], []];
@@ -143,6 +238,7 @@ def create_callbacks(widgets, groups_config):
             'v2': voltages[1],
             'v3': voltages[2]
         };
+        full_data_source.change.emit();
 
         plot.y_range.start = 0;
         plot.y_range.end = E * 1.05;
@@ -156,7 +252,7 @@ def create_callbacks(widgets, groups_config):
             if (current_points >= num_data_points) {
                 source.data = full_data_source.data;
                 clearInterval(window.animationInterval);
-                download_button.disabled = false;
+                enableDownloadLink(group, E, full_data_source.data);
                 start_button.disabled = false;
             } else {
                 source.data = {
@@ -170,95 +266,6 @@ def create_callbacks(widgets, groups_config):
         }, 25);
     """)
     widgets['start_button'].js_on_click(start_measurement_js)
-
-    download_callback = CustomJS(args=dict(
-        full_data_source=widgets['full_data_source'],
-        prefix_select=widgets['prefix_select'],
-        number_select=widgets['number_select'],
-        groups_config=groups_config
-    ), code="""
-        const prefix = prefix_select.value;
-        const number = number_select.value;
-        const group = prefix + number;
-        const E = groups_config[group].voltage_E;
-        const R = 100000;
-
-        const data = full_data_source.data;
-        const t = data['t'];
-
-        if (!t || t.length === 0) {
-            alert("先に計測を開始してください。");
-            return;
-        }
-
-        const mainHeaders = [
-            "電源電圧_E [V]",
-            "抵抗値_R [ohm]",
-            "時刻_t [s]",
-            "電圧1 [V]",
-            "電圧2 [V]",
-            "電圧3 [V]",
-            "時刻_t [s]",
-            "変換電圧1",
-            "変換電圧2",
-            "変換電圧3",
-            "傾き1",
-            "傾き2",
-            "傾き3",
-            "計算値1 [uF]",
-            "計算値2 [uF]",
-            "計算値3 [uF]"
-        ];
-
-        const tableBlock = [
-            ["公称値候補", "公称値 [uF]", "差の絶対値（計算値1）", "差の絶対値（計算値2）", "差の絶対値（計算値3）"],
-            ["公称値1", "10", "", "", ""],
-            ["公称値2", "15", "", "", ""],
-            ["公称値3", "22", "", "", ""],
-            ["公称値4", "33", "", "", ""],
-            ["公称値5", "47", "", "", ""],
-            ["公称値6", "68", "", "", ""],
-            ["推定値", "", "", "", ""]
-        ];
-
-        let csv_content = "\uFEFF" + mainHeaders.join(",") + ",," + tableBlock[0].join(",") + "\n";
-
-        for (let i = 0; i < t.length; i++) {
-            const excelRow = i + 2;
-
-            const row = [
-                E.toFixed(1),
-                R,
-                t[i].toFixed(4),
-                data['v1'][i].toFixed(4),
-                data['v2'][i].toFixed(4),
-                data['v3'][i].toFixed(4),
-                t[i].toFixed(4),
-                "", "", "",
-                "", "", "",
-                "", "", ""
-            ];
-
-            let tableCols = ["", "", "", "", ""];
-            if (i < 7) {
-                tableCols = tableBlock[i + 1];
-            }
-
-            csv_content += row.join(",") + ",," + tableCols.join(",") + "\n";
-        }
-
-        const blob = new Blob([csv_content], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob);
-        const filename = `measurement_data_group_${group}.csv`;
-        link.setAttribute('href', url);
-        link.setAttribute('download', filename);
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    """)
-    widgets['download_button'].js_on_click(download_callback)
 
 
 def create_layout(widgets):
@@ -277,7 +284,7 @@ def create_layout(widgets):
         widgets['v0_display'],
         widgets['r_label'],
         widgets['start_button'],
-        widgets['download_button'],
+        widgets['download_link'],
         styles={
             'background-color': '#f8f9fa',
             'padding': '15px',

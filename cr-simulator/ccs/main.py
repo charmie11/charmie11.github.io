@@ -1,43 +1,39 @@
-import json
+import random
 from itertools import combinations
-import numpy as np
-import pandas as pd
 from bokeh.plotting import figure
 from bokeh.layouts import column, row
-from bokeh.models import Select, Slider, Button, ColumnDataSource, CustomJS, Div, CheckboxGroup
+from bokeh.models import Select, Button, ColumnDataSource, CustomJS, Div
 from bokeh.embed import file_html
 from bokeh.resources import CDN
 
 
-def create_groups_config():
+def create_groups_config(random_seed=42):
     """
-    シミュレーションの前提条件となる全グループの設定を生成します。
+    シミュレーションの前提条件となる全15グループの設定を生成します。
+    - アルファベット（A, B, C）で電源電圧 E を決定（5V, 10V, 15V）
+    - 6C3 = 20通りからランダムに15通りの組み合わせを抽出して各グループに割り当て
     """
     group_prefixes = ['A', 'B', 'C']
     group_numbers = range(1, 6)
-    all_groups = []
-    for p in group_prefixes:
-        for n in group_numbers:
-            all_groups.append(f"{p}{n}")
-            all_groups.append(f"{p}{n}*")
+    all_groups = [f"{p}{n}" for p in group_prefixes for n in group_numbers]
 
     E6_VALUES_uF = [10, 15, 22, 33, 47, 68]
-    unique_combinations = [list(c) for c in combinations(E6_VALUES_uF, 3)][:5]
+    all_combinations = [list(c) for c in combinations(E6_VALUES_uF, 3)]
 
-    tolerances = {'A': 0.05, 'B': 0.10, 'C': 0.20}
-    noise_levels = {'normal': 0.01, 'high': 0.02}
+    # 乱数シードを固定して20通りから15通りをシャッフル抽出
+    rng = random.Random(random_seed)
+    selected_combinations = rng.sample(all_combinations, len(all_groups))
+
+    voltage_map = {'A': 5.0, 'B': 10.0, 'C': 15.0}
 
     groups_config = {}
-    for group_name in all_groups:
+    for idx, group_name in enumerate(all_groups):
         prefix = group_name[0]
-        number = int(group_name[1])
-        is_high_noise = group_name.endswith('*')
-        assigned_caps = unique_combinations[number - 1]
+        assigned_caps = selected_combinations[idx]
 
         groups_config[group_name] = {
-            'nominal_caps_uF': sorted(assigned_caps),
-            'tolerance': tolerances[prefix],
-            'noise_level': noise_levels['high'] if is_high_noise else noise_levels['normal']
+            'voltage_E': voltage_map[prefix],
+            'nominal_caps_uF': sorted(assigned_caps)
         }
 
     return groups_config, all_groups
@@ -48,44 +44,36 @@ def create_widgets(all_groups):
     シミュレータのUIを構成するBokehウィジェットを生成します。
     """
     widgets = {}
-    widgets['source_clipped'] = ColumnDataSource(data={'t': [], 'v1': [], 'v2': [], 'v3': []})
-    widgets['source_raw'] = ColumnDataSource(data={'t': [], 'v1': [], 'v2': [], 'v3': []})
-    widgets['full_data_source_clipped'] = ColumnDataSource(data={'t': [], 'v1': [], 'v2': [], 'v3': []})
-    widgets['full_data_source_raw'] = ColumnDataSource(data={'t': [], 'v1': [], 'v2': [], 'v3': []})
+    widgets['source'] = ColumnDataSource(data={'t': [], 'v1': [], 'v2': [], 'v3': []})
+    widgets['full_data_source'] = ColumnDataSource(data={'t': [], 'v1': [], 'v2': [], 'v3': []})
 
-    widgets['prefix_select'] = Select(title="アルファベット", value="A", options=['A', 'B', 'C'], width=100)
-    widgets['number_select'] = Select(title="数字", value="1", options=[str(i) for i in range(1, 6)], width=100)
+    group_title = Div(text="<div style='font-size: 15px; font-weight: bold; margin-bottom: 5px;'>【実験グループの選択】</div>")
+    widgets['group_title'] = group_title
 
-    widgets['asterisk_label'] = Div(text="<div style='font-size: 14px; font-weight: 600;'>オプション</div>")
-    widgets['asterisk_checkbox'] = CheckboxGroup(labels=["*あり"], active=[], width=100)
+    widgets['prefix_select'] = Select(title="アルファベット", value="A", options=['A', 'B', 'C'], width=110)
+    widgets['number_select'] = Select(title="数字", value="1", options=[str(i) for i in range(1, 6)], width=110)
 
-    V0_FIXED = 5.0
     widgets['v0_display'] = Div(
-        text=f"<div style='font-size: 14px; font-weight: 600;'>電源電圧 E: {V0_FIXED:.1f} V (固定)</div>")
+        text="<div style='font-size: 14px; font-weight: 600; color: #1f77b4;'>電源電圧 E: 5.0 V</div>",
+        margin=(10, 0, 5, 0)
+    )
 
-    initial_r_value = 100_000
-    initial_r_text = f"<div style='font-size: 14px; font-weight: 600;'>抵抗値 R: {initial_r_value:,} ({int(initial_r_value / 1000)} kΩ)</div>"
-    widgets['r_label'] = Div(text=initial_r_text)
-    widgets['R_slider'] = Slider(start=10_000, end=1_000_000, value=initial_r_value, step=10_000, title=None,
-                                 show_value=False)
+    initial_r_text = "<div style='font-size: 14px; font-weight: 600;'>抵抗値 R: 100,000 Ω (100 kΩ 固定)</div>"
+    widgets['r_label'] = Div(text=initial_r_text, margin=(0, 0, 10, 0))
 
-    widgets['start_button'] = Button(label="計測開始", button_type="success")
-    widgets['download_button'] = Button(label="計測データをダウンロード (.csv)", button_type="primary", disabled=True)
+    widgets['start_button'] = Button(label="計測開始", button_type="success", width=230)
+    widgets['download_button'] = Button(label="計測データをダウンロード (.csv)", button_type="primary", disabled=True, width=230)
 
-    p = figure(height=400, width=600, title="CR回路 充電電圧のシミュレーション",
-               x_axis_label="時刻 t [s]", y_axis_label="コンデンサ端子電圧 Vc [V]")
-    colors = ["#1f77b4", "#ff7f0e", "#2ca02c"]
-    subscripts = ['₁', '₂', '₃']
-
-    for i in range(3):
-        p.scatter(x='t', y=f'v{i + 1}', source=widgets['source_raw'], marker='circle', fill_color=None,
-                  color=colors[i], size=8, legend_label=f"V{subscripts[i]}(t) (補正前)")
+    # 散布図の作成（Googleスプレッドシートのデフォルト系列色：青、赤、オレンジ）
+    p = figure(height=400, width=620, title="CR回路 充電電圧のシミュレーション",
+               x_axis_label="時刻 t [s]", y_axis_label="コンデンサ端子電圧 V [V]")
+    colors = ["#4285f4", "#ea4335", "#ff9900"]  # 青, 赤, オレンジ
+    labels = ["コンデンサ 1", "コンデンサ 2", "コンデンサ 3"]
 
     for i in range(3):
-        p.scatter(x='t', y=f'v{i + 1}', source=widgets['source_clipped'], marker='x',
-                  color=colors[i], size=8, legend_label=f"V{subscripts[i]}(t) (補正後)")
+        p.scatter(x='t', y=f'v{i + 1}', source=widgets['source'], marker='circle', size=5,
+                  color=colors[i], legend_label=labels[i])
 
-    p.legend.ncols = 2
     p.legend.location = "bottom_right"
     p.legend.click_policy = "hide"
     p.legend.title = "凡例"
@@ -96,155 +84,179 @@ def create_widgets(all_groups):
 
 def create_callbacks(widgets, groups_config):
     """
-    ウィジェットの動作を定義するJavaScriptコールバックを作成し、アタッチします。
+    ウィジェットの動作を定義するJavaScriptコールバックを作成します。
     """
-    r_slider_callback = CustomJS(args=dict(slider=widgets['R_slider'], label=widgets['r_label']), code="""
-        const value_kOhm = (slider.value / 1000).toFixed(0);
-        const value_Ohm_formatted = slider.value.toLocaleString();
-        label.text = `<div style='font-size: 14px; font-weight: 600;'>抵抗値 R: ${value_Ohm_formatted} (${value_kOhm} kΩ)</div>`;
+    prefix_change_js = CustomJS(args=dict(
+        prefix_select=widgets['prefix_select'],
+        v0_display=widgets['v0_display']
+    ), code="""
+        const prefix = prefix_select.value;
+        const vMap = {'A': '5.0', 'B': '10.0', 'C': '15.0'};
+        v0_display.text = `<div style='font-size: 14px; font-weight: 600; color: #1f77b4;'>電源電圧 E: ${vMap[prefix]} V</div>`;
     """)
-    widgets['R_slider'].js_on_change('value', r_slider_callback)
+    widgets['prefix_select'].js_on_change('value', prefix_change_js)
 
     start_measurement_js = CustomJS(args=dict(
-        source_clipped=widgets['source_clipped'],
-        source_raw=widgets['source_raw'],
-        full_data_source_clipped=widgets['full_data_source_clipped'],
-        full_data_source_raw=widgets['full_data_source_raw'],
+        source=widgets['source'],
+        full_data_source=widgets['full_data_source'],
         prefix_select=widgets['prefix_select'],
         number_select=widgets['number_select'],
-        asterisk_checkbox=widgets['asterisk_checkbox'],
-        r_slider=widgets['R_slider'],
         start_button=widgets['start_button'],
         download_button=widgets['download_button'],
+        plot=widgets['plot'],
         groups_config=groups_config
     ), code="""
         if (window.animationInterval) { clearInterval(window.animationInterval); }
 
         download_button.disabled = true;
         start_button.disabled = true;
-        source_clipped.data = {'t': [], 'v1': [], 'v2': [], 'v3': []};
-        source_raw.data = {'t': [], 'v1': [], 'v2': [], 'v3': []};
-        source_clipped.change.emit();
-        source_raw.change.emit();
+        source.data = {'t': [], 'v1': [], 'v2': [], 'v3': []};
+        source.change.emit();
 
         const prefix = prefix_select.value;
         const number = number_select.value;
-        const is_asterisk = asterisk_checkbox.active.includes(0);
-        let group = prefix + number;
-        if (is_asterisk) { group += '*'; }
+        const group = prefix + number;
 
-        const E = 5.0; // 電源電圧
-        const R = r_slider.value;
         const config = groups_config[group];
+        const E = config.voltage_E;
         const nominal_caps_uF = config.nominal_caps_uF;
-        const tolerance = config.tolerance;
-        const noise_level = config.noise_level;
+        const R = 100000.0;
 
-        const true_caps_F = [];
-        for (let i = 0; i < nominal_caps_uF.length; i++) {
-            const random_error = Math.random() * (tolerance * 2) - tolerance;
-            const true_cap_F = nominal_caps_uF[i] * 1e-6 * (1 + random_error);
-            true_caps_F.push(true_cap_F);
-        }
-
+        const true_caps_F = nominal_caps_uF.map(c => c * 1e-6);
         const taus = true_caps_F.map(C => R * C);
         const max_tau = Math.max(...taus);
-        const t_end = 10 * max_tau;
+        const t_end = 7.0 * max_tau;
         const num_data_points = 1000;
         const t_full = Array.from({length: num_data_points}, (_, i) => i * t_end / (num_data_points - 1));
 
-        const voltages_raw = [[], [], []];
-        const voltages_clipped = [[], [], []];
+        const voltages = [[], [], []];
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < num_data_points; j++) {
-                const v_ideal = E * (1 - Math.exp(-t_full[j] / taus[i]));
-                const u1 = Math.random(); const u2 = Math.random();
-                const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
-                const noise = z0 * (E * noise_level);
-
-                const raw_v = v_ideal + noise;
-                voltages_raw[i].push(raw_v);
-
-                let clipped_v = raw_v;
-                if (clipped_v >= E) {
-                    clipped_v = E * 0.99999;
-                }
-                voltages_clipped[i].push(clipped_v);
+                const v_ideal = E * (1.0 - Math.exp(-t_full[j] / taus[i]));
+                voltages[i].push(v_ideal);
             }
         }
 
-        full_data_source_raw.data = {'t': t_full, 'v1': voltages_raw[0], 'v2': voltages_raw[1], 'v3': voltages_raw[2]};
-        full_data_source_clipped.data = {'t': t_full, 'v1': voltages_clipped[0], 'v2': voltages_clipped[1], 'v3': voltages_clipped[2]};
+        full_data_source.data = {
+            't': t_full,
+            'v1': voltages[0],
+            'v2': voltages[1],
+            'v3': voltages[2]
+        };
+
+        plot.y_range.start = 0;
+        plot.y_range.end = E * 1.05;
 
         let animation_step = 0;
-        const total_steps = 125;
+        const total_steps = 100;
         window.animationInterval = setInterval(() => {
             animation_step++;
             const current_points = Math.floor((animation_step / total_steps) * num_data_points);
 
             if (current_points >= num_data_points) {
-                source_clipped.data = full_data_source_clipped.data;
-                source_raw.data = full_data_source_raw.data;
+                source.data = full_data_source.data;
                 clearInterval(window.animationInterval);
                 download_button.disabled = false;
+                start_button.disabled = false;
             } else {
-                source_clipped.data = {
-                    't': full_data_source_clipped.data.t.slice(0, current_points),
-                    'v1': full_data_source_clipped.data.v1.slice(0, current_points),
-                    'v2': full_data_source_clipped.data.v2.slice(0, current_points),
-                    'v3': full_data_source_clipped.data.v3.slice(0, current_points)
-                };
-                 source_raw.data = {
-                    't': full_data_source_raw.data.t.slice(0, current_points),
-                    'v1': full_data_source_raw.data.v1.slice(0, current_points),
-                    'v2': full_data_source_raw.data.v2.slice(0, current_points),
-                    'v3': full_data_source_raw.data.v3.slice(0, current_points)
+                source.data = {
+                    't': full_data_source.data.t.slice(0, current_points),
+                    'v1': full_data_source.data.v1.slice(0, current_points),
+                    'v2': full_data_source.data.v2.slice(0, current_points),
+                    'v3': full_data_source.data.v3.slice(0, current_points)
                 };
             }
-            source_clipped.change.emit();
-            source_raw.change.emit();
-        }, 40);
-
-        start_button.disabled = false;
+            source.change.emit();
+        }, 25);
     """)
     widgets['start_button'].js_on_click(start_measurement_js)
 
     download_callback = CustomJS(args=dict(
-        full_data_source_clipped=widgets['full_data_source_clipped'],  # clippedデータのみ使用
+        full_data_source=widgets['full_data_source'],
         prefix_select=widgets['prefix_select'],
         number_select=widgets['number_select'],
-        asterisk_checkbox=widgets['asterisk_checkbox'],
-        r_slider=widgets['R_slider']
+        groups_config=groups_config
     ), code="""
         const prefix = prefix_select.value;
         const number = number_select.value;
-        const is_asterisk = asterisk_checkbox.active.includes(0);
-        let group = prefix + number;
-        if (is_asterisk) { group += '*'; }
+        const group = prefix + number;
+        const E = groups_config[group].voltage_E;
+        const R = 100000;
 
-        const E = 5.0; // 電源電圧
-        const R = r_slider.value;
-        const data = full_data_source_clipped.data;
+        const data = full_data_source.data;
         const t = data['t'];
 
-        if (t.length === 0) {
+        if (!t || t.length === 0) {
             alert("先に計測を開始してください。");
             return;
         }
 
-        // ヘッダーを簡略化
-        let csv_content = "\\uFEFF" + "電源電圧,抵抗値,時刻,V_1(t),V_2(t),V_3(t)\\n";
+        // 左側（A〜P列）のヘッダー
+        const mainHeaders = [
+            "電源電圧_E [V]",
+            "抵抗値_R [ohm]",
+            "時刻_t [s]",
+            "電圧1 [V]",
+            "電圧2 [V]",
+            "電圧3 [V]",
+            "時刻_t [s]",
+            "変換電圧1",
+            "変換電圧2",
+            "変換電圧3",
+            "傾き1",
+            "傾き2",
+            "傾き3",
+            "計算値1 [uF]",
+            "計算値2 [uF]",
+            "計算値3 [uF]"
+        ];
+
+        // 右側（R〜V列）の比較表ブロック定義
+        const tableBlock = [
+            ["公称値候補", "公称値 [uF]", "差の絶対値（計算値1）", "差の絶対値（計算値2）", "差の絶対値（計算値3）"],
+            ["公称値1", "10", "=ABS($N$2 - 10)", "=ABS($O$2 - 10)", "=ABS($P$2 - 10)"],
+            ["公称値2", "15", "=ABS($N$2 - 15)", "=ABS($O$2 - 15)", "=ABS($P$2 - 15)"],
+            ["公称値3", "22", "=ABS($N$2 - 22)", "=ABS($O$2 - 22)", "=ABS($P$2 - 22)"],
+            ["公称値4", "33", "=ABS($N$2 - 33)", "=ABS($O$2 - 33)", "=ABS($P$2 - 33)"],
+            ["公称値5", "47", "=ABS($N$2 - 47)", "=ABS($O$2 - 47)", "=ABS($P$2 - 47)"],
+            ["公称値6", "68", "=ABS($N$2 - 68)", "=ABS($O$2 - 68)", "=ABS($P$2 - 68)"],
+            ["推定値", "", "", "", ""]
+        ];
+
+        // 1行目のヘッダー結合（Q列は空列）
+        let csv_content = "\\uFEFF" + mainHeaders.join(",") + ",," + tableBlock[0].join(",") + "\\n";
+
         for (let i = 0; i < t.length; i++) {
-            const row_start = (i === 0) ? `${E},${R},` : `,,`;
-            // clippedデータのみを書き込む
-            const row_data = `${t[i]},${data['v1'][i]},${data['v2'][i]},${data['v3'][i]}\\n`;
-            csv_content += row_start + row_data;
+            const excelRow = i + 2;
+            const timeRef = `=C${excelRow}`;
+
+            const row = [
+                E.toFixed(1),
+                R,
+                t[i].toFixed(4),
+                data['v1'][i].toFixed(4),
+                data['v2'][i].toFixed(4),
+                data['v3'][i].toFixed(4),
+                timeRef,
+                "", "", "", // 変換電圧1-3
+                "", "", "", // 傾き1-3
+                "", "", ""  // 計算値1-3
+            ];
+
+            // 右側の比較表行（i = 0〜6 が tableBlock[1〜7] に対応）
+            let tableCols = ["", "", "", "", ""];
+            if (i < 7) {
+                tableCols = tableBlock[i + 1];
+            }
+
+            // Q列に空セルを入れて結合
+            csv_content += row.join(",") + ",," + tableCols.join(",") + "\\n";
         }
 
         const blob = new Blob([csv_content], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         const url = URL.createObjectURL(blob);
-        const filename = `measurement_data_${group.replace('*', '_star')}.csv`;
+        const filename = `measurement_data_group_${group}.csv`;
         link.setAttribute('href', url);
         link.setAttribute('download', filename);
         link.style.visibility = 'hidden';
@@ -257,54 +269,55 @@ def create_callbacks(widgets, groups_config):
 
 def create_layout(widgets):
     """
-    ウィジェットを配置して最終的なレイアウトを作成します。
+    UIコンポーネントを配置します。
     """
-    asterisk_layout = column(widgets['asterisk_label'], widgets['asterisk_checkbox'])
-
-    group_selection_layout = row(
+    group_select_row = row(
         widgets['prefix_select'],
         widgets['number_select'],
-        asterisk_layout,
-        sizing_mode="scale_width"
+        sizing_mode="fixed"
     )
 
     controls = column(
-        group_selection_layout,
+        widgets['group_title'],
+        group_select_row,
         widgets['v0_display'],
         widgets['r_label'],
-        widgets['R_slider'],
         widgets['start_button'],
         widgets['download_button'],
-        styles={'font-size': '14px'}
+        styles={
+            'background-color': '#f8f9fa',
+            'padding': '15px',
+            'border-radius': '6px',
+            'border': '1px solid #dee2e6'
+        },
+        width=260
     )
-    layout = row(controls, widgets['plot'])
+
+    layout = row(controls, widgets['plot'], spacing=20)
     return layout
 
 
 def save_configs(groups_config, path):
     """
-    グループの割り当て設定をCSVファイルに保存します。
+    教員用の正解参照・割り当て設定表をCSVに保存します。
     """
-    print("\n--- 全グループの割り当て設定 ---")
-    csv_output = ["グループ名,公称値1 [uF],公称値2 [uF],公称値3 [uF],精度 [%]\n"]
+    print("\n--- 全15グループの正解・設定一覧（ランダム割り当て） ---")
+    csv_output = ["グループ名,電源電圧 [V],公称値1 [uF],公称値2 [uF],公称値3 [uF]\n"]
 
     for group_name, config in groups_config.items():
-        nominal_caps = config['nominal_caps_uF']
-        tolerance_percent = int(config['tolerance'] * 100)
-        print(f"グループ {group_name:<4}: 公称値 = {str(nominal_caps):<15} | 精度 = ±{tolerance_percent}%")
-        csv_row = f"{group_name},{nominal_caps[0]},{nominal_caps[1]},{nominal_caps[2]},{tolerance_percent}\n"
+        caps = config['nominal_caps_uF']
+        E = config['voltage_E']
+        print(f"グループ {group_name:<3}: E = {E:>4.1f} V | 公称値 = {str(caps):<15}")
+        csv_row = f"{group_name},{E:.1f},{caps[0]},{caps[1]},{caps[2]}\n"
         csv_output.append(csv_row)
 
     with open(path, 'w', encoding='utf-8-sig') as f:
         f.writelines(csv_output)
-    print(f"\n✅ グループ設定を {path} に保存しました。")
+    print(f"\n✅ 設定一覧を '{path}' に保存しました。")
 
 
 def main():
-    """
-    メインの実行関数。設定の生成からHTMLの保存までを行います。
-    """
-    groups_config, all_groups = create_groups_config()
+    groups_config, all_groups = create_groups_config(random_seed=42)
     widgets = create_widgets(all_groups)
     create_callbacks(widgets, groups_config)
     layout = create_layout(widgets)
@@ -312,9 +325,9 @@ def main():
     save_configs(groups_config, "configs.csv")
 
     html = file_html(layout, CDN, "CR回路シミュレータ")
-    with open('index.html', 'w', encoding='utf-8') as f:
+    with open('app.html', 'w', encoding='utf-8') as f:
         f.write(html)
-    print("✅ 'index.html' が生成されました。")
+    print("✅ 'app.html' が正常に生成されました。")
 
 
 if __name__ == "__main__":

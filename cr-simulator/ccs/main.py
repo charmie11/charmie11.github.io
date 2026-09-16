@@ -191,7 +191,6 @@ def create_callbacks(widgets, groups_config):
             return;
         }
 
-        // 左側（A〜P列）のヘッダー
         const mainHeaders = [
             "電源電圧_E [V]",
             "抵抗値_R [ohm]",
@@ -211,7 +210,6 @@ def create_callbacks(widgets, groups_config):
             "計算値3 [uF]"
         ];
 
-        // 右側（R〜V列）の比較表ブロック定義
         const tableBlock = [
             ["公称値候補", "公称値 [uF]", "差の絶対値（計算値1）", "差の絶対値（計算値2）", "差の絶対値（計算値3）"],
             ["公称値1", "10", "", "", ""],
@@ -223,8 +221,7 @@ def create_callbacks(widgets, groups_config):
             ["推定値", "", "", "", ""]
         ];
 
-        // 1行目のヘッダー結合（Q列は空列）
-        let csv_content = "\\uFEFF" + mainHeaders.join(",") + ",," + tableBlock[0].join(",") + "\\n";
+        let csv_content = "\uFEFF" + mainHeaders.join(",") + ",," + tableBlock[0].join(",") + "\n";
 
         for (let i = 0; i < t.length; i++) {
             const excelRow = i + 2;
@@ -237,19 +234,17 @@ def create_callbacks(widgets, groups_config):
                 data['v2'][i].toFixed(4),
                 data['v3'][i].toFixed(4),
                 t[i].toFixed(4),
-                "", "", "", // 変換電圧1-3
-                "", "", "", // 傾き1-3
-                "", "", ""  // 計算値1-3
+                "", "", "",
+                "", "", "",
+                "", "", ""
             ];
 
-            // 右側の比較表行（i = 0〜6 が tableBlock[1〜7] に対応）
             let tableCols = ["", "", "", "", ""];
             if (i < 7) {
                 tableCols = tableBlock[i + 1];
             }
 
-            // Q列に空セルを入れて結合
-            csv_content += row.join(",") + ",," + tableCols.join(",") + "\\n";
+            csv_content += row.join(",") + ",," + tableCols.join(",") + "\n";
         }
 
         const blob = new Blob([csv_content], { type: 'text/csv;charset=utf-8;' });

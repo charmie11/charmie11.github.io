@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ccs"
-version = "2026.2.0"
+version = "2026.3.0"
 description = "CR Circuit Simulator"
 authors = ["Yuji Oyamada <ug.oyamada@gmail.com>"]
 readme = "README.md"

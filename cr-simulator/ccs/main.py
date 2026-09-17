@@ -153,10 +153,10 @@ def create_callbacks(widgets, groups_config):
                 "変換電圧1",
                 "変換電圧2",
                 "変換電圧3",
-                "抵抗値_R [ohm]",
                 "傾き1",
                 "傾き2",
                 "傾き3",
+                "抵抗値_R [ohm]",
                 "計算値1 [μF]",
                 "計算値2 [μF]",
                 "計算値3 [μF]"
@@ -185,8 +185,8 @@ def create_callbacks(widgets, groups_config):
                     data['v3'][i].toFixed(4),
                     t[i].toFixed(4),
                     "", "", "",
-                    R_str,
                     "", "", "",
+                    R_str,
                     "", "", ""
                 ];
                 let tableCols = ["", "", "", "", "", "", ""];

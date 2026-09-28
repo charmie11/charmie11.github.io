@@ -61,7 +61,7 @@ def create_widgets(all_groups):
     initial_r_text = "<div style='font-size: 14px; font-weight: 600;'>抵抗値 R: 100,000 Ω (100 kΩ 固定)</div>"
     widgets['r_label'] = Div(text=initial_r_text, margin=(0, 0, 10, 0))
 
-    widgets['start_button'] = Button(label="計測開始", button_type="success", width=230)
+    widgets['start_button'] = Button(label="計測", button_type="success", width=230)
     widgets['download_link'] = Div(
         text="""
         <a id="cr-csv-download"
@@ -69,7 +69,7 @@ def create_widgets(all_groups):
                   text-align:center;padding:8px 10px;border-radius:4px;
                   background:#337ab7;color:#fff;text-decoration:none;
                   pointer-events:none;opacity:0.5;">
-          計測データをダウンロード (.csv)
+          ダウンロード
         </a>
         """,
         width=230,
@@ -77,7 +77,7 @@ def create_widgets(all_groups):
 
     # 散布図の作成（Googleスプレッドシートのデフォルト系列色：青、赤、オレンジ）
     p = figure(height=400, width=620, title="CR回路 充電電圧のシミュレーション",
-               x_axis_label="時刻 t [s]", y_axis_label="コンデンサ端子電圧 V [V]")
+               x_axis_label="充電時間 t [s]", y_axis_label="コンデンサ端子電圧 V [V]")
     colors = ["#4285f4", "#ea4335", "#ff9900"]  # 青, 赤, オレンジ
     labels = ["コンデンサ 1", "コンデンサ 2", "コンデンサ 3"]
 
@@ -144,19 +144,19 @@ def create_callbacks(widgets, groups_config):
 
             const R = 100000;
             const mainHeaders = [
-                "電源電圧_E [V]",
-                "時刻_t [s]",
+                "電源電圧 E [V]",
+                "充電時間 t [s]",
                 "電圧1 [V]",
                 "電圧2 [V]",
                 "電圧3 [V]",
-                "時刻_t [s]",
+                "充電時間 t [s]",
                 "変換電圧1",
                 "変換電圧2",
                 "変換電圧3",
                 "傾き1",
                 "傾き2",
                 "傾き3",
-                "抵抗値_R [ohm]",
+                "抵抗値 R [ohm]",
                 "計算値1 [μF]",
                 "計算値2 [μF]",
                 "計算値3 [μF]"

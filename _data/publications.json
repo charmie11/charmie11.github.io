@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-13T21:19:41Z",
+  "generated_at_utc": "2026-10-20T06:46:14Z",
   "source": "publications.bib",
   "sections": [
     {
@@ -352,7 +352,7 @@
           "key": "Miyazaki-2026-IEICE-SIP",
           "year": 2026,
           "month_num": 6,
-          "display_html": "宮崎 隆大, 中村 一路, and <strong>小山田 雄仁</strong>, <em>3Dスキャナを用いた3次元復元のためのオフライン撮影支援の検討</em>, <em>信学技報</em>, Vol. 126, No. 83(SIP2026-10), pp. 45--50, Jun., 2026."
+          "display_html": "宮崎 隆大, 中村 一路, and <strong>小山田 雄仁</strong>, <em>3Dスキャナを用いた3次元復元のためのオフライン撮影支援の検討</em>, <em>信学技報</em>, Vol. 126, No. 83 (SIP2026-10), pp. 45--50, Jun., 2026."
         },
         {
           "key": "Furukawa-2026-IEICE-MI",
